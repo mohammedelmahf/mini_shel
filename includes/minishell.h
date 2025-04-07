@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 11:28:53 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 11:30:48 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_data
 	char		*working_dir;
 	char		*old_working_dir;
     t_command   *cmd;
+    t_pid       pid;
     
 }       t_data;
 //utilss
