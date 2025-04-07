@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 17:18:09 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 19:21:35 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_token
 
 typedef struct	s_env
 {
+	char			*key;
 	char			*value;
 	struct s_env	*next;
 }				t_env;
@@ -75,5 +76,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len);
 char    *extract_value(char *str);
 char    *extract_value(char *str);
 void    init_envlst(void);
+//exec
+void    *garbage_collector(char *str , bool clean);
 
 #endif
