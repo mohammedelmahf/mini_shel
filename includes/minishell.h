@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 19:21:35 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 19:37:18 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len);
 char    *extract_value(char *str);
 char    *extract_value(char *str);
 void    init_envlst(void);
+void    envlst_back(t_env *new);
 //exec
 void    *garbage_collector(char *str , bool clean);
 
