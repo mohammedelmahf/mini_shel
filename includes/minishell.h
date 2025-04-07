@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 11:30:48 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 11:43:31 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdbool.h>
+
+
+extern int	g_last_exit_code;
 
 typedef struct s_token
 {

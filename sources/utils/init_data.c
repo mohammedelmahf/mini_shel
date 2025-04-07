@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 10:03:43 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 11:30:20 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 11:31:40 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ bool    init_data(t_data *data , char **env)
     data->user_input = NULL;
     data->cmd = NULL;
     data->pid = -1;
+    g_last_exit_code = 0;
+    return (true);
     
 }
