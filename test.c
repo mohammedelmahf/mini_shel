@@ -88,6 +88,7 @@ void	ft_update_envlst(char *key, char *value, bool create)
 	{
 		if (!ft_strcmp(key, envlst->key))
 		{
+            printf("key--->%s\n" ,key);
 			if (value)
 				envlst->value = ft_garbage_collector(ft_strdup(value), false);
 			return ;
@@ -124,7 +125,7 @@ int main(void)
 	print_envlst();
 
 	// Test creating new one with create=false (won't add)
-	ft_update_envlst("NEWVAR", "something", false);
+	ft_update_envlst("NEWVARu", "something", true);
 	print_envlst();
 
 	// Test creating new one with create=true (will add)
