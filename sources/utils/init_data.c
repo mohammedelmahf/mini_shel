@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 10:03:43 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 10:15:17 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 10:23:18 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,9 @@ static bool init_env(t_data *data , char **env)
 }
 bool    init_data(t_data *data , char **env)
 {
+    if(!init_env(data, env))
+    {
+        error_msg_cmd()
+    }
     
 }
