@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 17:15:20 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:15:57 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ typedef struct s_data
 	char			*line;
 	t_token			*tokens;
 	t_token			*curr_token;
-	t_node			*ast;
+//	t_node			*ast;
 	int				exit_s;
 	bool			signint_child;
-	t_parse_err		parse_err;
+//	t_parse_err		parse_err;
 	int				stdin;
 	int				stdout;
 	char			**environ;
@@ -68,7 +68,7 @@ size_t	ft_strlen(const char *str);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 //env
 char    *extract_value(char *str);
-char    *extract_value(char *str)
-void    init_envlst(void)
+char    *extract_value(char *str);
+void    init_envlst(void);
 
 #endif
