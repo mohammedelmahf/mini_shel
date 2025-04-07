@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 11:22:13 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 11:28:53 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ typedef struct s_token
 
 }       t_token;
 
+typedef struct s_command
+{
+	char				*command;
+}	t_command;
+
 typedef struct s_data
 {
     bool        interactive;
@@ -33,6 +38,7 @@ typedef struct s_data
     char		**env;
 	char		*working_dir;
 	char		*old_working_dir;
+    t_command   *cmd;
     
 }       t_data;
 //utilss
