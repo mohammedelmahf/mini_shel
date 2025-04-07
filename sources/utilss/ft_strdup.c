@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 10:03:43 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 10:15:17 by maelmahf         ###   ########.fr       */
+/*   Created: 2024/10/29 12:24:58 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/07 10:16:05 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static bool init_env(t_data *data , char **env)
+char	*ft_strdup(const char *src)
 {
-    int i;
+	size_t	len;
+	char	*dest;
+	size_t	i;
 
-    data->env = ft_calloc(env_var_count(env) + 1 , sizeof * data->env);
-    if(!data->env)
-        return (false);
-    i = 0;
-    while (env[i])
-    {
-        data->env[i] = ft_strdup(env[i]);
-        if(!data->env[i])
-            return (false);
-        i++;
-    }
-    return (true);
-    
-}
-bool    init_data(t_data *data , char **env)
-{
-    
+	len = ft_strlen(src);
+	i = 0;
+	dest = malloc(sizeof(char) * (len + 1));
+	if (!dest)
+		return (NULL);
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
