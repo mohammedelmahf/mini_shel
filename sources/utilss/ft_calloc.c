@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 10:07:29 by maelmahf         ###   ########.fr       */
+/*   Created: 2024/10/25 12:55:19 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/07 10:13:00 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "../../includes/minishell.h"
 
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdbool.h>
-typedef struct s_data
+void	*ft_calloc(size_t count, size_t size)
 {
-    bool    interactive;
-    char    **env;
-    
-}       t_data;
+	char	*p;
+
+	if (size && count > __SIZE_MAX__ / size)
+		return (NULL);
+	p = malloc(count * size);
+	if (!p)
+		return (NULL);
+	ft_bzero(p, count * size);
+	return (p);
+}

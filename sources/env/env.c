@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 10:07:29 by maelmahf         ###   ########.fr       */
+/*   Created: 2025/04/07 10:08:43 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/07 10:11:38 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "../../includes/minishell.h"
 
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdbool.h>
-typedef struct s_data
+int env_var_count(char **env)
 {
-    bool    interactive;
-    char    **env;
-    
-}       t_data;
+    int i;
+
+    i = 0;
+    while (env && env[i])
+        i++;
+    return (i);
+}
