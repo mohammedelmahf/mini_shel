@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 10:03:43 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 10:23:18 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 11:17:18 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,14 @@ bool    init_data(t_data *data , char **env)
 {
     if(!init_env(data, env))
     {
-        error_msg_cmd()
+        error_msg_cmd("Fatal", NULL, "Could not initialize environment", 1);
+        return (false);
     }
+    if(!init_wdr(data))
+    {
+        error_msg_cmd("Fatal", NULL, "Could not initialize working directories", 1);
+        return (false);
+    }
+
     
 }

@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:17:10 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 10:54:52 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 11:09:26 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static  bool join_str(char *str , char *add)
     return (str);
 }
 
-int error_msg_cmd(char *cmd , char *detail , char *erro_message , int error_nb)
+int error_msg_cmd(char *cmd , char *detail , char *error_message , int error_nb)
 {
     char *msg;
     bool detail_quotes;
@@ -52,6 +52,18 @@ int error_msg_cmd(char *cmd , char *detail , char *erro_message , int error_nb)
         msg = join_str(msg, cmd);
         msg = join_str(msg, ": ");
     }
-    
-    
+    if (detail != NULL)
+	{
+		if (detail_quotes)
+			msg = join_str(msg, "`");
+		msg = join_str(msg, detail);
+		if (detail_quotes)
+			msg = join_str(msg, "'");
+		msg = join_str(msg, ": ");
+	}
+    msg = join_str(msg , error_message);
+    ft_putstr_fd(msg , STDERR_FILENO);
+    ft_putstr_fd("\n" ,STDERR_FILENO);
+    free_ptr(msg);
+    return (error_nb);
 }
