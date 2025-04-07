@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 16:41:26 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:15:20 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,10 @@ void	*ft_calloc(size_t count, size_t size);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_strdup(const char *src);
 size_t	ft_strlen(const char *str);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
+//env
+char    *extract_value(char *str);
+char    *extract_value(char *str)
+void    init_envlst(void)
 
 #endif

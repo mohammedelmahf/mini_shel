@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:28:33 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 17:00:47 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:08:33 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,33 @@
 
 char    *extract_key(char *str)
 {
+    size_t i;
     
+    i = 0;
+    while(str[i])
+    {
+        if(str[i] == '=')
+            return (garbage_collector(ft_substr(str , 0 ,i) , false));
+        i++;
+    }
+    return(ft_strdup(str));
+}
+
+char    *extract_value(char *str)
+{
+    size_t i;
+    
+    i = 0;
+    while(str[i])
+    {
+        if(str[i] == '=')
+        {
+            i++;
+            return (garbage_collector(ft_substr(str , i ,ft_strlen(str) - i) , false));
+        }
+        i++;
+    }
+    return(NULL);
 }
 
 void    init_envlst(void)
