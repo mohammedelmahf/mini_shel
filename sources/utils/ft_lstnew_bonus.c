@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_utils.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 17:04:41 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 17:20:36 by maelmahf         ###   ########.fr       */
+/*   Created: 2024/11/04 16:43:40 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/07 17:21:05 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	ft_del(void *str)
+t_list	*ft_lstnew(void *content)
 {
-	free(str);
-	str = NULL;
-}
+	t_list	*rslt;
 
-void    *garbage_collector(char *str , bool clean)
-{
-    static t_list *garbage_list;
-
-    if(clean)
-    {
-        ft_lstclear(&garbage_list, ft_del);
+	rslt = malloc(sizeof(t_list));
+	if (rslt == NULL)
 		return (NULL);
-	}
-	else
-	{
-		ft_lstadd_back(&garbage_list, ft_lstnew(str));
-		return (str);
-	}
+	rslt->content = content;
+	rslt->next = NULL;
+	return (rslt);
 }
