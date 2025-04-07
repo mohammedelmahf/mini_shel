@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 15:29:31 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 15:41:08 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,14 @@ typedef struct	s_data
 	int				no_exec;
 }				t_data;
 
+
+//utils
+void	*ft_calloc(size_t count, size_t size);
+void	ft_putstr_fd(char *s, int fd);
+char	*ft_strdup(const char *src);
+size_t	ft_strlen(const char *str);
+
 //fd
-void    rest_fd(t_data *data)
+void    rest_fd(t_data *data);
 //env
 #endif
