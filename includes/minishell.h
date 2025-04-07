@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 15:11:11 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 15:29:31 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <sys/types.h>
+
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
 
 typedef struct	s_token
 {
@@ -34,7 +38,7 @@ typedef struct	s_env
 	struct s_env	*next;
 }				t_env;
 
-typedef struct	s_mini
+typedef struct	s_data
 {
 	t_token			*start;
 	t_env			*env;
@@ -52,5 +56,9 @@ typedef struct	s_mini
 	int				ret;
 	int				exit;
 	int				no_exec;
-}				t_mini;
+}				t_data;
+
+//fd
+void    rest_fd(t_data *data)
+//env
 #endif
