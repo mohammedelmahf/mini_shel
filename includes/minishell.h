@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 15:41:08 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:41:26 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <sys/types.h>
+#include <termios.h>
+
 
 # define STDIN 0
 # define STDOUT 1
@@ -38,25 +40,24 @@ typedef struct	s_env
 	struct s_env	*next;
 }				t_env;
 
-typedef struct	s_data
+typedef struct s_data
 {
-	t_token			*start;
-	t_env			*env;
-	t_env			*secret_env;
-	int				in;
-	int				out;
-	int				fdin;
-	int				fdout;
-	int				pipin;
-	int				pipout;
-	int				pid;
-	int				charge;
-	int				parent;
-	int				last;
-	int				ret;
-	int				exit;
-	int				no_exec;
-}				t_data;
+	char			*line;
+	t_token			*tokens;
+	t_token			*curr_token;
+	t_node			*ast;
+	int				exit_s;
+	bool			signint_child;
+	t_parse_err		parse_err;
+	int				stdin;
+	int				stdout;
+	char			**environ;
+	t_env			*envlst;
+	bool			heredoc_sigint;
+	struct termios	original_term;
+}					t_data;
+
+extern t_data	data;
 
 
 //utils
@@ -65,7 +66,4 @@ void	ft_putstr_fd(char *s, int fd);
 char	*ft_strdup(const char *src);
 size_t	ft_strlen(const char *str);
 
-//fd
-void    rest_fd(t_data *data);
-//env
 #endif

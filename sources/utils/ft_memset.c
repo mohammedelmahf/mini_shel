@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 15:28:33 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 17:00:47 by maelmahf         ###   ########.fr       */
+/*   Created: 2024/10/25 12:14:36 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/07 17:00:20 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char    *extract_key(char *str)
+void	*ft_memset(void *s, int c, size_t n)
 {
-    
-}
+	size_t	i;
 
-void    init_envlst(void)
-{
-    int     i;
-    char    **environ;
-    char    *key;
-    char    *value;
-
-    environ = data.environ;
-    if(!environ)
-        return ;
-    i = 0;
-    while(environ[i])
-    {
-        key = extract_key(environ[i]);
-    }
+	i = 0;
+	while (n > i)
+	{
+		((unsigned char *)s)[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
 }
