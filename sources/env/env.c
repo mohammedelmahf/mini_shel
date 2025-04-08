@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:28:33 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 19:52:29 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:46:42 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void    init_envlst(void)
     while(environ[i])
     {
         key = extract_key(environ[i]);
-        value = extract_value(environ);
+        value = extract_value(environ[i]);
         update_envlst(key, value, true);
         i++;
     }
