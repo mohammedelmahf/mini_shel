@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 12:28:11 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:28:55 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,6 @@
 // # define STDIN 0
 // # define STDOUT 1
 // # define STDERR 2
-
-typedef struct	s_token
-{
-	char			*str;
-	int				type;
-	struct s_token	*prev;
-	struct s_token	*next;
-}				t_token;
 
 typedef struct	s_env
 {
