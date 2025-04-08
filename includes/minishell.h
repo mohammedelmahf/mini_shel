@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 12:28:11 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:42:29 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,18 @@
 <<<<<<< HEAD
 #include <readline/history.h>
 #include "tokenizing.h"
+<<<<<<< HEAD
 =======
 #include <limits.h>
 >>>>>>> 2f97751 (iel-asef : create cmd cd)
+=======
+#include "parsing.h"
+>>>>>>> origin/maelmahf
 
 
 // # define STDIN 0
 // # define STDOUT 1
 // # define STDERR 2
-
-typedef struct	s_token
-{
-	char			*str;
-	int				type;
-	struct s_token	*prev;
-	struct s_token	*next;
-}				t_token;
 
 typedef struct	s_env
 {
@@ -54,7 +50,7 @@ typedef struct s_data
 	char			*line;
 	t_token			*tokens;
 	t_token			*curr_token;
-//	t_node			*ast;
+	t_node			*ast;
 	int				exit_s;
 	bool			signint_child;
 //	t_parse_err		parse_err;
@@ -100,11 +96,16 @@ void    update_envlst(char *key,char *value, bool create);
 void    *garbage_collector(char *str , bool clean);
 //signal
 void    init_signal(void);
+<<<<<<< HEAD
 // ft_pwd.c
 int  ft_pwd (void);
 //ft_cd.c
 int ft_cd(char **arg);
 //cd_utils
 char *ft_getenv(char *key);
+=======
+//cleaning
+void    clean_all(void);
+>>>>>>> origin/maelmahf
 
 #endif
