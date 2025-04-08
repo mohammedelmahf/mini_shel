@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 13:28:55 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:42:29 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "tokenizing.h"
+#include "parsing.h"
 
 
 // # define STDIN 0
@@ -42,7 +43,7 @@ typedef struct s_data
 	char			*line;
 	t_token			*tokens;
 	t_token			*curr_token;
-//	t_node			*ast;
+	t_node			*ast;
 	int				exit_s;
 	bool			signint_child;
 //	t_parse_err		parse_err;
@@ -88,5 +89,7 @@ void    update_envlst(char *key,char *value, bool create);
 void    *garbage_collector(char *str , bool clean);
 //signal
 void    init_signal(void);
+//cleaning
+void    clean_all(void);
 
 #endif

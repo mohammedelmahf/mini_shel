@@ -1,21 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   parsing_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 14:42:13 by maelmahf         ###   ########.fr       */
+/*   Created: 2025/04/08 14:29:37 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/08 14:29:50 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-#define PARSING_H
+#include "../../includes/minishell.h"
 
-typedef struct s_node
-{
-    
-}   t_node;
-
-#endif
