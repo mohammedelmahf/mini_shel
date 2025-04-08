@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 10:47:59 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:52:02 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,12 @@ void	ft_putstr_fd(char *s, int fd);
 char	*ft_strdup(const char *src);
 size_t	ft_strlen(const char *str);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
+int		ft_strcmp(const char *s1, const char *s2);
+void	*ft_memset(void *s, int c, size_t n);
+t_list	*ft_lstnew(void *content);
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	*ft_calloc(size_t count, size_t size);
 //env
 char    *extract_value(char *str);
 char    *extract_value(char *str);
