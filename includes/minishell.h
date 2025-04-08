@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 19:52:43 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:26:05 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <stdbool.h>
 #include <sys/types.h>
 #include <termios.h>
+#include <signal.h>
 
 
 # define STDIN 0
@@ -79,5 +80,7 @@ void    init_envlst(void);
 void    envlst_back(t_env *new);
 //exec
 void    *garbage_collector(char *str , bool clean);
+//signal
+void    init_signal(void);
 
 #endif
