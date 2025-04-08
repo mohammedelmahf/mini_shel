@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 10:56:52 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:01:39 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <sys/types.h>
 #include <termios.h>
 #include <signal.h>
+#include <readline/readline.h>
 
 
 # define STDIN 0
