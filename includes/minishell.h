@@ -22,8 +22,12 @@
 #include <termios.h>
 #include <signal.h>
 #include <readline/readline.h>
+<<<<<<< HEAD
 #include <readline/history.h>
 #include "tokenizing.h"
+=======
+#include <limits.h>
+>>>>>>> 2f97751 (iel-asef : create cmd cd)
 
 
 // # define STDIN 0
@@ -96,5 +100,11 @@ void    update_envlst(char *key,char *value, bool create);
 void    *garbage_collector(char *str , bool clean);
 //signal
 void    init_signal(void);
+// ft_pwd.c
+int  ft_pwd (void);
+//ft_cd.c
+int ft_cd(char **arg);
+//cd_utils
+char *ft_getenv(char *key);
 
 #endif

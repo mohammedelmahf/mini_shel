@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -12,26 +13,40 @@
 
 
 #include"../../includes/minishell.h"
+=======
+#include "../../includes/minishell.h"
+>>>>>>> 2f97751 (iel-asef : create cmd cd)
 
-int ft_cd(char *path)
+int ft_cd(char **args)
 {
-    char * home ;
-    //char *oldpwd;
-    
-    if(!path)
+    char *path;
+    char *oldpwd;
+    char *cwd;
+
+    if (!args[1])
+        path = ft_getenv("HOME");
+    else if (!ft_strcmp(args[1], "-"))
+        path = ft_getenv("OLDPWD");
+    else
+        path = args[1];
+
+    if (!path)
     {
-        home  = getenv("HOME");
-        if(!home)
-        {
-            //strr ??!! att bb !!
-            printf("minishell: cd: HOME not set\n");
-        }
-        path = home;
+        printf("minishell: cd: path not set\n");
+        return (1);
     }
-    if(chdir(path) == - 1)
+
+    oldpwd = ft_getenv("PWD");
+    if (chdir(path) == -1)
     {
-        perror("minishell: cd")
-        return 1;
+        perror("minishell: cd");
+        return (1);
     }
-    return 0;
+
+    update_envlst("OLDPWD", oldpwd, true);
+    cwd = getcwd(NULL, 0);
+    update_envlst("PWD", cwd, true);
+    free(cwd);
+
+    return (0);
 }

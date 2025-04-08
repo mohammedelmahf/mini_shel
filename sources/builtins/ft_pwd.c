@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -12,6 +13,9 @@
 
 
 #include"../../includes/minishell.h"
+=======
+#include  "../../includes/minishell.h"
+>>>>>>> 2f97751 (iel-asef : create cmd cd)
 
 int  ft_pwd (void)
 {
