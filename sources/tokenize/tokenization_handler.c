@@ -1,28 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizing.h                                       :+:      :+:    :+:   */
+/*   tokenization_handler.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 12:05:54 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 14:52:38 by maelmahf         ###   ########.fr       */
+/*   Created: 2025/04/08 20:31:19 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/08 20:31:28 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKENIZING_H
-# define TOKENIZING_H
-
-#define PROMPT "minishell> "
-
-typedef struct	s_token
-{
-	char			*str;
-	int				type;
-	struct s_token	*prev;
-	struct s_token	*next;
-}				t_token;
-
-t_token *tokenize(void);
-#endif
-
+#include "../../includes/minishell.h"

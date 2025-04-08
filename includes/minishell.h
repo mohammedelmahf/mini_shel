@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 14:42:29 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:36:59 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,10 @@
 #include <termios.h>
 #include <signal.h>
 #include <readline/readline.h>
-<<<<<<< HEAD
 #include <readline/history.h>
 #include "tokenizing.h"
-<<<<<<< HEAD
-=======
 #include <limits.h>
->>>>>>> 2f97751 (iel-asef : create cmd cd)
-=======
 #include "parsing.h"
->>>>>>> origin/maelmahf
 
 
 // # define STDIN 0
@@ -96,16 +90,12 @@ void    update_envlst(char *key,char *value, bool create);
 void    *garbage_collector(char *str , bool clean);
 //signal
 void    init_signal(void);
-<<<<<<< HEAD
 // ft_pwd.c
 int  ft_pwd (void);
 //ft_cd.c
 int ft_cd(char **arg);
 //cd_utils
 char *ft_getenv(char *key);
-=======
 //cleaning
 void    clean_all(void);
->>>>>>> origin/maelmahf
-
 #endif

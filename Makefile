@@ -12,9 +12,9 @@ utils		:= sources/utils/ft_calloc.c sources/utils/ft_lstadd_back.c sources/utils
 			sources/utils/ft_strncmp.c
 main		:= sources/main.c
 signal		:= sources/signal.c
-builtins    := sources/builtins/cd_utils.c	sources/builtins/ft_cd.c sources/builtins/ft_pwd.c
+#builtins    := sources/builtins/cd_utils.c	sources/builtins/ft_cd.c sources/builtins/ft_pwd.c
 
-SRCS		:= $(env) $(exec) $(utils) $(main) $(signal) $(builtins)
+SRCS		:= $(env) $(exec) $(utils) $(main) $(signal) #$(builtins)
 
 OBJS		:= $(SRCS:.c=.o)
 
