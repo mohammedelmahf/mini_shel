@@ -1,6 +1,7 @@
 NAME		:= minishell
 CC			:= cc
 CFLAGS		:= -Wall -Werror -Wextra -g
+LDFLAGS		:= -lreadline  # Link against the readline library
 
 env		:= sources/env/env.c sources/env/env_utils.c
 exec		:= sources/exec/exec_utils.c
@@ -18,7 +19,7 @@ OBJS		:= $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -o $(NAME) $(CFLAGS)
+	$(CC) $(OBJS) -o $(NAME) $(CFLAGS) $(LDFLAGS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
