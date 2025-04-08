@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 10:26:05 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:47:59 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ char    *extract_value(char *str);
 char    *extract_value(char *str);
 void    init_envlst(void);
 void    envlst_back(t_env *new);
+void    update_envlst(char *key,char *value, bool create);
 //exec
 void    *garbage_collector(char *str , bool clean);
 //signal
