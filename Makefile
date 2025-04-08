@@ -6,7 +6,8 @@ env		:= sources/env/env.c sources/env/env_utils.c
 exec		:= sources/exec/exec_utils.c
 utils		:= sources/utils/ft_calloc.c sources/utils/ft_lstadd_back.c sources/utils/ft_lstclear.c \
 			sources/utils/ft_lstnew.c sources/utils/ft_memset.c sources/utils/ft_putstr_fd.c \
-			sources/utils/ft_strdup.c sources/utils/ft_strlen.c sources/utils/ft_substr.c
+			sources/utils/ft_strdup.c sources/utils/ft_strlen.c sources/utils/ft_substr.c sources/utils/ft_bsero.c \
+			sources/utils/ft_lstlast.c
 main		:= sources/main.c
 signal		:= sources/signal.c
 

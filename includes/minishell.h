@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 10:52:02 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:55:15 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ t_list	*ft_lstnew(void *content);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
+t_list	*ft_lstlast(t_list *lst);
 //env
 char    *extract_value(char *str);
 char    *extract_value(char *str);
