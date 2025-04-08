@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 12:09:51 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:34:55 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int main(int ac , char **av  , char **env)
     {
         init_signal();
         data.line = readline(PROMPT);
-        printf("%s\n" ,data.line );
+        if (data.line == NULL)
+            break;
+        // printf("%s\n" ,data.line );
+        // write(STDIN_FILENO, "hey", 4);
         
     }
     // start_execution();
