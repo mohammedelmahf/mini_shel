@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 11:04:31 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:09:09 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 #include <termios.h>
 #include <signal.h>
 #include <readline/readline.h>
+#include <readline/history.h>
+#include "tokenizing.h"
 
 
 # define STDIN 0
