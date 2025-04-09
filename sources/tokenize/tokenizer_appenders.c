@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenization_handler.c                             :+:      :+:    :+:   */
+/*   tokenizer_appenders.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 20:31:19 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 09:34:00 by maelmahf         ###   ########.fr       */
+/*   Created: 2025/04/09 10:48:55 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/09 13:38:23 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_token    *tokenization_handler(char *line)
+int append_separator(t_token_type type , char **line , t_token **token_list)
 {
-    int     error;
-    t_token *token_list;
+    t_token *token;
 
-    error = 0;
-    token_list = NULL;
-    while(*line)
-    {
-        if(error)
-            return(clear_token_list(&token_list) , NULL);
-        if(!ft_strncmp)
-    }
+    token = new_token(NULL , type);
+    if(!token)
+        return (0);
+    token_list_add_back(token_list , token);
+    (*line)++;
+    if(type == T_DGREAT || type == T_DLESS || type == T_AND || type == T_OR )
+        (*line)++;
+    return (1);
+}
+
+int append_identifier(t_token_type , char **line , t_token **token_list)
+{
+    
 }

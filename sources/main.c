@@ -6,7 +6,11 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/04/09 13:57:07 by iel-asef         ###   ########.fr       */
+=======
+/*   Updated: 2025/04/09 13:36:34 by maelmahf         ###   ########.fr       */
+>>>>>>> 4258808c1b4333dc8bf03ec734b5e82aa37df292
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +41,22 @@ int main(int ac , char **av  , char **env)
             (/*clean_all(),*/ ft_putstr_fd("exit\n" , 1) , exit(data.exit_s));
         if(data.line[0])
             add_history(data.line);
-
-     
             
         data.tokens = tokenize();
+<<<<<<< HEAD
+=======
+            t_token *curr = data.tokens;
+         while (curr)
+        {
+            printf("Token type: %d, Token value: %s\n", curr->type, curr->value);
+            curr = curr->next;
+        }
+>>>>>>> 4258808c1b4333dc8bf03ec734b5e82aa37df292
         //if(!data.tokens)
         //    continue;
         // printf("%s\n" ,data.line );
         // write(STDIN_FILENO, "hey", 4);
-        
+        //execution();
     }
-    // start_execution();
+
 }

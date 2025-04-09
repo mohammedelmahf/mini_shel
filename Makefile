@@ -1,8 +1,9 @@
-NAME		:= minishell
-CC			:= cc
-CFLAGS		:= -Wall -Werror -Wextra -g
-LDFLAGS		:= -lreadline  # Link against the readline library
+NAME        := minishell
+CC          := cc
+CFLAGS      := -Wall -Werror -Wextra -g
+LDFLAGS     := -lreadline  # Link against the readline library
 
+<<<<<<< HEAD
 env		:= sources/env/env.c sources/env/env_utils.c
 exec		:= sources/exec/exec_utils.c
 utils		:= sources/utils/ft_calloc.c sources/utils/ft_lstadd_back.c sources/utils/ft_lstclear.c \
@@ -15,8 +16,24 @@ signal		:= sources/signal.c
 builtins    := sources/builtins/cd_utils.c	sources/builtins/ft_cd.c sources/builtins/ft_pwd.c
 
 SRCS		:= $(env) $(exec) $(utils) $(main) $(signal) $(builtins)
+=======
+env         :=  sources/env/env.c sources/env/env_utils.c
+exec        :=  sources/exec/exec_utils.c
+utils       :=  sources/utils/ft_calloc.c sources/utils/ft_lstadd_back.c sources/utils/ft_lstclear.c \
+               sources/utils/ft_lstnew.c sources/utils/ft_memset.c sources/utils/ft_putstr_fd.c \
+               sources/utils/ft_strdup.c sources/utils/ft_strlen.c sources/utils/ft_substr.c sources/utils/ft_bzero.c \
+               sources/utils/ft_lstlast.c sources/utils/ft_lstdelone.c sources/utils/ft_strcmp.c \
+               sources/utils/ft_strncmp.c
+tokenize    :=  sources/tokenize/tokenizer.c sources/tokenize/tokenizer_lst.c sources/tokenize/tokenizer_appenders.c \
+               sources/tokenize/tokenizer_handlers.c
+main        :=  sources/main.c
+signal      :=  sources/signal.c
+#builtins    := sources/builtins/cd_utils.c sources/builtins/ft_cd.c sources/builtins/ft_pwd.c
 
-OBJS		:= $(SRCS:.c=.o)
+SRCS        := $(env) $(exec) $(utils) $(main) $(signal) $(tokenize) #$(builtins)
+>>>>>>> 4258808c1b4333dc8bf03ec734b5e82aa37df292
+
+OBJS        := $(SRCS:.c=.o)
 
 all: $(NAME)
 
