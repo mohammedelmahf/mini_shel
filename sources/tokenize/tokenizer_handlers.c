@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:31:19 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 11:59:59 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:13:55 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int         handle_separator(char **line , t_token **token_list)
 {
     if (!ft_strncmp(*line , ">>" , 2))
+    {
+        printf("find >> here ---> '%s'\n" , *line);
         return(append_separator(T_DGREAT , line , token_list) && 1);
+    }
     else if (!ft_strncmp(*line , "<<" , 2))
         return(append_separator(T_DLESS , line , token_list) && 1);
     else if (!ft_strncmp(*line , "<" , 1))
@@ -50,7 +53,12 @@ t_token    *tokenization_handler(char *line)
             || !ft_strncmp(line , "(" , 1) || !ft_strncmp(line , ")" , 1) )
             error = (!handle_separator(&line , &token_list) && 1);
         else
-            error = (!append_identifier(&line , &token_list) && 1);
+            error = 1 ;
+        if(error)
+        {
+            printf("%d\n" , error);
+            return NULL;
+        } //(!append_identifier(&line , &token_list) && 1);
     }
     return (token_list);
 }
