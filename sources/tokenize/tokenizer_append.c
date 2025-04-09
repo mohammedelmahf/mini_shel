@@ -6,8 +6,10 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:48:55 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 10:48:56 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:09:22 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#
+#include "../../includes/minishell.h"
+
+#include "../../includes/minishell.h"
