@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 19:36:59 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:45:44 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #include "tokenizing.h"
 #include <limits.h>
 #include "parsing.h"
+#include "builtins.h"
 
 
 // # define STDIN 0
@@ -90,12 +91,6 @@ void    update_envlst(char *key,char *value, bool create);
 void    *garbage_collector(char *str , bool clean);
 //signal
 void    init_signal(void);
-// ft_pwd.c
-int  ft_pwd (void);
-//ft_cd.c
-int ft_cd(char **arg);
-//cd_utils
-char *ft_getenv(char *key);
 //cleaning
 void    clean_all(void);
 #endif
