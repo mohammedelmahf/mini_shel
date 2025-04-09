@@ -1,43 +1,76 @@
-#include "includes/minishell.h"
-
-int	ft_append_separator(t_token_type type, char **line_ptr, t_token **token_list)
-{
-	t_token	*token;
-
-	token = ft_new_token(NULL, type);
-	if (!token)
-		return (0);
-	ft_token_list_add_back(token_list, token);
-	(*line_ptr)++;
-	if (type == T_DLESS || type == T_DGREAT || type == T_OR || type == T_AND)
-		(*line_ptr)++;
-	return (1);
-}
-
-t_token	*ft_new_token(char *value, t_token_type type)
-{
-	t_token	*new_token;
-
-	new_token = (t_token *)ft_calloc(1, sizeof(t_token));
-	if (!new_token)
-		return (NULL);
-	new_token->value = value;
-	new_token->type = type;
-	return (new_token);
-}
-
-void	ft_token_list_add_back(t_token **lst, t_token *new_token)
-{
-	t_token	*curr_node;
-
-	if (!*lst)
-	{
-		*lst = new_token;
-		return ;
-	}
-	curr_node = *lst;
-	while (curr_node && curr_node -> next)
-		curr_node = curr_node -> next;
-	curr_node -> next = new_token;
-	new_token -> prev = curr_node;
-}
+Loubna MEFTAH <Loubna.MEFTAH@um6p.ma>,
+Salma EL MOUHALHAL <Salma.ELMOUHALHAL@um6p.ma>,
+"mohammedelmahfoudi2004@gmail.com" <mohammedelmahfoudi2004@gmail.com>,
+"ilyass.ela.77@gmail.com" <ilyass.ela.77@gmail.com>,
+"salaheddineh7@gmail.com" <salaheddineh7@gmail.com>,
+"ojonomahchi@gmail.com" <ojonomahchi@gmail.com>,
+"Ouasil.rania@gmail.com" <Ouasil.rania@gmail.com>,
+"aitbenaissayouness95@gmail.com" <aitbenaissayouness95@gmail.com>,
+"anassbenabbi137@gmail.com" <anassbenabbi137@gmail.com>,
+"ayaqadry04@gmail.com" <ayaqadry04@gmail.com>,
+Fatima Ezzahra EL OIRDANI <FatimaZahra.ELOIRDANI@um6p.ma>,
+Samuel OLANIYI BOLAJI <samuel.olaniyibolaji@um6p.ma>,
+"elasstiamine@gmail.com" <elasstiamine@gmail.com>,
+"adrienmanishimwe@gmail.com" <adrienmanishimwe@gmail.com>,
+"ibtissamnkaila.gep@gmail.com" <ibtissamnkaila.gep@gmail.com>,
+"azharsafaa294@gmail.com" <azharsafaa294@gmail.com>,
+Fatima Ezzahrae ELKOUB <FatimaEzzahrae.ELKOUB@um6p.ma>,
+"elhouchsalma@gmail.com" <elhouchsalma@gmail.com>,
+Suhaib MUHAMMAD MUAZ <suhaib.muhammadmuaz@um6p.ma>,
+Mustapha Babatunde ABIMBOLA <mustapha.abimbola@um6p.ma>,
+"rachadsanoussi@gmail.com" <rachadsanoussi@gmail.com>,
+"rkna.hiba.1@gmail.com" <rkna.hiba.1@gmail.com>,
+Tagnon Gontran Rodrigue TCHEKLI <tagnon.tchekli@um6p.ma>,
+"karim.bourki1234@gmail.com" <karim.bourki1234@gmail.com>,
+Vivette IRADUKUNDA IGIHOZO <Vivette.IRADUKUNDA@um6p.ma>,
+Wahab IBRAHIM <wahab.ibrahim@um6p.ma>,
+Latifa DARRAZ <Latifa.darraz@um6p.ma>,
+Moshood Oyindamola DADA <Moshood.dada@um6p.ma>,
+Yusuf ADERIBIGBE <Yusuf.ADERIBIGBE@um6p.ma>,
+"aymene.assafe.a.y@gmail.com" <aymene.assafe.a.y@gmail.com>,
+IMANE KHALI <imane.khali@um6p.ma>,
+"Abdul-NaEem.MUNIRU@um6p.ma" <Abdul-NaEem.MUNIRU@um6p.ma>,
+Uzoma OWUAMA <uzoma.owuama@um6p.ma>,
+ <Chaimae.BOUTARCHA@um6p.ma>,
+"davinaabasiri@gmail.com" <davinaabasiri@gmail.com>,
+Abiola AJAO <Abiola.Ajao@um6p.ma>,
+Eric RUKEBESHA <ERIC.RUKEBESHA@um6p.ma>,
+"hamidmans007@gmail.com" <hamidmans007@gmail.com>,
+Shereef Pelumi GBADAMOSI <shereef.GBADAMOSI@um6p.ma>,
+Hiba EL OGRI <hiba.elogri@um6p.ma>,
+Paul Toluwanimi POPOOLA <paul.POPOOLA@um6p.ma>,
+ <Oumaima.KABIL@um6p.ma>,
+Hiba EL HIBARI <Hiba.ELHIBARI@um6p.ma>,
+Charaf-Eddine FJOUJI <Charaf-Eddine.FJOUJI@um6p.ma>,
+Salah Eddine EL HAMZAOUI <SalahEddine.ELHAMZAOUI@um6p.ma>,
+Youssef SABHI <Youssef.SABHI@um6p.ma>,
+Salma EDDAROUICHE <Salma.EDDAROUICHE@um6p.ma>,
+Mohamed Achraf BENLAFQIH <Mohamed.benlafqih@emines.um6p.ma>,
+Oualid NASYR <Oualid.NASYR@emines.um6p.ma>,
+Bouchra SABRI <bouchra.sabri@um6p.ma>,
+Farah MEGHINIF <Farah.MEGHINIF@um6p.ma>,
+Oumaima ZAKHNINI <oumaima.zakhnini@um6p.ma>,
+Ahmad MAHMUD <ahmad.mahmud@um6p.ma>,
+"achrafrhazi13@gmail.com" <achrafrhazi13@gmail.com>,
+Hajar CHTAIBI <Hajar.CHTAIBI@um6p.ma>,
+"assemhaloui71@gmail.com" <assemhaloui71@gmail.com>,
+Abba Sani JIBRIL <abba-sani.jibril@um6p.ma>,
+Aya ELMAGHRAOUI <aya.elmaghraoui@um6p.ma>,
+"akhmim.abdelilah@gmail.com" <akhmim.abdelilah@gmail.com>,
+"oujjir.achraf@gmail.con" <oujjir.achraf@gmail.con>,
+"othsa21@gmail.com" <othsa21@gmail.com>,
+"Faridisaad217@gmail.com" <Faridisaad217@gmail.com>,
+"Ibramafhoum@gmail.com" <Ibramafhoum@gmail.com>,
+"med.inscription2024@gmail.com" <med.inscription2024@gmail.com>,
+"bne.ayoub@gmail.com" <bne.ayoub@gmail.com>,
+Nassara INGABIRE <Nassara.INGABIRE@um6p.ma>,
+Chisa Constance NWOKOCHA <Chisa.nwokocha@um6p.ma>,
+Zubairu Khalifa GALADIMA <Zubairu.galadima@um6p.ma>,
+Daniel Odla IKHINE <Daniel.ikhine@um6p.ma>,
+Abdurrahmon Olanrewaju BADMUS <Abdurrahmon.BADMUS@um6p.ma>,
+Joy OMALE <joy.OMALE@um6p.ma>,
+Oumaima RISSOULI <oumaima.rissouli@um6p.ma>,
+"aymanelasefar1337@gmail.com" <aymanelasefar1337@gmail.com>,
+Fatima Zahra BOURAKBA <FatimaZahra.Bourakba@um6p.ma>,
+Yeboah ACQUAH <Yeboah.acquah@um6p.ma>,
+Hafsa SAIH <Hafsa.saih@um6p.ma>
