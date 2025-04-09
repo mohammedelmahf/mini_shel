@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 14:51:02 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:52:37 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main(int ac , char **av  , char **env)
         }
         if(!data.tokens)
             continue;
-         printf("%s\n" ,data.line );
+        //printf("%s\n" ,data.line );
         // write(STDIN_FILENO, "hey", 4);
         //execution();
     }
