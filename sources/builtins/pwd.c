@@ -13,5 +13,5 @@ int  ft_pwd (void)
     {
         perror("pwd");
         return (1);
-    }
+    }      
 }
