@@ -2,15 +2,19 @@
 #define BUILTINS_H
 
 
-// ft_pwd.c
+//pwd.c
 int  ft_pwd (void);
-//ft_cd.c
+//cd.c
 int ft_cd(char **arg);
-//cd_utils
-char *ft_getenv(char *key);
+//utils
+char	*ft_getenv(const char *name);
 
-//ft_exit
+//exit
 
 //export 
+int parsinge_export(char *str);
 
+//echo 
+int	ft_echo(char **str);
+int  parsinge_echo(char *str);
 #endif

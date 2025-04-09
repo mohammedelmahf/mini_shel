@@ -26,7 +26,7 @@ int append_separator(t_token_type type , char **line , t_token **token_list)
     return (1);
 }
 
-int append_identifier(t_token_type , char **line , t_token **token_list)
-{
+// int append_identifier(t_token_type , char **line , t_token **token_list)
+// {
     
-}
+// }

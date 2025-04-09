@@ -17,18 +17,27 @@ int parsinge_export(char *str)
     return 1 ;
 }
 
-void ft_export(char **str)
+int  ft_export(char **str)
 {
+    int i;
+    int exit_s;
+    char *key;
+
+    exit_s = 0;
     if(str[1])
     {
 
     }
-    if(parsinge_export(str) == 0)
+    i = 0;
+    while(str[i])
     {
-        //exit && msg
+        if(parsinge_export(str[i]) == 0)
+            //exit && msg
+        else
+        {
+            key = 
+            if()
+        }
     }
-    else
-    {
-
-    }
+    return exit_s;
 }
