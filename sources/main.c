@@ -47,7 +47,7 @@ int main(int ac , char **av  , char **env)
         }
         if(!data.tokens)
             continue;
-        // printf("%s\n" ,data.line );
+         printf("%s\n" ,data.line );
         // write(STDIN_FILENO, "hey", 4);
         //execution();
     }
