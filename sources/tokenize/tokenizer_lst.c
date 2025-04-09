@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer_append.c                                 :+:      :+:    :+:   */
+/*   tokenizer_lst.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 10:48:55 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 11:22:03 by maelmahf         ###   ########.fr       */
+/*   Created: 2025/04/09 11:13:27 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/09 11:31:04 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int append_separator(t_token_type type , char **line , char **token_list)
+t_token     *new_token(char *value , t_token_type type)
 {
-    t_token *token;
-
-    token = new_token(NULL , type);
+    t_token new_token
 }
