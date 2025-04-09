@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 12:24:12 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:36:34 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main(int ac , char **av  , char **env)
         //    continue;
         // printf("%s\n" ,data.line );
         // write(STDIN_FILENO, "hey", 4);
-        
+        //execution();
     }
-    // start_execution();
+
 }
