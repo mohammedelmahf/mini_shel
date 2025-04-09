@@ -14,9 +14,9 @@ tokenize    :=  sources/tokenize/tokenizer.c sources/tokenize/tokenizer_lst.c so
                sources/tokenize/tokenizer_handlers.c
 main        :=  sources/main.c
 signal      :=  sources/signal.c
-#builtins    := sources/builtins/cd_utils.c sources/builtins/ft_cd.c sources/builtins/ft_pwd.c
-
-SRCS        := $(env) $(exec) $(utils) $(main) $(signal) $(tokenize) #$(builtins)
+builtins    := sources/builtins/utils.c sources/builtins/cd.c   sources/builtins/pwd.c     sources/builtins/echo.c \
+               #sources/builtins/unset.c sources/builtins/exit.c sources/builtins/export.c 
+SRCS        := $(env) $(exec) $(utils) $(main) $(signal) $(tokenize) $(builtins)
 
 OBJS        := $(SRCS:.c=.o)
 
