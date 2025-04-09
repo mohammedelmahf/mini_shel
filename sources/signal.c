@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-#include <termios.h>
 
 static void handler_sigint(int num)
 {
