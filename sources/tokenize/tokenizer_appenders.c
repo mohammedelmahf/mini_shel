@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer_append.c                                 :+:      :+:    :+:   */
+/*   tokenizer_appenders.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:48:55 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 11:48:18 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:38:23 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,9 @@ int append_separator(t_token_type type , char **line , t_token **token_list)
     if(type == T_DGREAT || type == T_DLESS || type == T_AND || type == T_OR )
         (*line)++;
     return (1);
+}
+
+int append_identifier(t_token_type , char **line , t_token **token_list)
+{
+    
 }
