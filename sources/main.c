@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 14:51:02 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:57:07 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main(int ac , char **av  , char **env)
         }
         if(!data.tokens)
             continue;
-         printf("%s\n" ,data.line );
+        // printf("%s\n" ,data.line );
         // write(STDIN_FILENO, "hey", 4);
         //execution();
     }
