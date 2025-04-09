@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 10:45:44 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:17:50 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,12 @@ void	ft_bzero(void *s, size_t n);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
+
+//iel-asef --utils
+int	ft_isalpha(int c);
+int	ft_isalnum(int c)
+//char	*ft_strchr(const char *s, int c);
+
 //env
 char    *extract_value(char *str);
 char    *extract_value(char *str);

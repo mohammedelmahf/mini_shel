@@ -8,6 +8,9 @@ int  ft_pwd (void);
 int ft_cd(char **arg);
 //cd_utils
 char *ft_getenv(char *key);
+
 //ft_exit
+
+//export 
 
 #endif
