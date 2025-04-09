@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 13:57:07 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:51:02 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int main(int ac , char **av  , char **env)
             printf("Token type: %d, Token value: %s\n", curr->type, curr->value);
             curr = curr->next;
         }
-        //if(!data.tokens)
-        //    continue;
+        if(!data.tokens)
+            continue;
         // printf("%s\n" ,data.line );
         // write(STDIN_FILENO, "hey", 4);
         //execution();
