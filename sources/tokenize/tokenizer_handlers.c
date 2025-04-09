@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer_handler.c                                :+:      :+:    :+:   */
+/*   tokenizer_handlers.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:31:19 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 11:47:32 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:59:59 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ t_token    *tokenization_handler(char *line)
     token_list = NULL;
     while(*line)
     {
-        if(error)
-            return(clear_token_list(&token_list) , NULL);
+        // if(error)
+        //     return(clear_token_list(&token_list) , NULL);
         if(!ft_strncmp(line , "<" , 1) || !ft_strncmp(line , ">" , 1)
             || !ft_strncmp(line , "|" , 1) || !ft_strncmp(line , "&&" , 2)
             || !ft_strncmp(line , "(" , 1) || !ft_strncmp(line , ")" , 1) )
             error = (!handle_separator(&line , &token_list) && 1);
         else
-            error = 1 ;
+            error = (!append_identifier(&line , &token_list) && 1);
     }
     return (token_list);
 }
