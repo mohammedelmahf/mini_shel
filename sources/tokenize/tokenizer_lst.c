@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:13:27 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 11:36:48 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:47:56 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,20 @@ t_token     *new_token(char *value , t_token_type type)
     new_token->value = value;
     new_token->type = type;
     return (new_token);
+}
+
+void    token_list_add_back(char **list , t_token *new_token)
+{
+    t_token *curr_node;
+
+    if(!*list)
+    {
+        *list = new_token;
+        return ;
+    }
+    curr_node = *list;
+    while(curr_node && curr_node->next)
+        curr_node = curr_node->next;
+    curr_node->next = new_token;
+    new_token->prev = curr_node;
 }

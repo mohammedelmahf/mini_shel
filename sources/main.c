@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 22:18:41 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:38:25 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main(int ac , char **av  , char **env)
 
      
             
-        //data.tokens = tokenize();
+        data.tokens = tokenize();
         //if(!data.tokens)
         //    continue;
         // printf("%s\n" ,data.line );

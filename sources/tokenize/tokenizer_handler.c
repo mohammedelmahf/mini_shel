@@ -6,13 +6,13 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:31:19 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 11:11:31 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:47:32 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int         handle_separator(char **line , char **token_list)
+int         handle_separator(char **line , t_token **token_list)
 {
     if (!ft_strncmp(*line , ">>" , 2))
         return(append_separator(T_DGREAT , line , token_list) && 1);
