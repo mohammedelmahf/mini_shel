@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 19:18:49 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/04/09 19:18:57 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:00:19 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ int parsinge_export(char *str);
 //echo 
 int	ft_echo(char **str);
 int  parsinge_echo(char *str);
+//env
+int	ft_env(void);
 #endif
