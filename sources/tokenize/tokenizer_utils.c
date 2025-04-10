@@ -6,9 +6,16 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 10:39:26 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 10:39:37 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/10 10:46:38 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
+int ft_is_separator(char *str)
+{
+    if(!ft_strncmp(str , "&&" , 2) || *str == ' ' || *str == '\t' 
+            || *str == '>' || *str == '<' || *str == '|' || *str == ')' || *str == ')')
+        return (1);
+    return (0);
+}
