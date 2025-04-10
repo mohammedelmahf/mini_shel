@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 16:20:49 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/10 20:36:53 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,15 @@ int main(int ac , char **av  , char **env)
             (/*clean_all(),*/ ft_putstr_fd("exit\n" , 1) , exit(data.exit_s));
         if(data.line[0])
             add_history(data.line);
-                int i = 0; 
-        if(!ft_strncmp(data.line , "env" , 3))
-            while(env[i])
-            {
-                printf("%s\n" , env[i]);
-                i++;
-            }
-                
+                // int i = 0; 
+        // if(!ft_strncmp(data.line , "env" , 3))
+        //     while(env[i])
+        //     {
+        //         printf("%s\n" , env[i]);
+        //         i++;
+        //     }
         data.tokens = tokenize();
             t_token *curr = data.tokens;
-        ft_env();
         while (curr)
         {
             printf("Token type: %d, Token value: %s\n", curr->type, curr->value);
@@ -55,6 +53,7 @@ int main(int ac , char **av  , char **env)
         }
         if(!data.tokens)
             continue;
+        
         //printf("%s\n" ,data.line );
         //write(STDIN_FILENO, "hey", 4);
         //execution();
