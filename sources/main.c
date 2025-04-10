@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 14:59:56 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/10 14:59:57 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int main(int ac , char **av  , char **env)
             
         data.tokens = tokenize();
             t_token *curr = data.tokens;
-         while (curr)
+        ft_env();
+        while (curr)
         {
             printf("Token type: %d, Token value: %s\n", curr->type, curr->value);
             curr = curr->next;
