@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 16:20:03 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:20:49 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,13 @@ int main(int ac , char **av  , char **env)
             }
                 
         data.tokens = tokenize();
-        if(!data.tokens)
-            continue ;
-        data.ast = start_parsing();
-        // t_token *curr = data.tokens;
-        // while (curr)
-        // {
-        //     printf("Token type: %d, Token value: %s\n", curr->type, curr->value);
-        //     curr = curr->next;
-        // }
+            t_token *curr = data.tokens;
+        ft_env();
+        while (curr)
+        {
+            printf("Token type: %d, Token value: %s\n", curr->type, curr->value);
+            curr = curr->next;
+        }
         if(!data.tokens)
             continue;
         //printf("%s\n" ,data.line );
