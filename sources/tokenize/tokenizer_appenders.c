@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:48:55 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 09:37:30 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/10 10:26:23 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ int append_separator(t_token_type type , char **line , t_token **token_list)
     return (1);
 }
 
-// int append_identifier(t_token_type , char **line , t_token **token_list)
-// {
+int append_identifier(char **line , t_token **token_list)
+{
+    char **line_tmp;
+    int i;
+
+    line_tmp = line;
     
-// }
+}
