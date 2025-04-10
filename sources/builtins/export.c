@@ -32,16 +32,19 @@ int  ft_export(char **str)
     while(str[i])
     {
         if(parsinge_export(str[i]) == 0)
-            //exit && msg
+        {
+            ft_putstr_fd("minishell: export: `%s`: not a valid identifier\n", 2);
+            exit_s = 1;
+        }
         else
         {
             key = extract_key(str);
-            if( )
+            if()
             {
-                update_envlst(key ,extract_value(str[i]) , false);
+                update_envlst(key ,extract_value(str[i]) , false); //false  = update
             }
             else
-                 update_envlst(key ,extract_value(str[i]) , true);
+                 update_envlst(key ,extract_value(str[i]) , true); //true = add
         }
     }
     return exit_s;
