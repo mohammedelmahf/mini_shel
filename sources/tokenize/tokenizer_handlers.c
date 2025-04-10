@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:31:19 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 11:43:59 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:36:54 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ t_token    *tokenization_handler(char *line)
     token_list = NULL;
     while(*line)
     {
-        // if(error)
-        //     return(clear_token_list(&token_list) , NULL);
+        if(error)
+            return(free_token_list(&token_list) , NULL);
         if(!ft_strncmp(line , "<" , 1) || !ft_strncmp(line , ">" , 1)
             || !ft_strncmp(line , "|" , 1) || !ft_strncmp(line , "&&" , 2)
             || !ft_strncmp(line , "(" , 1) || !ft_strncmp(line , ")" , 1) )

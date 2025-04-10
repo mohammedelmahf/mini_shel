@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:48:55 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 12:21:46 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:38:26 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int append_identifier(char **line , t_token **token_list)
     
     while(line_tmp[i] && !ft_is_separator(line_tmp + i))
     {
-        printf("%zu\n" , i);
         if(check_is_string_delimiter(line_tmp[i]))
         {
             if(!skip_delimiter(line_tmp , &i))
@@ -46,7 +45,6 @@ int append_identifier(char **line , t_token **token_list)
         }
         else
             i++;
-        printf("%zu\n" , i);
     }
     value = ft_substr(line_tmp , 0 ,i);
     if(!value)
