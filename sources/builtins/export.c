@@ -35,8 +35,13 @@ int  ft_export(char **str)
             //exit && msg
         else
         {
-            key = 
-            if()
+            key = extract_key(str);
+            if( )
+            {
+                update_envlst(key ,extract_value(str[i]) , false);
+            }
+            else
+                 update_envlst(key ,extract_value(str[i]) , true);
         }
     }
     return exit_s;
