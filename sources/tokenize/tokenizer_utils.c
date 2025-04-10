@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 10:39:26 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 11:23:20 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/10 11:27:31 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,4 @@ int check_is_string_delimiter(char c)
     return (0);
 }
 
-bool    skip_delimiter
+bool    skip_delimiter(char )
