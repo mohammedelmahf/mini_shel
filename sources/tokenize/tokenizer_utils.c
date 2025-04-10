@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 10:39:26 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 11:27:31 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/10 11:31:55 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,19 @@ int check_is_string_delimiter(char c)
     return (0);
 }
 
-bool    skip_delimiter(char )
+bool    skip_delimiter(char *line , size_t *i)
+{
+    char delimiter;
+
+    delimiter = line[*i];
+
+    if(ft_strchr(line + *i + 1 , delimiter))
+    {
+        (*i)++;
+        while(line[*i] != delimiter)
+            (*i)++;
+        (*i)++;
+        return (true);
+    }
+    return (false);
+}
