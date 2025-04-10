@@ -1,4 +1,4 @@
-Loubna MEFTAH <Loubna.MEFTAH@um6p.ma>,
+ <Loubna.MEFTAH@um6p.ma>,
 Salma EL MOUHALHAL <Salma.ELMOUHALHAL@um6p.ma>,
 "mohammedelmahfoudi2004@gmail.com" <mohammedelmahfoudi2004@gmail.com>,
 "ilyass.ela.77@gmail.com" <ilyass.ela.77@gmail.com>,
