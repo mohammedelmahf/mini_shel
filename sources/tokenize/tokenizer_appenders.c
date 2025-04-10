@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:48:55 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 11:28:52 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/10 11:43:31 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,29 @@ int append_separator(t_token_type type , char **line , t_token **token_list)
 int append_identifier(char **line , t_token **token_list)
 {
     char *line_tmp;
+    char *value;
+    t_token *token;
     size_t i;
 
     line_tmp = *line;
     
-    while(line_tmp[i] && !ft_is_separator(line_tmp + 1))
+    while(line_tmp[i] && !ft_is_separator(line_tmp + i))
     {
         if(check_is_string_delimiter(line_tmp[i]))
         {
             if(!skip_delimiter(line_tmp , &i))
-                return (1);
+                return (print_delimiter_error(line_tmp[i]) , 0);
         }
-        i++;
+        else
+            i++;
     }
+    value = ft_substr(line_tmp , 0 ,i);
+    if(!value)
+        return (0);
+    token = new_token(value , T_IDENTIFIER);
+    if(!token)
+        return (free(value) , 0);
+    *line += i;
+    return(token_list_add_back(token_list , token) , 1);
+    
 }

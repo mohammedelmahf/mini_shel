@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:31:19 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/09 12:17:16 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/10 11:43:59 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,7 @@ t_token    *tokenization_handler(char *line)
             || !ft_strncmp(line , "(" , 1) || !ft_strncmp(line , ")" , 1) )
             error = (!handle_separator(&line , &token_list) && 1);
         else
-            error = 1 ;
-        if(error)
-        {
-            printf("%d\n" , error);
-            return NULL;
-        } //(!append_identifier(&line , &token_list) && 1);
+            error = (!append_identifier(&line , &token_list) && 1);
     }
     return (token_list);
 }
