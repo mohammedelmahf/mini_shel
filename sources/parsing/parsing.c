@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 12:53:19 by maelmahf         ###   ########.fr       */
+/*   Created: 2025/04/10 12:52:12 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/10 12:53:11 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-#define PARSING_H
+#include "../../includes/minishell.h"
 
-typedef struct s_node
+t_node  *start_parsing()
 {
     
-}   t_node;
-t_node  *start_parsing();
-
-#endif
+}
