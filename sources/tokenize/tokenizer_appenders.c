@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:48:55 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 10:42:48 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/10 10:59:16 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,17 @@ int append_separator(t_token_type type , char **line , t_token **token_list)
 
 int append_identifier(char **line , t_token **token_list)
 {
-    char **line_tmp;
+    char *line_tmp;
     int i;
 
-    line_tmp = line;
+    line_tmp = *line;
     
     while(line_tmp[i] && !ft_is_separator(line_tmp + 1))
+    {
+        if(check_if_is_quote(line_tmp[i]))
+        {
+            IF()
+        }
+        i++;
+    }
 }
