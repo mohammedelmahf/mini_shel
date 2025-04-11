@@ -39,7 +39,7 @@ int  ft_export(char **str)
         else
         {
             key = extract_key(str);
-            if()
+            if(1)
             {
                 update_envlst(key ,extract_value(str[i]) , false); //false  = update
             }

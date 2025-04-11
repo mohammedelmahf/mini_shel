@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 12:14:13 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/11 10:49:57 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_data
 	t_node			*ast;
 	int				exit_s;
 	bool			signint_child;
-//	t_parse_err		parse_err;
+	t_parse_err		parse_err;
 	int				stdin;
 	int				stdout;
 	char			**environ;
