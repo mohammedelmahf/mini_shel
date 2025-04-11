@@ -6,18 +6,27 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:52:12 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/11 10:45:14 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/11 11:08:45 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_node  *parsing_ast(int minimum_precedence)
+t_node  *terms()
 {
     
 }
+t_node  *parsing_ast(int minimum_precedence)
+{
+    t_node  *left;
+    t_node  *right;
+    
+    if(data.parse_err.type || !data.curr_token)
+        return (NULL);
+    left = terms();
+}
 
-t_node  *start_parsing()
+t_node  *start_parsing(void)
 {
     t_node  *ast;
     

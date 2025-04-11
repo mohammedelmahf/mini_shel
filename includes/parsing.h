@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/11 10:51:55 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/11 11:08:50 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ typedef enum s_pars_error_type
     E_SYNTAX
     
 }            t_pars_error_type;
-t_node  *start_parsing();
+t_node  *start_parsing(void);
 
 #endif
