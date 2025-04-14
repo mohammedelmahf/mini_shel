@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:52:12 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 14:44:35 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:53:03 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ t_node  *terms(void)
 
     if(data.parse_error.type)
         return (NULL);
-    if(curr_token_type_is_binop() || data.curr_token->type = T_C_PARENT)
+    if(curr_token_type_is_binop() || data.curr_token->type == T_C_PARENT)
         return (set_error(E_SYNTAX) , NULL);
-    else if(data.curr_token->type = T_O_PARENT)
+    else if(data.curr_token->type == T_O_PARENT)
     {
         next_token();
         node = parsing_ast(0);
@@ -31,9 +31,13 @@ t_node  *terms(void)
         next_token();
         return (node);
     }
-    else
-        return(parse_single_cmd());
+    else 
+        return(printf("here\n") , NULL);
+    // else
+    //     return(parse_single_cmd());
 }
+
+
 t_node  *parsing_ast(int minimum_precedence)
 {
     t_node  *left;
