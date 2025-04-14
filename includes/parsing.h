@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 15:50:42 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:56:01 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void    parse_single_cmd(void);
 t_node_type	get_node_type(t_token_type type);
 t_node	*lstnew(t_node_type type);
 void    next_token(void);
-int    curr_token_type(void);
+int    curr_token_prec(void);
 int     prec(t_token_type type);
 bool	redirection(t_token_type type);
 t_node  *terms(void);

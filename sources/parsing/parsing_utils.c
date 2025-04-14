@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 09:48:42 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 15:54:46 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:55:27 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void    next_token(void)
     data.curr_token = data.curr_token->next;
 }
 
-int    curr_token_prec()
+int    curr_token_prec(void)
 {
     return (prec(data.curr_token->type));
 }
