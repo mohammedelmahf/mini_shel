@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:52:12 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 15:55:43 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:14:59 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ t_node  *terms(void)
         next_token();
         return (node);
     }
-    else 
-        return(printf("here\n") , NULL);
-    // else
-    //     return(parse_single_cmd());
+    else
+        return(parse_single_cmd());
 }
 
 
@@ -61,8 +59,8 @@ t_node  *parsing_ast(int minimum_precedence)
         if(!right)
             return(left);
         left = join_nodes(type , left , right);
-        //if (!left)
-        //    return (clear_ast(&left) , clear_ast(&right) , NULL);
+        if (!left)
+           return (clear_ast(&left) , clear_ast(&right) , NULL);
     }
     return (left);
 }
