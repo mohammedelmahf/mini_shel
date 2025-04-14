@@ -6,13 +6,13 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:52:12 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 14:16:45 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:44:35 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_node  *terms()
+t_node  *terms(void)
 {
     t_node *node;
 
