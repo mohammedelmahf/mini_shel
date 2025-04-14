@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 15:56:01 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:49:51 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_node  *start_parsing(void);
 void    set_error(t_parse_err_type type);
 void    set_error(t_parse_err_type type);
 bool    curr_token_type_is_binop(void);
-void    parse_single_cmd(void);
+t_node    parse_single_cmd(void);
 t_node_type	get_node_type(t_token_type type);
 t_node	*lstnew(t_node_type type);
 void    next_token(void);
