@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 12:30:16 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:29:50 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 typedef struct s_node
 {
-	//t_node_type			type;
+	t_node_type			type;
 	//t_io_node			*io_list;
 	char				*args;
 	char				**expanded_args;

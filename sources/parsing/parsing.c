@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:52:12 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 13:06:34 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:16:45 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_node  *terms()
         return (node);
     }
     else
-        return( )
+        return(parse_single_cmd());
 }
 t_node  *parsing_ast(int minimum_precedence)
 {

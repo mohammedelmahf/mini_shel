@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_nodes.c                                    :+:      :+:    :+:   */
+/*   parsing_help.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 12:23:38 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 14:19:17 by maelmahf         ###   ########.fr       */
+/*   Created: 2025/04/14 13:54:47 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/14 14:30:22 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_node_type	get_node_type(t_token_type type)
+void    parse_single_cmd(void)
 {
-	if (type == T_AND)
-		return (N_AND);
-	if (type == T_OR)
-		return (N_OR);
-	return (N_PIPE);
-}
-
-t_node	*lstnew(t_node_type type)
-{
-	t_node	*new_node;
-
-	new_node = (t_node *)ft_calloc(1, sizeof(t_node));
-	if (!new_node)
-		return (NULL);
-	new_node->type = type;
-	return (new_node);
+    t_node  *node;
+    
+    if(data.parse_error.type)
+        return (NULL);
+    node = lstnew(N_CMD);
+    if(!node)
+        return (set_error(E_MEM));
+    while(data.curr_token && (data.curr_token->type == T_IDENTIFIER || redirection(data.curr_token->type)))
+    {
+        
+    }
 }
