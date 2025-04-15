@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 10:39:26 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 12:02:44 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:20:01 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,10 @@ void    print_delimiter_error(char c)
 	ft_putchar_fd(c, 2);
 	ft_putstr_fd("'\n", 2);
 	data.exit_s = 258;
+}
+
+void    skipe_spaces(char **line)
+{
+    while (**line && ft_isspace(**line))
+        (*line)++;
 }

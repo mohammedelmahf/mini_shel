@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer.c                                        :+:      :+:    :+:   */
+/*   d.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 14:48:32 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/15 11:14:34 by maelmahf         ###   ########.fr       */
+/*   Created: 2025/04/15 11:18:52 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/15 11:19:08 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_token *tokenize(void)
+int	ft_isspace(char c)
 {
-    char *line;
-    t_token *token_list;
-
-    line = data.line;
-    token_list = tokenization_handler(line);
-    printf("token_list = %p\n", token_list);
-    free(line);
-    data.line = NULL;
-    return (token_list);
+	if (c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r' || c == ' ')
+		return (1);
+	return (0);
 }
