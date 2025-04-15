@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:05:54 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 12:34:55 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:21:18 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void 		token_list_add_back(t_token **list , t_token *new_token);
 t_token 	*new_token(char *value , t_token_type type);
 int 		append_identifier(char **line , t_token **token_list);
 void 		free_token_list(t_token **token_list);
+void 		skipe_spaces(char **line);
 #endif
 
