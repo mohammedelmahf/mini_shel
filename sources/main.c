@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/15 11:13:55 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:26:00 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main(int ac , char **av  , char **env)
         data.ast = start_parsing();
         printf("After start_parsing\n");
         
-        //printf("%s\n" ,data.line );
+        printf("data_ast : %p\n" , data.ast);
         //write(STDIN_FILENO, "hey", 4);
         //execution();
     }
