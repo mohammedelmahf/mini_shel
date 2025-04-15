@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:39:18 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 14:41:00 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/15 09:24:12 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static  void    ft_clear_envlst(void)
 void    clean_all(void)
 {
     garbage_collector(NULL , true);
-    clean_ast(&data.ast); //ast abstract synatx tree
+    clear_ast(&data.ast); //ast abstract synatx tree
     ft_clear_envlst();
     rl_clear_history();
     tcsetattr(STDIN_FILENO, TCSANOW, &data.original_term);

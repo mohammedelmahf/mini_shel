@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/11 13:17:01 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/15 09:15:24 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,6 @@ int main(int ac , char **av  , char **env)
             (/*clean_all(),*/ ft_putstr_fd("exit\n" , 1) , exit(data.exit_s));
         if(data.line[0])
             add_history(data.line);
-        int i = 0; 
-        if(!ft_strncmp(data.line , "export" , 3))
-            while(env[i])
-            {
-                printf("%s\n" , env[i]);
-                i++;
-            }
         data.tokens = tokenize();
         t_token *curr = data.tokens;
         while (curr)
