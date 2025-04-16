@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:31:19 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/15 22:15:19 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/16 18:46:32 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ t_token    *tokenization_handler(char *line)
     token_list = NULL;
     while(*line)
     {
-        if(error)
-            return(free_token_list(&token_list) , NULL);
+        // if(error)
+        //     return(free_token_list(&token_list) , NULL);
         if(ft_isspace(*line))
             skipe_spaces(&line);
         if(!ft_strncmp(line , "<" , 1) || !ft_strncmp(line , ">" , 1)

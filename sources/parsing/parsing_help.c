@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:54:47 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 18:42:24 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/17 00:21:19 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	append_io_node(t_io_node **lst, t_io_node *new)
 
     if (!*lst)
     {
-        *lst = new_io_node;
+        *lst = new;
         return ;
     }
     curr_node = *lst;
@@ -64,7 +64,7 @@ bool    join_args(char **args)
     while(data.curr_token && data.curr_token->type == T_IDENTIFIER)
     {
         to_free = *args;
-        *args = strjoin_args(*args, data.curr_token->value , ' ');
+        *args = ft_strjoin_args(*args, data.curr_token->value , ' ');
         if(!*args)
             return (free(to_free) , false);
         free(to_free);
@@ -87,7 +87,7 @@ t_node    *parse_single_cmd(void)
         if(data.curr_token->type == T_IDENTIFIER)
         {
             if(!join_args(&(node->args)))
-                return(clear_cmd_node(node) , set_error(E_MEM), NULL);
+                return(/*clear_cmd_node(node) , set_error(E_MEM),*/ NULL);
         }
         else if (redirection(data.curr_token->type))
         {

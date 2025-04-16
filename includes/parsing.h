@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 23:18:46 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/17 00:21:14 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ t_node			*terms(void);
 t_node			*parsing_ast(int minimum_precedence);
 t_node			*join_nodes(t_token_type type , t_node *left , t_node *right);
 void			clear_ast(t_node **ast);
-bool			join_args(t_list **args);
+bool			join_args(char **args);
+t_node    *parse_single_cmd(void);
 t_io_node		*new_io_node(t_token_type type, char *value);
-
+void	append_io_node(t_io_node **lst, t_io_node *new);
 #endif
