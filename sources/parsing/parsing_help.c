@@ -6,11 +6,26 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:54:47 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 14:11:07 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:26:57 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void	append_io_node(t_io_node **lst, t_io_node *new)
+{
+    t_io_node	*curr_node;
+
+    if (!*lst)
+    {
+        *lst = new_io_node;
+        return ;
+    }
+    curr_node = *lst;
+    while (curr_node && curr_node->next)
+        curr_node = curr_node->next;
+    curr_node->next = new;
+}
 
 bool	get_io_list(t_io_node **io_list)
 {
@@ -30,7 +45,7 @@ bool	get_io_list(t_io_node **io_list)
 		tmp_io_node = new_io_node(redir_type, data.curr_token->value); 
 		if (!tmp_io_node)
 			return (set_error(E_MEM), false);
-		//append_io_node(io_list, tmp_io_node);
+		append_io_node(io_list, tmp_io_node);
 		next_token();
 	}
 	return (true);
