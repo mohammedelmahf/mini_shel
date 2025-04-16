@@ -18,10 +18,11 @@ signal      :=  sources/signal.c
 parsing     :=  sources/parsing/parsing.c sources/parsing/parsing_utils.c sources/parsing/parsing_help.c \
                 sources/parsing/parsing_nodes.c \
                 sources/parsing/parsing_error.c sources/parsing/parsing_clear.c
+cleaning    :=   sources/cleaning/clean.c
 #builtins    := sources/builtins/utils.c sources/builtins/cd.c   sources/builtins/pwd.c  \
                 sources/builtins/echo.c sources/builtins/env.c 
                 #sources/builtins/unset.c sources/builtins/exit.c sources/builtins/export.c 
-SRCS        :=  $(env) $(exec) $(utils) $(main) $(signal) $(tokenize) $(parsing) #$(builtins)
+SRCS        :=  $(env) $(exec) $(utils) $(main) $(signal) $(tokenize) $(parsing) $(cleaning) #$(builtins)
 
 OBJS        := $(SRCS:.c=.o)
 
