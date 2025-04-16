@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenize.c                                         :+:      :+:    :+:   */
+/*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:48:32 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/08 14:52:15 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:14:34 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_token *tokenize(void)
 
     line = data.line;
     token_list = tokenization_handler(line);
+    printf("token_list = %p\n", token_list);
     free(line);
     data.line = NULL;
     return (token_list);

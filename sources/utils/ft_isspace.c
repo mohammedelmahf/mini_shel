@@ -1,38 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_clear.c                                    :+:      :+:    :+:   */
+/*   d.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 14:29:37 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 16:14:40 by maelmahf         ###   ########.fr       */
+/*   Created: 2025/04/15 11:18:52 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/15 11:19:08 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-
-
-void    recursive_ast_clear(t_node *node)
+int	ft_isspace(char c)
 {
-    if(!node)
-        return ;
-    // if(node->type == N_CMD)
-    //     clear_cmd_node(node);
-    else
-    {
-        if(node->left)
-            recursive_ast_clear(node->left);
-        if(node->right)
-            recursive_ast_clear(node->right);
-    }
-    free(node);
-}
-
-void    clear_ast(t_node **ast)
-{
-    recursive_ast_clear(*ast);
-    *ast = NULL;
-    free_token_list(&data.tokens);
+	if (c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r' || c == ' ')
+		return (1);
+	return (0);
 }

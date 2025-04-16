@@ -1,38 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_clear.c                                    :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 14:29:37 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 16:14:40 by maelmahf         ###   ########.fr       */
+/*   Created: 2024/10/28 11:45:44 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/10 12:13:58 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-
-
-void    recursive_ast_clear(t_node *node)
+void	ft_putchar_fd(char c, int fd)
 {
-    if(!node)
-        return ;
-    // if(node->type == N_CMD)
-    //     clear_cmd_node(node);
-    else
-    {
-        if(node->left)
-            recursive_ast_clear(node->left);
-        if(node->right)
-            recursive_ast_clear(node->right);
-    }
-    free(node);
-}
-
-void    clear_ast(t_node **ast)
-{
-    recursive_ast_clear(*ast);
-    *ast = NULL;
-    free_token_list(&data.tokens);
+	if (fd >= 0)
+		write(fd, &c, 1);
 }
