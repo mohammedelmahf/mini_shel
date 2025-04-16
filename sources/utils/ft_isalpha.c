@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:37:54 by iel-asef          #+#    #+#             */
-/*   Updated: 2024/11/05 23:40:13 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:07:14 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
+
 
 int	ft_isalpha(int c)
 

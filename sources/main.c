@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 15:29:42 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:32:40 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,14 @@ int main(int ac , char **av  , char **env)
             add_history(data.line);
         printf("Before tokenize\n");
         data.tokens = tokenize();
-        printf("After tokenize\n");
-        if (!data.tokens)
+            t_token *curr = data.tokens;
+ 
+        while (curr)
+        {
+            printf("Token type: %d, Token value: %s\n", curr->type, curr->value);
+            curr = curr->next;
+        }
+        if(!data.tokens)
             continue;
         printf("Before start_parsing\n");
         data.ast = start_parsing();
