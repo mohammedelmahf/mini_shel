@@ -15,7 +15,8 @@ tokenize    :=  sources/tokenize/tokenizer.c sources/tokenize/tokenizer_lst.c so
                 sources/tokenize/tokenizer_handlers.c sources/tokenize/tokenizer_utils.c
 main        :=  sources/main.c
 signal      :=  sources/signal.c
-parsing     :=  sources/parsing/parsing.c sources/parsing/parsing_utils.c sources/parsing/parsing_help.c sources/parsing/parsing_nodes.c \
+parsing     :=  sources/parsing/parsing.c sources/parsing/parsing_utils.c sources/parsing/parsing_help.c \
+                sources/parsing/parsing_nodes.c \
                 sources/parsing/parsing_error.c sources/parsing/parsing_clear.c
 #builtins    := sources/builtins/utils.c sources/builtins/cd.c   sources/builtins/pwd.c  \
                 sources/builtins/echo.c sources/builtins/env.c 

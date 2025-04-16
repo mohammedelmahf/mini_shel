@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 10:39:01 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:20:11 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ typedef enum e_node_type
 
 typedef enum e_io_type
 {
-	I_IN,
-	I_OUT,
-	I_APPEND,
-	I_HEREDOC
+	IO_IN,
+	IO_OUT,
+	IO_APPEND,
+	IO_HEREDOC
 }	t_io_type;
 
 typedef	struct s_io_node
@@ -79,6 +79,6 @@ t_node			*parsing_ast(int minimum_precedence);
 t_node			*join_nodes(t_token_type type , t_node *left , t_node *right);
 void			clear_ast(t_node **ast);
 bool			join_args(t_list **args);
-
+t_io_node		*new_io_node(t_token_type type, char *value);
 
 #endif

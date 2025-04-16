@@ -6,32 +6,32 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:54:47 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 10:34:26 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:11:07 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-bool	ft_get_io_list(t_io_node **io_list)
+bool	get_io_list(t_io_node **io_list)
 {
 	t_token_type		redir_type;
 	t_io_node			*tmp_io_node;
 
-	if (g_minishell.parse_err.type)
+	if (data.parse_error.type)
 		return (false);
-	while (g_minishell.curr_token && ft_is_redir(g_minishell.curr_token->type))
+	while (data.curr_token && redirection(data.curr_token->type))
 	{
-		redir_type = g_minishell.curr_token->type;
-		ft_get_next_token();
-		if (!g_minishell.curr_token)
-			return (ft_set_parse_err(E_SYNTAX), false);
-		if (g_minishell.curr_token->type != T_IDENTIFIER)
-			return (ft_set_parse_err(E_SYNTAX), false);
-		tmp_io_node = ft_new_io_node(redir_type, g_minishell.curr_token->value);
+		redir_type = data.curr_token->type;
+		next_token();
+		if (!data.curr_token)
+			return (set_error(E_SYNTAX), false);
+		if (data.curr_token->type != T_IDENTIFIER)
+			return (set_error(E_SYNTAX), false);
+		tmp_io_node = new_io_node(redir_type, data.curr_token->value); 
 		if (!tmp_io_node)
-			return (ft_set_parse_err(E_MEM), false);
-		ft_append_io_node(io_list, tmp_io_node);
-		ft_get_next_token();
+			return (set_error(E_MEM), false);
+		//append_io_node(io_list, tmp_io_node);
+		next_token();
 	}
 	return (true);
 }
@@ -76,7 +76,7 @@ t_node    *parse_single_cmd(void)
         }
         else if (redirection(data.curr_token->type))
         {
-            if(!(node))
+            if(!get_io_list(&(node->io_list)))
                 return(free(node->args) , free(node), NULL);
         }
     }

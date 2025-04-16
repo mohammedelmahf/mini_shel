@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:23:38 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 14:19:17 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:19:23 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,29 @@ t_node	*lstnew(t_node_type type)
 		return (NULL);
 	new_node->type = type;
 	return (new_node);
+}
+
+t_io_type	get_io_type(t_token_type type)
+{
+	if (type == T_LESS)
+		return (IO_IN);
+	if (type == T_GREAT)
+		return (IO_OUT);
+	if (type == T_DLESS)
+		return (IO_HEREDOC);
+	return (IO_APPEND);
+}
+
+t_io_node	*new_io_node(t_token_type type, char *value)
+{
+	t_io_node	*new_io_node;
+
+	new_io_node = (t_io_node *)ft_calloc(1, sizeof(t_io_node));
+	if (!new_io_node)
+		return (NULL);
+	new_io_node->type = get_io_type(type);
+	new_io_node->value = ft_strdup(value);
+	if(!new_io_node->value)
+		return (free(new_io_node) ,NULL);
+	return (new_io_node);
 }
