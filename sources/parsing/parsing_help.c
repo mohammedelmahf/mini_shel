@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:54:47 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 16:10:08 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:05:40 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	append_io_node(t_io_node **lst, t_io_node *new)
 
     if (!*lst)
     {
-        *lst = new_io_node;
+        *lst = new;
         return ;
     }
     curr_node = *lst;
