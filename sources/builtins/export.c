@@ -44,7 +44,6 @@ void export_list(void)
 	}
 }
 
-<<<<<<< HEAD
 int ft_export(char **str)
 {
 	int i ;
@@ -62,7 +61,9 @@ int ft_export(char **str)
 	{
 		if (!parsinge_export(str[i]))
 		{
-			printf("minishell: export: `%s`: not a valid identifier\n", str[i]);
+			ft_putstr_fd("minishell: export:" , 2);
+			ft_putstr(&str[i] , 2);
+			ft_putstr (": not a valid identifier\n", 2);
 			exit_status = 1;
 		}
 		else
@@ -77,27 +78,4 @@ int ft_export(char **str)
 		i++;
 	}
 	return exit_status;
-=======
-    }
-    i = 0;
-    while(str[i])
-    {
-        if(parsinge_export(str[i]) == 0)
-        {
-            ft_putstr_fd("minishell: export: `%s`: not a valid identifier\n", 2);
-            exit_s = 1;
-        }
-        else
-        {
-            key = extract_key(str);
-            if(1)
-            {
-                update_envlst(key ,extract_value(str[i]) , false); //false  = update
-            }
-            else
-                 update_envlst(key ,extract_value(str[i]) , true); //true = add
-        }
-    }
-    return exit_s;
->>>>>>> 75ccb5216dc6c8487d97a18e511ea284a1a7e8c6
 }

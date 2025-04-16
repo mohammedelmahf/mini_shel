@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 14:58:18 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:59:45 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,4 @@ int main(int ac , char **av  , char **env)
     }
     garbage_collector(NULL , true);
 
+}
