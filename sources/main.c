@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 14:59:45 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:32:40 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(int ac , char **av  , char **env)
         init_signal();
         data.line = readline(PROMPT);
         if (!data.line)
-            (/*clean_all(), */ft_putstr_fd("exit\n" , 1) , exit(data.exit_s));
+            (clean_all(), ft_putstr_fd("exit\n" , 1) , exit(data.exit_s));
         if(data.line[0])
             add_history(data.line);
         printf("Before tokenize\n");
