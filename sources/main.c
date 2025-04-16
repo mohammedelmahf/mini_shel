@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 15:32:40 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/16 16:10:25 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ static  void    init_minishell(char **env)
     data.stdin = dup(0);
     data.stdout = dup(1);
 	tcgetattr(STDIN_FILENO, &data.original_term);
+}
+
+void    execution(void)
+{
+    
 }
 
 int main(int ac , char **av  , char **env)
@@ -51,10 +56,14 @@ int main(int ac , char **av  , char **env)
         printf("Before start_parsing\n");
         data.ast = start_parsing();
         printf("After start_parsing\n");
-        
+        // if(data.parse_error.type)
+        // {
+        //     handle_parse_error();
+        //     continue;
+        // }
         printf("data_ast : %p\n" , data.ast);
         //write(STDIN_FILENO, "hey", 4);
-        //execution();
+        execution();
     }
     garbage_collector(NULL , true);
 

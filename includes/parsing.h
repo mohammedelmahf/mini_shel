@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 14:20:11 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/16 16:10:17 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_node			*terms(void);
 t_node			*parsing_ast(int minimum_precedence);
 t_node			*join_nodes(t_token_type type , t_node *left , t_node *right);
 void			clear_ast(t_node **ast);
-bool			join_args(t_list **args);
+bool			join_args(char **args);
 t_io_node		*new_io_node(t_token_type type, char *value);
 
 #endif

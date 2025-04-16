@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:54:47 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 14:26:57 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/16 16:10:08 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	get_io_list(t_io_node **io_list)
 	return (true);
 }
 
-bool    join_args(t_list **args)
+bool    join_args(char **args)
 {
     char *to_free;
 

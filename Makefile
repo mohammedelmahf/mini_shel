@@ -14,7 +14,6 @@ tokenize    :=  sources/tokenize/tokenizer.c sources/tokenize/tokenizer_lst.c so
                 sources/tokenize/tokenizer_handlers.c sources/tokenize/tokenizer_utils.c
 main        :=  sources/main.c
 signal      :=  sources/signal.c
-<<<<<<< HEAD
 parsing     :=  sources/parsing/parsing.c sources/parsing/parsing_utils.c sources/parsing/parsing_help.c \
                 sources/parsing/parsing_nodes.c \
                 sources/parsing/parsing_error.c sources/parsing/parsing_clear.c
@@ -23,12 +22,6 @@ cleaning    :=   sources/cleaning/clean.c
                 sources/builtins/echo.c sources/builtins/env.c 
                 #sources/builtins/unset.c sources/builtins/exit.c sources/builtins/export.c 
 SRCS        :=  $(env) $(exec) $(utils) $(main) $(signal) $(tokenize) $(parsing) $(cleaning) #$(builtins)
-=======
-builtins    :=  sources/builtins/utils.c sources/builtins/cd.c   sources/builtins/pwd.c  \
-                sources/builtins/echo.c sources/builtins/export.c 
-               #sources/builtins/unset.c sources/builtins/exit.c 
-SRCS        := $(env) $(exec) $(utils) $(main) $(signal) $(tokenize) $(builtins)
->>>>>>> b36758b03243774e2613c59a03882a53b30adb44
 
 OBJS        := $(SRCS:.c=.o)
 
