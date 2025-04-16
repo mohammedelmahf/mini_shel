@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 14:59:57 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/14 20:00:53 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main(int ac , char **av  , char **env)
             
         data.tokens = tokenize();
             t_token *curr = data.tokens;
-        ft_env();
+ 
         while (curr)
         {
             printf("Token type: %d, Token value: %s\n", curr->type, curr->value);
@@ -53,4 +53,3 @@ int main(int ac , char **av  , char **env)
         //execution();
     }
 
-}

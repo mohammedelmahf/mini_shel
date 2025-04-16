@@ -2,50 +2,78 @@
 
 int parsinge_export(char *str)
 {
-    int i;
-    i = 0;
+	int i = 0;
 
-    if(!str || ft_isalpha(str[i]))
-        return 0;
-    i = 1;
-    while(str[i])
-    {
-        if(!ft_islnum(str[i]) && str[i] != '_')
-            return 0;
-        i++;
-    }
-    return 1 ;
+	if (!str || (!ft_isalpha(str[i]) && str[i] != '_'))
+		return 0;
+	i++;
+	while (str[i] && str[i] != '=')
+	{
+		if (!ft_isalnum(str[i]) && str[i] != '_')
+			return 0;
+		i++;
+	}
+	return 1;
 }
 
-int  ft_export(char **str)
+void export_list(void)
 {
-    int i;
-    int exit_s;
-    char *key;
+	t_env *env;
+	size_t i;
 
-    exit_s = 0;
-    if(str[1])
-    {
+	env = data.envlst;
+	while (env)
+	{
+		if (env->value && ft_strcmp(env->key, "_") != 0)
+		{
+			printf("declare -x %s=\"", env->key);
+			i = 0;
+			while (env->value[i])
+			{
+				if (env->value[i] == '$' || env->value[i] == '"')
+					printf("\\%c", env->value[i]);
+				else
+					printf("%c", env->value[i]);
+				i++;
+			}
+			printf("\"\n");
+		}
+		else if (ft_strcmp(env->key, "_") != 0)
+			printf("declare -x %s\n", env->key);
+		env = env->next;
+	}
+}
 
-    }
-    i = 0;
-    while(str[i])
-    {
-        if(parsinge_export(str[i]) == 0)
-        {
-            ft_putstr_fd("minishell: export: `%s`: not a valid identifier\n", 2);
-            exit_s = 1;
-        }
-        else
-        {
-            key = extract_key(str);
-            if()
-            {
-                update_envlst(key ,extract_value(str[i]) , false); //false  = update
-            }
-            else
-                 update_envlst(key ,extract_value(str[i]) , true); //true = add
-        }
-    }
-    return exit_s;
+int ft_export(char **str)
+{
+	int i ;
+	int exit_status = 0;
+	char *key;
+	t_env *existing;
+
+	if (!str[1])
+	{
+		export_list();
+		return 0;
+	}
+	i = 1;
+	while (str[i])
+	{
+		if (!parsinge_export(str[i]))
+		{
+			printf("minishell: export: `%s`: not a valid identifier\n", str[i]);
+			exit_status = 1;
+		}
+		else
+		{
+			key = extract_key(str[i]);
+			existing = get_env(key); 
+			if (existing)
+				update_envlst(key, extract_value(str[i]), false); // update
+			else
+				update_envlst(key, extract_value(str[i]), true);  // add
+		}
+		i++;
+	}
+	return exit_status;
 }
