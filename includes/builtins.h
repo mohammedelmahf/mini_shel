@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 19:18:49 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/04/16 14:59:01 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/16 23:00:48 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int ft_cd(char **arg);
 char	*ft_getenv(const char *name);
 
 //export 
-int parsinge_export(char *str);
+
+int parsing_key(char *str);
 int  ft_export(char **str);
 
 //echo 
@@ -72,6 +73,8 @@ void    envlst_back(t_env *new);
 int	ft_env(void);
 char	*ft_getenv(const char *name);
 t_env *get_env(char *key);
-
-
+//unset
+int parsing_key(char *str);
+int ft_unset(char **s);
+void    *garbage_collector(char *str , bool clean);
 #endif
