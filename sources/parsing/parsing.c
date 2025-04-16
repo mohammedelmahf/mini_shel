@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:52:12 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 09:52:45 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/16 10:07:23 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ t_node  *terms(void)
         next_token();
         return (node);
     }
-    else
-        printf("here\n");
-    return (NULL);
     else
         return (parse_single_cmd());
 }
