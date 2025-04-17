@@ -22,9 +22,8 @@ parsing     :=  sources/parsing/parsing.c sources/parsing/parsing_utils.c source
 cleaning    :=  sources/cleaning/clean.c
 builtins    :=  sources/builtins/utils.c sources/builtins/cd.c   sources/builtins/pwd.c  \
                 sources/builtins/echo.c sources/builtins/env.c sources/builtins/export.c \
-                sources/builtins/unset.c \
-                #sources/builtins/exit.c 
-SRCS        :=  $(env) $(exec) $(utils) $(main) $(signal) $(tokenize) $(parsing) $(cleaning) #$(builtins)
+                sources/builtins/unset.c sources/builtins/exit.c 
+SRCS        :=  $(env) $(exec) $(utils) $(main) $(signal) $(tokenize) $(parsing) $(cleaning) $(builtins)
 OBJS        := $(SRCS:.c=.o)
 
 all: $(NAME)
