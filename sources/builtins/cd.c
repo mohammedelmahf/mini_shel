@@ -6,10 +6,10 @@ int ft_cd(char **args)
     char *oldpwd;
     char *cwd;
 
+    
     if (!args[1])
-        path = getenv("HOME");
-    else if (!ft_strcmp(args[1], "-"))
-        path = ft_getenv("OLDPWD");
+       return printf("error\n"), 1;
+
     else
         path = args[1];
 
@@ -27,6 +27,7 @@ int ft_cd(char **args)
     }
     update_envlst("OLDPWD", oldpwd, true);
     cwd = getcwd(NULL, 0);
+    
     update_envlst("PWD", cwd, true);
     free(cwd);
 

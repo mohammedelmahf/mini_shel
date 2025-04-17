@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-int parsinge_export(char *str)
+int parsing_key(char *str)
 {
 	int i = 0;
 
@@ -59,11 +59,11 @@ int ft_export(char **str)
 	i = 1;
 	while (str[i])
 	{
-		if (!parsinge_export(str[i]))
+		if (!parsing_key(str[i]))
 		{
 			ft_putstr_fd("minishell: export:" , 2);
-			ft_putstr(&str[i] , 2);
-			ft_putstr (": not a valid identifier\n", 2);
+			ft_putstr_fd(str[i] , 2);
+			ft_putstr_fd (": not a valid identifier\n", 2);
 			exit_status = 1;
 		}
 		else
