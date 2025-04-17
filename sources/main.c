@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 18:47:06 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/17 10:11:46 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static  void    init_minishell(char **env)
 
 void    execution(void)
 {
-    
+    signal(SIGQUIT , handler_sigquit);
+    init_tree(data.ast);
 }
 
 int main(int ac , char **av  , char **env)
