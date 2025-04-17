@@ -1,18 +1,18 @@
-                 ┌────────────────────────────────────────┐
-                 │              execution()               │
-                 └────────────────────────────────────────┘
-                                  │
-                        Set SIGQUIT handler
-                                  │
-                        Initialize AST structure
-                                  │
-                        Check heredoc interruption?
-                          ┌───────┴────────┐
-                          │                │
-                      Yes: cleanup      No: proceed
-                          │                │
-                          └───────► Restore terminal
-                                           │
-                                  Execute the AST tree
-                                           │
-                                  Free the AST memory 
+                        ┌────────────────────────────────────────┐
+                        │              execution()               │
+                        └────────────────────────────────────────┘
+                                         │
+                               Set SIGQUIT handler
+                                         │
+                               Initialize AST structure
+                                         │
+                               Check heredoc interruption?
+                                 ┌───────┴────────┐
+                                 │                │
+                             Yes: cleanup      No: proceed
+                                 │                │
+                                 └───────► Restore terminal
+                                                  │
+                                         Execute the AST tree
+                                                  │
+                                         Free the AST memory 
