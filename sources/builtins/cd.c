@@ -1,35 +1,40 @@
 #include "../../includes/minishell.h"
 
-int ft_cd(char **args)
+int	ft_cd(char **args)
 {
-    char *path;
-    char *oldpwd;
-    char *cwd;
+	char	*oldpwd;
+	char	*cwd;
 
-    
-    if (!args[1])
-       return printf("error\n"), 1;
+	if (!args[1])
+	{
+		ft_putstr_fd("minishell: cd: path required\n", 2);
+		return (1);
+	}
 
-    else
-        path = args[1];
+	oldpwd = getcwd(NULL, 0);
+	if (!oldpwd)
+	{
+		perror("minishell: cd (getcwd)");
+		return (1);
+	}
 
-    if (!path)
-    {
-        printf("minishell: cd: path not set\n");
-        return 1;
-    }
-    oldpwd = ft_getenv("PWD");
+	if (chdir(args[1]) == -1)
+	{
+		perror("minishell: cd");
+		free(oldpwd);
+		return (1);
+	}
+	update_envlst("OLDPWD", oldpwd, true);
+	free(oldpwd);
 
-    if (chdir(path) == -1)
-    {
-        perror("minishell: cd");
-        return 1;
-    }
-    update_envlst("OLDPWD", oldpwd, true);
-    cwd = getcwd(NULL, 0);
-    
-    update_envlst("PWD", cwd, true);
-    free(cwd);
+	cwd = getcwd(NULL, 0);
+	if (cwd)
+	{
+		update_envlst("PWD", cwd, true);
+		free(cwd);
+	}
+	else
+		perror("minishell: cd (getcwd)");
 
-    return 0;
+	return (0);
 }

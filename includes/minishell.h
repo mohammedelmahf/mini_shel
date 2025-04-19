@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/17 10:31:22 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/18 11:10:36 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void    envlst_back(t_env *new);
 void    update_envlst(char *key,char *value, bool create);
 //exec
 void    *garbage_collector(char *str , bool clean);
+int exec_builtins(char **args);
 //signal
 void    init_signal(void);
 void    handler_sigquit(int num);

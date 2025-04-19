@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:05:54 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/15 11:21:18 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:01:18 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef	enum	s_token_type
 	T_IDENTIFIER,   // Command name or argument
 	T_LESS,         // <
 	T_GREAT,        // >
-	T_DLESS,        // <<
+	T_DLESS,        // <<-------------------------------------------------------------
 	T_DGREAT,       // >>
 	T_PIPE,         // |
 	T_O_PARENT,     // (

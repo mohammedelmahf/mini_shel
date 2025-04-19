@@ -1,11 +1,11 @@
 #include "../../includes/minishell.h"
 
-
 void msg_err(char *s)
 {
     ft_putstr_fd ("minishell: export:" , 2);
     ft_putstr_fd (s , 2);
-    ft_putstr_fd (": not a valid identifier\n", 2); 
+    ft_putstr_fd (": not a valid identifier\n", 2);
+    data.exit_s = 1;
 }
 
 void ft_unset_help(char *key)
@@ -34,12 +34,13 @@ void ft_unset_help(char *key)
 
 int ft_unset(char **s)
 {   
-    int i;
+    
     bool err;
     char *key;
-
-    key = garbage_collector(extract_key(s[i]) , false);
+    int i;
+    
     i = 0;
+    key = garbage_collector(extract_key(s[i]) , false);
     while(s[i])
     {
         if (!parsing_key(s[i]))
@@ -51,5 +52,5 @@ int ft_unset(char **s)
             ft_unset_help(key);
         i++;
     }
-
+    return 0;
 }
