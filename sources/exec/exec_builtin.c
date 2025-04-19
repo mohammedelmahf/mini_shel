@@ -1,6 +1,5 @@
 #include "../../includes/minishell.h"
 
-
 int exec_builtins(char **args)
 {
     if(ft_strcmp(args[0] , "echo") == 0)
