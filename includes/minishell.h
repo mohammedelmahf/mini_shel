@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/18 11:10:36 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/22 15:17:24 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,41 @@ typedef struct	s_env
 	char			*key;
 	char			*value;
 	struct s_env	*next;
-}				t_env;
+}	t_env;
+				
+typedef enum e_msg_err
+{
+	ERRMSG_CMD_NOT_FOUND,
+	ERRMSG_NO_SUCH_FILE,
+	ERRMSG_PERM_DENIED,
+	ERRMSG_AMBIGUOUS,
+	ERRMSG_TOO_MANY_ARGS,
+	ERRMSG_NONE = 42 ,
+	ERRMSG_NUMERIC_REQUI	
+}	t_msg_err;
+
+
+
+typedef enum e_err_num
+{
+	ENO_SUCCESS, // 0
+	ENO_GENERAL, // 1
+	ENO_NOT_FOUND, // 2
+	ENO_CANT_EXEC = 126,
+	ENO_EXEC_255 = 255  //SDTERR
+}	t_err_num;
+				
+typedef struct s_err
+{
+	t_err_num	num;
+	t_msg_err	msg;
+	char		*cause;
+}	t_err;
+				
+typedef struct s_path {
+    char *dir;
+    struct s_path *next;
+} t_path;
 
 typedef struct s_data
 {
@@ -101,6 +135,7 @@ void    update_envlst(char *key,char *value, bool create);
 //exec
 void    *garbage_collector(char *str , bool clean);
 int exec_builtins(char **args);
+bool    is_builtin(char *arg);
 //signal
 void    init_signal(void);
 void    handler_sigquit(int num);
