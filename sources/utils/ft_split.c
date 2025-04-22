@@ -6,10 +6,11 @@
 /*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 21:58:33 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/04/20 19:19:47 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:21:51 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/minishell.h"
 
 int	count(char const *s, char c)
 {

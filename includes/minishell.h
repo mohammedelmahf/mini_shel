@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/22 15:17:24 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:49:52 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,11 @@ typedef struct s_err
 	char		*cause;
 }	t_err;
 				
-typedef struct s_path {
-    char *dir;
-    struct s_path *next;
-} t_path;
+typedef struct s_path
+{
+	t_err	err;
+	char	*path;
+}	t_path;
 
 typedef struct s_data
 {
@@ -120,11 +121,13 @@ void	ft_putchar_fd(char c, int fd);
 int	ft_isspace(char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strjoin_args(char const *s1, char const *s2, char c);
-
-//iel-asef --utils
+int	count(char const *s, char c);
+char	*copy(char *str, int start, int end);
+char	**ft_split(char const *s, char c);
 int	ft_isalpha(int c);
 int	ft_isalnum(int c);
 char	*ft_strchr(const char *s, int c);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 //env
 char    *extract_value(char *str);
@@ -132,10 +135,17 @@ char    *extract_value(char *str);
 void    init_envlst(void);
 void    envlst_back(t_env *new);
 void    update_envlst(char *key,char *value, bool create);
+t_env *get_env(char *key);
 //exec
 void    *garbage_collector(char *str , bool clean);
-int exec_builtins(char **args);
+int 	exec_builtins(char **args);
 bool    is_builtin(char *arg);
+//exist_check
+t_err check_exec(char *file, bool cmd);
+t_err check_write(char *file);
+t_err check_read(char *file);
+//error  msg
+int	ft_err_msg(t_err err);
 //signal
 void    init_signal(void);
 void    handler_sigquit(int num);

@@ -11,7 +11,9 @@ t_err check_exec(char *file, bool cmd)
 		return ((t_err){ENO_SUCCESS, ERRMSG_NONE, NULL});
     }
     if(cmd)
+    {
         return ((t_err){ENO_NOT_FOUND, ERRMSG_CMD_NOT_FOUND, file});
+    }
 	return ((t_err){ENO_NOT_FOUND, ERRMSG_NO_SUCH_FILE, file});
 }
 
