@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/22 16:49:52 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/22 23:15:01 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 #include "builtins.h"
 #include "parsing.h"
 
+#include <sys/wait.h>
 
 // # define STDIN 0
 // # define STDOUT 1
@@ -151,4 +152,5 @@ void    init_signal(void);
 void    handler_sigquit(int num);
 //cleaning
 void    clean_all(void);
+void execute_cmd(char **args, char **envp);
 #endif
