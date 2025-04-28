@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/28 10:14:50 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:17:35 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,12 @@ t_env *get_env(char *key);
 void    *garbage_collector(char *str , bool clean);
 int 	exec_builtins(char **args);
 bool    is_builtin(char *arg);
+char   *handle_dollar(char *str , size_t *i);
+char    *cmd_pre_expand(char *str);
+char    **expanded_args(char *str);
+char    *handle_squotes(char *str , size_t *i);
+char    **expanded_args(char *str);
+char    *cmd_pre_expand(char *str);
 //exist_check
 t_err check_exec(char *file, bool cmd);
 t_err check_write(char *file);
