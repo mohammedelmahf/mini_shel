@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:00:58 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/28 12:54:40 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/28 13:03:55 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 char   *handle_dollar(char *str , size_t *i)
 {
-    size_t start; 
+    size_t start;
+    char *var;
+    char env_lst;
+
+    
     (*i)++;
     if(ft_isdigit(str[*i]) || str[*i] == '@')
     {
@@ -29,6 +33,10 @@ char   *handle_dollar(char *str , size_t *i)
     else if(!is_valid_var_char(str[*i]))
         return(ft_strdup('$'));
     start = *i;
+    while(is_valid_var_char(str[*i]))
+        (*i)++;
+    var = ft_substr(str , start , *i - start );
+    env_lst = get_envlst_value(var);
     
     
 }

@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:27:00 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 19:37:00 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/28 13:04:21 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,18 @@ void    update_envlst(char *key,char *value, bool create)
     }
     if(create)
         envlst_back(envlst_new(key,value));
+}
+
+char *get_envlst_value(char *key)
+{
+    t_env *envlst;
+    
+    envlst = data.envlst;
+    while(envlst)
+    {
+        if(!strcmp(key , envlst->key))
+            return (envlst->value);
+        envlst = envlst->next;
+    }
+    return (NULL);
 }

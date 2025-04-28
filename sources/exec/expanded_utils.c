@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:17:15 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/28 12:55:00 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/28 12:57:34 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,7 @@ char    *handle_dquotes_str(char *str , size_t *i)
 
 bool    is_valid_var_char(char c)
 {
-    if(ft_isn)
+    if(ft_isalnum(c) || c == '_')
+        return (true);
+    return (false);
 }
