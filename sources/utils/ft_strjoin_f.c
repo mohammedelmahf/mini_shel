@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_tree.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin_f.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 09:36:49 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/17 09:39:10 by maelmahf         ###   ########.fr       */
+/*   Created: 2025/04/28 10:14:33 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/28 10:14:39 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void    init_leaf(t_node *node)
+char	*ft_strjoin_f(char *s1, char *s2)
 {
-    if(node->args)
-    node->expanded_args = expanded_args(node->args);
-}
+	char	*joined;
+	size_t	total_length;
+	size_t	i;
+	size_t	j;
 
-void    init_tree(t_node *node)
-{
-    if (!node)
-        return ;
-    if(node->type == N_PIPE 
-        || node->type == N_AND
-        || node->type == N_OR)
-    {
-        init_tree(node->left);
-        if(!data.heredoc_sigint)
-            init_tree(node->right);
-    }
-    else    
-        init_leaf(node);
+	if (!s1 || !s2)
+		return (NULL);
+	total_length = ft_strlen(s1) + ft_strlen(s2) + 1;
+	joined = ft_calloc(total_length, sizeof(char));
+	if (!joined)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		joined[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+		joined[i++] = s2[j++];
+	joined[i] = 0;
+	return (free(s1), free(s2), joined);
 }
-

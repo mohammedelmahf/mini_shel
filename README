@@ -17,3 +17,59 @@
                                                   │
                                          Free the AST memory 
                                   
+
+
+
+
+
+
+
+                                  Input: "Hello $USER *.c"
+
+        |
+        v
+
+[1] ft_cmd_pre_expander
+------------------------
+Expand environment variables:
+=> "Hello Mohammed *.c"
+
+        |
+        v
+
+[2] ft_clean_empty_strs
+------------------------
+Remove empty strings (none here):
+=> "Hello Mohammed *.c"
+
+        |
+        v
+
+[3] ft_expander_split
+------------------------
+Split by spaces:
+=> ["Hello", "Mohammed", "*.c"]
+
+        |
+        v
+
+[4] ft_globber
+------------------------
+Expand wildcards (*):
+Assume files: main.c, utils.c
+
+=> ["Hello", "Mohammed", "main.c", "utils.c"]
+
+        |
+        v
+
+[5] ft_strip_quotes
+------------------------
+Remove any quotes (none here):
+
+=> ["Hello", "Mohammed", "main.c", "utils.c"]
+
+        |
+        v
+
+Output: ["Hello", "Mohammed", "main.c", "utils.c"]

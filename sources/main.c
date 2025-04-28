@@ -27,7 +27,7 @@ static  void    init_minishell(char **env)
 void    execution(void)
 {
     signal(SIGQUIT , handler_sigquit);
-  //  init_tree(data.ast);
+    init_tree(data.ast);
 }
 
 int main(int ac , char **av  , char **env)

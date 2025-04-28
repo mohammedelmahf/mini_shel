@@ -1,0 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expanded.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/28 10:00:58 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/28 12:38:04 by maelmahf         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/minishell.h"
+
+char   *handle_dollar(char *str , size_t *i)
+{
+    size_t start; 
+    (*i)++;
+    if(ft_isdigit(str[*i]) || str[*i] == '@')
+    {
+        (*i)++;
+        return(ft_strdup(""));
+    }
+    else if(str[*i] == '?')
+    {
+        (*i)++;
+        return (ft_itoa(data.exit_s))
+    }
+    else if(!is_valid_var_char())
+        return(ft_strdup('$'));
+    start = *i;
+    
+}
+char    *cmd_pre_expand(char *str)
+{
+    char *ret;
+    size_t i;
+
+    ret = ft_strdup(str);
+    i = 0;
+
+    if(str[i])
+    {
+        if(str[i]  = '\'')
+            ret = ft_strjoin_f(ret , handle_squotes(str , &i));
+        else if(str[i] = '"')
+            ret = ft_strjoin_f(ret , handle_dquotes(str , &i));
+    }
+}
+
+char    **expanded_args(char *str)
+{
+    char    **args;
+    char    **globbing;
+    size_t  i;
+
+    str = cmd_pre_expand(str);
+}
