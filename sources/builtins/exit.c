@@ -32,7 +32,6 @@ int ft_exit(char **s)
     {
         exit(data.exit_s);
     }
-    
     if (!ft_isnumber(s[1]))
     {
         ft_putstr_fd("minishell: exit: ", 2);
