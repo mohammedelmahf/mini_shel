@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:17:15 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 09:28:23 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/29 09:56:45 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,14 @@ bool    is_valid_var_char(char c)
     if(ft_isalnum(c) || c == '_')
         return (true);
     return (false);
+}
+
+char	*handle_normal_str(char *str, size_t *i)
+{
+	size_t	start;
+
+	start = *i;
+	while (str[*i] && str[*i] != '\'' && str[*i] != '"' && str[*i] != '$')
+		(*i)++;
+	return (ft_substr(str, start, *i - start));
 }
