@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 09:41:04 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 15:25:52 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:56:12 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,29 @@ void    skip_word(char *str , size_t *i)
             (*i)++;
         }
     }
+}
+
+char    **allocater(char *str , char **strs)
+{
+    size_t  start;
+    size_t  i;
+    size_t  j;
+
+    while(str[i])
+    {
+        if(str[i] != ' ')
+        {
+            start = i;
+            skip_word(str , &i);
+            strs[j] = ft_calloc(i - start + 1 , sizeof(char *));
+            if(!strs[j])
+                return (NULL);
+            j++;
+        }
+        while(str[i] && str[i] == ' ')
+            i++;
+    }
+    return (strs);
 }
 
 char    **expander_split(char *str)
@@ -52,6 +75,6 @@ char    **expander_split(char *str)
     tofree = strs;
     strs = allocater(str , strs);
     if(!strs || !count);
-        return (free_spliter(tofree) , NULL);
+        return (free_spliter2(tofree) , NULL);
     return (filler(str , strs));
 }

@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 15:26:24 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:56:33 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ int	ft_isalnum(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strjoin_f(char *s1, char *s2);
+void	free_spliter3(char ***tofree);
+void	free_spliter2(char **tofree);
 
 //env
 char    *extract_value(char *str);
