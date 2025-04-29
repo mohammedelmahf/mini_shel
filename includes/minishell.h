@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 09:16:28 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/29 09:38:17 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,17 +143,17 @@ t_env *get_env(char *key);
 void    *garbage_collector(char *str , bool clean);
 int 	exec_builtins(char **args);
 bool    is_builtin(char *arg);
-char   *handle_dollar(char *str , size_t *i);
-char    *cmd_pre_expand(char *str);
-char    **expanded_args(char *str);
-char    *handle_squotes(char *str , size_t *i);
-char    **expanded_args(char *str);
-char    *cmd_pre_expand(char *str);
-char    *handle_dquotes_str(char *str , size_t *i);
-char   *handle_dquotes(char *str , size_t *i);
 bool    is_valid_var_char(char c);
 void    init_tree(t_node *node);
 void    init_leaf(t_node *node);
+//expand
+char	*remove_empty_quotes(char *str);
+char   *handle_dollar(char *str , size_t *i);
+char    *cmd_pre_expand(char *str);
+char    *handle_squotes(char *str , size_t *i);
+char    **expanded_args(char *str);
+char    *handle_dquotes_str(char *str , size_t *i);
+char   *handle_dquotes(char *str , size_t *i);
 //exist_check
 t_err check_exec(char *file, bool cmd);
 t_err check_write(char *file);
