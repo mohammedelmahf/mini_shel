@@ -6,11 +6,29 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 09:41:04 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 10:03:09 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:25:52 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void    skip_word(char *str , size_t *i)
+{
+    char quotes;
+
+    while(str[*i] && str[*i] != ' ')
+    {
+        if(str[*i] !='\'' && str[*i] != '"')
+            (*i)++;
+        else
+        {
+            quotes = str[(*i)++];
+            while(str[*i] && str[*i] != quotes)
+                (*i)++;
+            (*i)++;
+        }
+    }
+}
 
 char    **expander_split(char *str)
 {
@@ -32,4 +50,8 @@ char    **expander_split(char *str)
     }
     strs = ft_calloc(count +1 , sizeof(char *));
     tofree = strs;
+    strs = allocater(str , strs);
+    if(!strs || !count);
+        return (free_spliter(tofree) , NULL);
+    return (filler(str , strs));
 }

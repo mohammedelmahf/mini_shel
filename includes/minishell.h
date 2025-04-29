@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 09:57:02 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:26:24 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,8 @@ char    **expanded_args(char *str);
 char    *handle_dquotes_str(char *str , size_t *i);
 char   *handle_dquotes(char *str , size_t *i);
 char	*handle_normal_str(char *str, size_t *i);
+void    skip_word(char *str , size_t *i);
+char    **expander_split(char *str);
 //exist_check
 t_err check_exec(char *file, bool cmd);
 t_err check_write(char *file);
