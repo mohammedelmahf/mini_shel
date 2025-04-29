@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   globber.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/29 16:32:33 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/29 16:43:27 by maelmahf         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/minishell.h"
+
+char    **globber(char **expanded)
+{
+    char    ***globbed;
+    size_t  expanded_len;
+    size_t  i;
+
+    i = 0;
+    expanded_len = len_arr(expanded);
+    globbed = (char ***)ft_calloc(expanded_len + 1 , sizeof(char **));
+    while(expanded[i])
+    {
+        globbed = globber_helper(expanded[i]);
+        i++;
+    }
+    return (free_spliter2(expanded) , join_str_arr(globbed));
+}
