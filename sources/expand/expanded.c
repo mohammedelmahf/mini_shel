@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:00:58 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 09:40:54 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:29:11 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char    *cmd_pre_expand(char *str)
     return (expanded);
 }
 
-char    **expanded_args(char *str)
+char    **expand_args(char *str)
 {
     char    **expander;
     char    **globbed;
@@ -77,6 +77,9 @@ char    **expanded_args(char *str)
     str = remove_empty_quotes(str);
     if(!str)
         return (NULL);
-    expander = exppander_split(str);
+    expander = expander_split(str);
     free(str);
+    if(!expander)
+        return (NULL);
+    
 }

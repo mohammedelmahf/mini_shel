@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 09:41:04 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 15:56:12 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:25:10 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,45 @@ char    **allocater(char *str , char **strs)
             strs[j] = ft_calloc(i - start + 1 , sizeof(char *));
             if(!strs[j])
                 return (NULL);
+            j++;
+        }
+        while(str[i] && str[i] == ' ')
+            i++;
+    }
+    return (strs);
+}
+
+void  word_filler(const char *str , char **strs , size_t *i , size_t j)
+{
+    char quotes;
+    size_t k;
+
+    k = 0;
+    while(str[*i] && str[*i] != ' ')
+    {
+        if(str[*i] != '\'' && str[*i])
+            strs[j][k++] = str[(*i)++];
+        else
+        {
+            quotes = str[(*i)++];
+            strs[j][k++] = quotes;
+            while (str[*i] != quotes)
+                strs[j][k++] = str[(*i)++];
+            strs[j][k++] = str[(*i)++];
+        }
+    }
+}  
+
+char    **filler(char *str , char **strs)
+{
+    size_t  i;
+    size_t  j;
+
+    while(str[i] && strs[j])
+    {
+        if(str[i] != ' ')
+        {
+            word_filler(str , strs , &i , j);
             j++;
         }
         while(str[i] && str[i] == ' ')
