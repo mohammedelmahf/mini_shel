@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 09:57:02 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/04/29 23:57:59 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,11 @@ typedef enum e_msg_err
 	ERRMSG_NUMERIC_REQUI	
 }	t_msg_err;
 
-
+typedef enum e_direction
+{
+	TD_LEFT,
+	TD_RIGHT
+}	t_direction;
 
 typedef enum e_err_num
 {
@@ -130,6 +134,11 @@ int	ft_isalnum(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strjoin_f(char *s1, char *s2);
+//exec pipe
+int	get_exit_status(int status);
+void   exec_pipe_child(t_node* tree , int pipfd[2] ,t_direction derection);
+int exec_pipe(t_node * tree);
+int exec_node( t_node *node , bool piped);
 
 //env
 char    *extract_value(char *str);
