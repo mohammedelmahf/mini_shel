@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_tree.c                                        :+:      :+:    :+:   */
+/*   ft_free_char.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 09:36:49 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 16:29:14 by maelmahf         ###   ########.fr       */
+/*   Created: 2025/04/29 15:54:31 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/29 15:56:21 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void    init_leaf(t_node *node)
+void	free_spliter2(char **tofree)
 {
-    if(node->args)
-        node->expanded_args = expand_args(node->args);
-        
+	size_t	i;
+
+	if (!tofree)
+		return ;
+	i = 0;
+	while (tofree[i])
+		free(tofree[i++]);
+	free(tofree);
 }
 
-void    init_tree(t_node *node)
+void	free_spliter3(char ***tofree)
 {
-    if (!node)
-        return ;
-    if(node->type == N_PIPE 
-        || node->type == N_AND
-        || node->type == N_OR)
-    {
-        init_tree(node->left);
-        if(!data.heredoc_sigint)
-            init_tree(node->right);
-    }
-    else    
-        init_leaf(node);
-}
+	size_t	i;
 
+	if (!tofree)
+		return ;
+	i = 0;
+	while (tofree[i])
+		ft_free_char2(tofree[i++]);
+	free(tofree);
+}

@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_tree.c                                        :+:      :+:    :+:   */
+/*   globber.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 09:36:49 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 16:29:14 by maelmahf         ###   ########.fr       */
+/*   Created: 2025/04/29 16:32:33 by maelmahf          #+#    #+#             */
+/*   Updated: 2025/04/29 16:43:27 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void    init_leaf(t_node *node)
+char    **globber(char **expanded)
 {
-    if(node->args)
-        node->expanded_args = expand_args(node->args);
-        
-}
+    char    ***globbed;
+    size_t  expanded_len;
+    size_t  i;
 
-void    init_tree(t_node *node)
-{
-    if (!node)
-        return ;
-    if(node->type == N_PIPE 
-        || node->type == N_AND
-        || node->type == N_OR)
+    i = 0;
+    expanded_len = len_arr(expanded);
+    globbed = (char ***)ft_calloc(expanded_len + 1 , sizeof(char **));
+    while(expanded[i])
     {
-        init_tree(node->left);
-        if(!data.heredoc_sigint)
-            init_tree(node->right);
+        globbed = globber_helper(expanded[i]);
+        i++;
     }
-    else    
-        init_leaf(node);
+    return (free_spliter2(expanded) , join_str_arr(globbed));
 }
-

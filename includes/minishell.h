@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 23:57:59 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/04/30 14:46:46 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,10 +160,12 @@ char	*remove_empty_quotes(char *str);
 char   *handle_dollar(char *str , size_t *i);
 char    *cmd_pre_expand(char *str);
 char    *handle_squotes(char *str , size_t *i);
-char    **expanded_args(char *str);
+char    **expand_args(char *str);
 char    *handle_dquotes_str(char *str , size_t *i);
 char   *handle_dquotes(char *str , size_t *i);
 char	*handle_normal_str(char *str, size_t *i);
+void    skip_word(char *str , size_t *i);
+char    **expander_split(char *str);
 //exist_check
 t_err check_exec(char *file, bool cmd);
 t_err check_write(char *file);
