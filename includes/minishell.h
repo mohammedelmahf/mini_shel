@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/30 14:46:46 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/01 20:06:43 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <sys/types.h>
 #include <termios.h>
 #include <signal.h>
+ #include <fcntl.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "tokenizing.h"
@@ -121,40 +122,54 @@ void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	ft_putchar_fd(char c, int fd);
-int	ft_isspace(char c);
+int		ft_isspace(char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strjoin_args(char const *s1, char const *s2, char c);
-int	count(char const *s, char c);
+int		count(char const *s, char c);
 char	*copy(char *str, int start, int end);
 char	**ft_split(char const *s, char c);
-int	ft_isalpha(int c);
-int	ft_isalnum(int c);
+int		ft_isalpha(int c);
+int		ft_isalnum(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strjoin_f(char *s1, char *s2);
-//exec pipe
-int	get_exit_status(int status);
-void   exec_pipe_child(t_node* tree , int pipfd[2] ,t_direction derection);
-int exec_pipe(t_node * tree);
-int exec_node( t_node *node , bool piped);
-
 //env
 char    *extract_value(char *str);
 char    *extract_value(char *str);
 void    init_envlst(void);
 void    envlst_back(t_env *new);
 void    update_envlst(char *key,char *value, bool create);
-char *get_envlst_value(char *key);
-t_env *get_env(char *key);
+char    *get_envlst_value(char *key);
+t_env   *get_env(char *key);
 //exec
 void    *garbage_collector(char *str , bool clean);
-int 	exec_builtins(char **args);
-bool    is_builtin(char *arg);
+//exec--init
 bool    is_valid_var_char(char c);
 void    init_tree(t_node *node);
 void    init_leaf(t_node *node);
+//exec--redirection
+int 	exec_in(t_io_node *io_list , int *status);
+int 	exec_out(t_io_node *io_list , int *status);
+int	 	exec_append(t_io_node *io_list , int *status);
+//exixit--check
+t_err 	check_exec(char *file, bool cmd);
+t_err 	check_write(char *file);
+t_err 	check_read(char *file);
+//exec--pipe
+void    exec_pipe_child(t_node* tree , int pipfd[2] ,t_direction derection);
+int		get_exit_status(int status);
+int 	exec_pipe(t_node * tree);
+int	 	exec_node( t_node *node , bool piped);
+//exec--builtin
+int 	exec_builtins(char **args);
+bool    is_builtin(char *arg);
+//exec--error_msg
+int		ft_err_msg(t_err err);
+//exec--external_commnad
+int check_redirections(t_node *node);
+
 //expand
 char	*remove_empty_quotes(char *str);
 char   *handle_dollar(char *str , size_t *i);
@@ -166,12 +181,6 @@ char   *handle_dquotes(char *str , size_t *i);
 char	*handle_normal_str(char *str, size_t *i);
 void    skip_word(char *str , size_t *i);
 char    **expander_split(char *str);
-//exist_check
-t_err check_exec(char *file, bool cmd);
-t_err check_write(char *file);
-t_err check_read(char *file);
-//error  msg
-int	ft_err_msg(t_err err);
 //signal
 void    init_signal(void);
 void    handler_sigquit(int num);

@@ -3,7 +3,7 @@
 
 void   exec_pipe_child(t_node* tree , int pipfd[2] ,t_direction derection)
 {
-    int status;
+    int status = 0;
 
     if(derection == TD_LEFT)
     {
@@ -17,7 +17,7 @@ void   exec_pipe_child(t_node* tree , int pipfd[2] ,t_direction derection)
 		dup2(pipfd[0], STDIN_FILENO);
 		close(pipfd[0]);
     }
-    status = exec_node(tree , true);
+   status = exec_node(tree , true);
     clean_all();
     exit(status);
 }
@@ -28,7 +28,6 @@ int	get_exit_status(int status)
 		return (128 + WTERMSIG(status));
 	return (WEXITSTATUS(status));
 }
-
 
 int exec_pipe(t_node *tree)
 {
@@ -67,5 +66,6 @@ int exec_pipe(t_node *tree)
 
 //     if(node->type == N_PIPE)
 //         return(exec_pipe(node));
+// 	return 0;
 
 // }
