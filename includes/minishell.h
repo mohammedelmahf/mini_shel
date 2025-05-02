@@ -169,7 +169,11 @@ bool    is_builtin(char *arg);
 int		ft_err_msg(t_err err);
 //exec--external_commnad
 int check_redirections(t_node *node);
-
+void	reset_std(bool pipd);
+int  exec_simple_cmd(t_node *node, bool pipe);
+//exec--get path
+t_path get_path(char *cmd);
+t_path get_env_path(char *path, char *cmd);
 //expand
 char	*remove_empty_quotes(char *str);
 char   *handle_dollar(char *str , size_t *i);

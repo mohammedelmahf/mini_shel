@@ -59,13 +59,16 @@ int exec_pipe(t_node *tree)
 	return get_exit_status(status_r);
 }
 
-// int exec_node( t_node *node , bool piped)
-// {
-//     if(!node)
-//         return 1;
+int exec_node( t_node *node , bool piped)
+{
+    if(!node)
+        return 1;
 
-//     if(node->type == N_PIPE)
-//         return(exec_pipe(node));
-// 	return 0;
+    if(node->type == N_PIPE)
+        return(exec_pipe(node));
+	
+	else
+		return(exec_simple_cmd(node, piped)); 
 
-// }
+	return (ENO_GENERAL);
+}

@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-static t_path get_env_path(char *path, char *cmd)
+ t_path get_env_path(char *path, char *cmd)
 {
     size_t i = 0;
     t_err err;
@@ -39,33 +39,3 @@ t_path get_path(char *cmd)
 
     return (t_path){(t_err){ENO_NOT_FOUND, ERRMSG_NO_SUCH_FILE, cmd}, NULL};
 }
-
-// void execute_cmd(char **args, char **envp)
-// {
-//     if (!args || !args[0] || args[0][0] == '\0')
-//         return;
-//     if (is_builtin(args[0]))
-//     {
-//         exec_builtins(args);
-//         return;
-//     }
-//     t_path p = get_path(args[0]);
-//     if (p.err.num != ENO_SUCCESS)
-//     {
-//         ft_putstr_fd("minishell: ", 2);
-//         ft_putstr_fd(p.err.cause, 2);
-//         ft_putstr_fd(": command not found\n", 2);
-//         return;
-//     }
-//     pid_t pid = fork();
-//     if (pid == 0)
-//     {
-//         execve(p.path, args, envp);
-//         perror("execve");
-//         exit(EXIT_FAILURE);
-//     }
-//     else if (pid > 0)
-//         waitpid(pid, NULL, 0);
-//     else
-//         perror("fork");
-// }
