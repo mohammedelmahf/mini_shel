@@ -24,48 +24,48 @@ static  void    init_minishell(char **env)
 	tcgetattr(STDIN_FILENO, &data.original_term);
 }
 
-// void    execution(void)
-// {
-//     signal(SIGQUIT , handler_sigquit);
-//     init_tree(data.ast);
-// }
+void    execution(void)
+{
+    signal(SIGQUIT , handler_sigquit);
+    init_tree(data.ast);
+}
 
-// int main(int ac , char **av  , char **env)
-// {  
-//     (void)ac;
-//     (void)av;
-//     init_minishell(env);
-//     while(1)
-//     {
-//         init_signal();
-//         data.line = readline(PROMPT);
-//         if (!data.line)
-//             (/*clean_all(), */ft_putstr_fd("exit\n" , 1) , exit(data.exit_s));
-//         if(data.line[0])
-//             add_history(data.line);
-//         printf("Before tokenize\n");
-//         data.tokens = tokenize();
-//             t_token *curr = data.tokens;
+int main(int ac , char **av  , char **env)
+{  
+    (void)ac;
+    (void)av;
+    init_minishell(env);
+    while(1)
+    {
+        init_signal();
+        data.line = readline(PROMPT);
+        if (!data.line)
+            (/*clean_all(), */ft_putstr_fd("exit\n" , 1) , exit(data.exit_s));
+        if(data.line[0])
+            add_history(data.line);
+        printf("Before tokenize\n");
+        data.tokens = tokenize();
+            t_token *curr = data.tokens;
  
-//         while (curr)
-//         {
-//             printf("Token type: %d, Token value: %s\n", curr->type, curr->value);
-//             curr = curr->next;
-//         }
-//         if(!data.tokens)
-//             continue;
-//         printf("Before start_parsing\n");
-//         data.ast = start_parsing();
-//         printf("After start_parsing\n");
-//         // if(data.parse_error.type)
-//         // {
-//         //     handle_parse_error();
-//         //     continue;
-//         // }
-//         printf("data_ast : %p\n" , data.ast);
-//         //write(STDIN_FILENO, "hey", 4);
-//         execution();
-//     }
-//     garbage_collector(NULL , true);
+        while (curr)
+        {
+            printf("Token type: %d, Token value: %s\n", curr->type, curr->value);
+            curr = curr->next;
+        }
+        if(!data.tokens)
+            continue;
+        printf("Before start_parsing\n");
+        data.ast = start_parsing();
+        printf("After start_parsing\n");
+        // if(data.parse_error.type)
+        // {
+        //     handle_parse_error();
+        //     continue;
+        // }
+        printf("data_ast : %p\n" , data.ast);
+        //write(STDIN_FILENO, "hey", 4);
+        execution();
+    }
+    garbage_collector(NULL , true);
 
-// }
+}
