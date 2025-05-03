@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/01 20:06:43 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/03 14:45:13 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-
+void    init_tree(t_node *node);
 //utils
 void	*ft_calloc(size_t count, size_t size);
 void	ft_putstr_fd(char *s, int fd);
@@ -191,4 +191,6 @@ void    handler_sigquit(int num);
 //cleaning
 void    clean_all(void);
 void execute_cmd(char **args, char **envp);
+
+
 #endif
