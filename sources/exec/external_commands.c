@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/05 11:29:55 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:45:50 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int  exec_simple_cmd(t_node *node, bool pipe)
     int stauts;
     if (!node->expanded_args)
     {
+        printf("Command not found\n");
         stauts = check_redirections(node);
         reset_std(pipe);
         return (stauts && ENO_GENERAL);

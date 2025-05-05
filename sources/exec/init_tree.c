@@ -6,58 +6,58 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 09:36:49 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/05 11:36:10 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:41:59 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-static void	heredoc_sigint_handler(int signum)
-{
-	(void)signum;
-	ft_clean_ms();
-	exit(SIGINT);
-}
+// static void	heredoc_sigint_handler(int signum)
+// {
+// 	(void)signum;
+// 	//clean_ms();
+// 	exit(SIGINT);
+// }
 
-void	heredoc(t_io_node *io, int p[2])
-{
+// void	heredoc(t_io_node *io, int p[2])
+// {
     
-}
+// }
 
-static bool	leave_leaf(int p[2], int *pid)
-{
-	waitpid(*pid, pid, 0);
-	signal(SIGQUIT, handler_sigquit);
-	data.signint_child = false;
-	close(p[1]);
-	if (WIFEXITED(*pid) && WEXITSTATUS(*pid) == SIGINT)
-		return (true);
-	return (false);
-}
+// static bool	leave_leaf(int p[2], int *pid)
+// {
+// 	waitpid(*pid, pid, 0);
+// 	signal(SIGQUIT, handler_sigquit);
+// 	data.signint_child = false;
+// 	close(p[1]);
+// 	if (WIFEXITED(*pid) && WEXITSTATUS(*pid) == SIGINT)
+// 		return (true);
+// 	return (false);
+// }
 
 void    init_leaf(t_node *node)
 {
     t_io_node	*io;
-	int			p[2];
-	int			pid;
-    
+	// int			p[2];
+	// int			pid;
     if(node->args)
         node->expanded_args = expand_args(node->args);
     io = node->io_list;
+	//printf("node->expanded_args : %s\n" , node->expanded_args[0]);
 	while (io)
 	{
-		if (io->type == IO_HEREDOC)
-		{
-			pipe(p);
-			data.signint_child = true;
-			pid = (signal(SIGQUIT, SIG_IGN), fork());
-			if (!pid)
-				heredoc(io, p);
-			if (leave_leaf(p, &pid))
-				return ;
-			io->here_doc = p[0];
-		}
-		else
-			io->expanded_value = expand(io->value);
+		// if (io->type == IO_HEREDOC)
+		// {
+		// 	pipe(p);
+		// 	data.signint_child = true;
+		// 	pid = (signal(SIGQUIT, SIG_IGN), fork());
+		// 	if (!pid)
+		// 		heredoc(io, p);
+		// 	if (leave_leaf(p, &pid))
+		// 		return ;
+		// 	io->here_doc = p[0];
+		// }
+		// else
+			io->expanded_value = expand_args(io->value);
 		io = io->next;
 	}
 }

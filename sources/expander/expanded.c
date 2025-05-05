@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:00:58 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/05 10:25:03 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:47:19 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,8 @@ char    *cmd_pre_expand(char *str)
     char *expanded;
     size_t i;
 
-    expanded = ft_strdup(str);
+    expanded = ft_strdup("");
     i = 0;
-
     while(str[i])
     {
         if(str[i]  == '\'')
@@ -70,7 +69,7 @@ char    **expand_args(char *str)
     char    **expanded;
     char    **globbed;
     size_t  i;
-
+    
     str = cmd_pre_expand(str);
     if(!str)
         return (NULL);
@@ -82,7 +81,7 @@ char    **expand_args(char *str)
     if(!expanded)
         return (NULL);
     globbed = globber(expanded);
-    if(globbed)
+    if(!globbed)
         return (NULL);
     i = 0;
     while(globbed[i])
@@ -90,5 +89,7 @@ char    **expand_args(char *str)
         globbed[i] = strip_quotes(globbed[i]);
         i++;
     }
+    printf("expanded : %s\n" , expanded[0]);
     return (globbed);
+
 }
