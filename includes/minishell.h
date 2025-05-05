@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 16:29:32 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 09:30:55 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
 #include <signal.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-#include "tokenizing.h"
+#include <dirent.h>
 #include <limits.h>
+#include "tokenizing.h"
 #include "parsing.h"
 #include "builtins.h"
 #include "parsing.h"
@@ -148,7 +149,7 @@ bool    is_builtin(char *arg);
 bool    is_valid_var_char(char c);
 void    init_tree(t_node *node);
 void    init_leaf(t_node *node);
-//expand
+//expander
 char	*remove_empty_quotes(char *str);
 char   *handle_dollar(char *str , size_t *i);
 char    *cmd_pre_expand(char *str);
@@ -159,6 +160,10 @@ char   *handle_dquotes(char *str , size_t *i);
 char	*handle_normal_str(char *str, size_t *i);
 void    skip_word(char *str , size_t *i);
 char    **expander_split(char *str);
+char    **globber(char **expanded);
+size_t  len_arr(char **str);
+size_t  multi_str_count(char ***str);
+char    **join_str_arr(char ***str);
 //exist_check
 t_err check_exec(char *file, bool cmd);
 t_err check_write(char *file);

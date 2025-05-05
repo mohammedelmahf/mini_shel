@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:34:32 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 16:35:40 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:22:54 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,49 @@ size_t  len_arr(char **str)
     while(str[i])
         i++;
     return (i);
+}
+
+char    **join_str_arr(char ***str)
+{
+    size_t i;
+    size_t j;
+    size_t str_count;
+    char **joined;
+
+    str_count = multi_str_count(str);
+    joined = (char **)ft_calloc(str_count + 1 , sizeof(char *));
+    i = 0 ;
+    str_count = 0;
+
+    while(str[i])
+    {
+        j = 0;
+        while(str[i][j])
+        {
+            joined[str_count + j] = ft_strdup(str[i][j]);   
+            j++;
+        }
+        str_count += j;
+        i++;
+    }
+    return(free_spliter3(str) , joined);
+}
+
+size_t  multi_str_count(char ***str)
+{
+    size_t i;
+    size_t j;
+    size_t str_count;
+
+    i = 0;
+    str_count = 0;
+    while(str[i])
+    {
+        j = 0;
+        while(str[i][j])
+            j++;
+        str_count += j;
+        i++;
+    }
+    return (str_count);
 }
