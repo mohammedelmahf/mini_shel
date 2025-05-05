@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:32:33 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/05 09:34:31 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 09:44:48 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char    **globber_helper(char **str)
     size_t  match_count;
     struct dirent   *entry;
 
-    match_count = match_count(str);
+    match_count = pattern_count(str);
     
 }
 

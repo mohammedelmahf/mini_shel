@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/05 09:30:55 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 09:44:39 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <sys/types.h>
 #include <termios.h>
 #include <signal.h>
+ #include <fcntl.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <dirent.h>
@@ -54,7 +55,11 @@ typedef enum e_msg_err
 	ERRMSG_NUMERIC_REQUI	
 }	t_msg_err;
 
-
+typedef enum e_direction
+{
+	TD_LEFT,
+	TD_RIGHT
+}	t_direction;
 
 typedef enum e_err_num
 {
@@ -102,7 +107,7 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-
+void    init_tree(t_node *node);
 //utils
 void	*ft_calloc(size_t count, size_t size);
 void	ft_putstr_fd(char *s, int fd);
@@ -118,38 +123,34 @@ void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	ft_putchar_fd(char c, int fd);
-int	ft_isspace(char c);
+int		ft_isspace(char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strjoin_args(char const *s1, char const *s2, char c);
-int	count(char const *s, char c);
+int		count(char const *s, char c);
 char	*copy(char *str, int start, int end);
 char	**ft_split(char const *s, char c);
-int	ft_isalpha(int c);
-int	ft_isalnum(int c);
+int		ft_isalpha(int c);
+int		ft_isalnum(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strjoin_f(char *s1, char *s2);
-void	free_spliter3(char ***tofree);
-void	free_spliter2(char **tofree);
-
 //env
 char    *extract_value(char *str);
 char    *extract_value(char *str);
 void    init_envlst(void);
 void    envlst_back(t_env *new);
 void    update_envlst(char *key,char *value, bool create);
-char *get_envlst_value(char *key);
-t_env *get_env(char *key);
+char    *get_envlst_value(char *key);
+t_env   *get_env(char *key);
 //exec
 void    *garbage_collector(char *str , bool clean);
-int 	exec_builtins(char **args);
-bool    is_builtin(char *arg);
+//exec--init
 bool    is_valid_var_char(char c);
 void    init_tree(t_node *node);
 void    init_leaf(t_node *node);
-//expander
+//expand
 char	*remove_empty_quotes(char *str);
 char   *handle_dollar(char *str , size_t *i);
 char    *cmd_pre_expand(char *str);
@@ -160,10 +161,7 @@ char   *handle_dquotes(char *str , size_t *i);
 char	*handle_normal_str(char *str, size_t *i);
 void    skip_word(char *str , size_t *i);
 char    **expander_split(char *str);
-char    **globber(char **expanded);
-size_t  len_arr(char **str);
-size_t  multi_str_count(char ***str);
-char    **join_str_arr(char ***str);
+size_t  count_pattern(char **pattern);
 //exist_check
 t_err check_exec(char *file, bool cmd);
 t_err check_write(char *file);
@@ -176,4 +174,10 @@ void    handler_sigquit(int num);
 //cleaning
 void    clean_all(void);
 void execute_cmd(char **args, char **envp);
+
+void	free_tokens(t_token *tokens);
+void	free_ast(t_node *ast);
+
+ void	clean_cmd_data(void);
+
 #endif

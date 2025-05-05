@@ -5,7 +5,8 @@ LDFLAGS     := -lreadline  # Link against the readline library
 
 env         :=  sources/env/env.c sources/env/env_utils.c
 exec        :=  sources/exec/exec_utils.c sources/exec/exec_builtin.c sources/exec/exist_check.c \
-                sources/exec/get_path.c sources/exec/error_msg.c sources/exec/expanded_utils.c sources/exec/expanded.c
+                sources/exec/get_path.c sources/exec/error_msg.c  sources/exec/exec_redirections.c \
+                sources/exec/exec_pipe.c  sources/exec/external_commands.c 
 utils       :=  sources/utils/ft_calloc.c sources/utils/ft_lstadd_back.c sources/utils/ft_lstclear.c \
                 sources/utils/ft_lstnew.c sources/utils/ft_memset.c sources/utils/ft_putstr_fd.c \
                 sources/utils/ft_strdup.c sources/utils/ft_strlen.c sources/utils/ft_substr.c sources/utils/ft_bzero.c \

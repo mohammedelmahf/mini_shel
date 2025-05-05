@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:34:32 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/01 11:22:54 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 09:47:14 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,23 @@ size_t  multi_str_count(char ***str)
         i++;
     }
     return (str_count);
+}
+
+size_t  pattern_count(char **pattern)
+{
+    DIR     *dir;
+    size_t  count;
+    struct dirent *entry;
+    
+    count = 0;
+    dir = opendir(".");
+    entry = readdir(dir);
+    while(entry)
+    {
+        if(pattern_matches(pattern , entry->d_name))
+            count++;
+        entry = readdir(dir);
+    }
+    closedir(dir);
+    return(count);
 }
