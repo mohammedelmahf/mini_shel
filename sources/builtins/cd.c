@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:07 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/05 01:15:30 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/05 01:49:22 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ int change_pwd(void)
 	cwd = getcwd(NULL , 0);
 	if(!cwd)
 		return (1);
-	update_envlst("PWD" ,cwd ,false); 
+	update_envlst("PWD" ,cwd ,false);
 	return (0);
 }
-
 
 int	cd_home(void)
 {
@@ -43,7 +42,7 @@ int	cd_home(void)
 	return (1);	
 }
 
-int cd_err_msg(char * msg)
+int cd_err_msg(char *msg)
 {
 	ft_putstr_fd("minishell: cd: `", 2);
 	ft_putstr_fd(msg, 2);
@@ -55,7 +54,7 @@ int ft_cd(char *path)
 {
 	if (!path)
 		return (cd_home());
-	if (chdir(path) == -1)
+	if (chdir(path) == ENO_SUCCESS)
 		return (cd_err_msg(path));
 	update_envlst("OLDPWD" ,get_envlst_value("PWD") , false);
 	return (change_pwd());

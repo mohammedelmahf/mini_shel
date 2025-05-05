@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "limits": "c",
-        "minishell.h": "c",
-        "cstdio": "c"
-    }
-}
