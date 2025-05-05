@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_commands.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/05 14:45:50 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 23:06:20 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	reset_std(bool pipd)
 int exec_child(t_node *node)
 {
     t_path path_status;
-    int fork_pid = 0;
+    int fork_pid ;
     int status;
 
     data.signint_child = true;
-
+   fork_pid = fork();
     if(!fork_pid)
     {
         status = check_redirections(node);
@@ -70,9 +70,9 @@ int exec_child(t_node *node)
         if(execve(path_status.path ,node->expanded_args , data.environ) == -1)
         {
             clean_all();
-            exit(1);
+            exit(status);
         }
-    }
+        }
         waitpid(fork_pid ,&status , 0);
         data.signint_child = false;
         return (get_exit_status (status));
@@ -94,7 +94,7 @@ int  exec_simple_cmd(t_node *node, bool pipe)
         if(stauts != ENO_SUCCESS)
         {
            reset_std(pipe);
-            return ( stauts && ENO_GENERAL);       
+           return ( stauts && ENO_GENERAL);       
         }
         stauts = exec_builtins(node->expanded_args);
         reset_std(pipe);

@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:07 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/05 01:49:22 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/05 18:48:53 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int ft_cd(char *path)
 {
 	if (!path)
 		return (cd_home());
-	if (chdir(path) == ENO_SUCCESS)
+	if (chdir(path) != ENO_SUCCESS)
 		return (cd_err_msg(path));
 	update_envlst("OLDPWD" ,get_envlst_value("PWD") , false);
 	return (change_pwd());

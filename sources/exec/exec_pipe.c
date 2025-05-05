@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:13 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/05 11:22:51 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 18:53:27 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,30 @@ int exec_pipe(t_node *tree)
 	return get_exit_status(status_r);
 }
 
-int exec_node( t_node *node , bool piped)
+int exec_node( t_node *tree , bool piped)
 {
-    if(!node)
+	int status;
+    
+	if(!tree)
         return 1;
-    if(node->type == N_PIPE)
-        return(exec_pipe(node));
-	else
+    if(tree->type == N_PIPE)
+        return(exec_pipe(tree));
+	else if (tree->type == N_AND)
 	{
-		return(exec_simple_cmd(node, piped));
-	} 
+		status = exec_node(tree->left, false);
+		if (status == ENO_SUCCESS)
+			return (exec_node(tree->right, false));
+		return (status);
+	}
+	else if (tree->type == N_OR)
+	{
+		status = exec_node(tree->left, false);
+		if (status == ENO_SUCCESS)
+			return (status);
+		return (exec_node(tree->right, false));
+	}
+	else
+		return(exec_simple_cmd(tree, piped));
 	
 	return (ENO_GENERAL);
 }
