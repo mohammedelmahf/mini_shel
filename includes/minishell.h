@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/05 11:06:31 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:46:15 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,7 @@ bool	contains_wildcard(char *str);
 size_t  len_arr(char **str);
 bool	pattern_match_exists(char **pattern, char **last_wildcard,char **last_match, char **str);
 char    **join_str_arr(char ***str);
+void	heredoc(t_io_node *io, int p[2]);
 //exist_check
 t_err check_exec(char *file, bool cmd);
 t_err check_write(char *file);
