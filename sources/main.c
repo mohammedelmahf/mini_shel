@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/04 17:16:53 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/05 01:11:39 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,33 +99,20 @@ int	main(int ac, char **av, char **env)
 			ft_putstr_fd("exit\n", 1);
 			exit(data.exit_s);
 		}
-		if (data.line[0])
-			add_history(data.line);
+		// if (data.line[0])
+		// 	add_history(data.line);
 
-		data.tokens = tokenize();
-		if (!data.tokens)
-		{
-			free(data.line);
-			continue;
-		}
-
-		data.ast = start_parsing();
-		// if (data.parse_error.type)
+		// data.tokens = tokenize();
+		// if (!data.tokens)
 		// {
-		// 	handle_parse_error();
+		// 	free(data.line);
 		// 	continue;
 		// }
 
-		// ✅ هنا فين كتجرب exec_node
-		data.exit_s = exec_node(data.ast, false);
-
-		// 🧹 تنظيف بعد كل أمر
-		// free_tokens(data.tokens);
-		//free_ast(data.ast);
-		free(data.line);
-		data.tokens = NULL;
-		data.ast = NULL;
-		data.line = NULL;
+	if( ft_strcmp( data.line , "cd") == 0)
+	{
+		ft_export(&data.line);
+	}
 	}
 	garbage_collector(NULL, true);
 	return (0);

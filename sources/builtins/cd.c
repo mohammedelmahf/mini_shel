@@ -6,47 +6,57 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:07 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/03 14:31:08 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/05 01:15:30 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	ft_cd(char **args)
+int change_pwd(void)
 {
-	char	*oldpwd;
-	char	*cwd;
+	char *cwd;
 
-	if (!args[1])
-	{
-		ft_putstr_fd("minishell: cd: path required\n", 2);
+	cwd = getcwd(NULL , 0);
+	if(!cwd)
 		return (1);
-	}
-
-	oldpwd = getcwd(NULL, 0);
-	if (!oldpwd)
-	{
-		perror("minishell: cd (getcwd)");
-		return (1);
-	}
-
-	if (chdir(args[1]) == -1)
-	{
-		perror("minishell: cd");
-		free(oldpwd);
-		return (1);
-	}
-	update_envlst("OLDPWD", oldpwd, true);
-	free(oldpwd);
-
-	cwd = getcwd(NULL, 0);
-	if (cwd)
-	{
-		update_envlst("PWD", cwd, true);
-		free(cwd);
-	}
-	else
-		perror("minishell: cd (getcwd)");
-
+	update_envlst("PWD" ,cwd ,false); 
 	return (0);
+}
+
+
+int	cd_home(void)
+{
+	char	*home;
+	
+	update_envlst("OLDPWD" ,get_envlst_value("PWD") , false);
+	home = get_envlst_value("HOME");
+	if(!home)
+	{
+		ft_putstr_fd("minishell: cd: HOME not set\n", 2);
+		return (1);
+	}
+	if (chdir(home) == ENO_SUCCESS)
+	{
+		update_envlst("PWD" ,home ,false);
+		return (0);
+	}
+	return (1);	
+}
+
+int cd_err_msg(char * msg)
+{
+	ft_putstr_fd("minishell: cd: `", 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd("': No such file or directory\n", 2);
+	return (1);
+}
+
+int ft_cd(char *path)
+{
+	if (!path)
+		return (cd_home());
+	if (chdir(path) == -1)
+		return (cd_err_msg(path));
+	update_envlst("OLDPWD" ,get_envlst_value("PWD") , false);
+	return (change_pwd());
 }
