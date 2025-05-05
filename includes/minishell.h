@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/05 09:44:39 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:06:31 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,10 @@ int		ft_isalnum(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strjoin_f(char *s1, char *s2);
+char	*ft_itoa(int n);
+void	free_char2(char **tofree);
+void	free_char3(char ***tofree);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 //env
 char    *extract_value(char *str);
 char    *extract_value(char *str);
@@ -146,6 +150,15 @@ char    *get_envlst_value(char *key);
 t_env   *get_env(char *key);
 //exec
 void    *garbage_collector(char *str , bool clean);
+int exec_node( t_node *node , bool piped);
+int  exec_simple_cmd(t_node *node, bool pipe);
+int exec_in(t_io_node *io_list , int *status);
+int exec_out(t_io_node *io_list , int *status);
+int exec_append(t_io_node *io_list , int *status);
+t_path get_path(char *cmd);
+int	get_exit_status(int status);
+bool    is_builtin(char *arg);
+int exec_builtins(char **args);
 //exec--init
 bool    is_valid_var_char(char c);
 void    init_tree(t_node *node);
@@ -161,7 +174,17 @@ char   *handle_dquotes(char *str , size_t *i);
 char	*handle_normal_str(char *str, size_t *i);
 void    skip_word(char *str , size_t *i);
 char    **expander_split(char *str);
+char	*strip_quotes(char *str);
 size_t  count_pattern(char **pattern);
+char    **globber(char **expanded);
+char    **globber_helper(char *str);
+size_t  multi_str_count(char ***str);
+bool    pattern_matches(char *pattern , char *str);
+size_t  pattern_count(char *pattern);
+bool	contains_wildcard(char *str);
+size_t  len_arr(char **str);
+bool	pattern_match_exists(char **pattern, char **last_wildcard,char **last_match, char **str);
+char    **join_str_arr(char ***str);
 //exist_check
 t_err check_exec(char *file, bool cmd);
 t_err check_write(char *file);

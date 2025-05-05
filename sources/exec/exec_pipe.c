@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:13 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/03 14:30:14 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:22:51 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ int exec_node( t_node *node , bool piped)
 {
     if(!node)
         return 1;
-
     if(node->type == N_PIPE)
         return(exec_pipe(node));
-	
 	else
-		return(exec_simple_cmd(node, piped)); 
-
+	{
+		return(exec_simple_cmd(node, piped));
+	} 
+	
 	return (ENO_GENERAL);
 }

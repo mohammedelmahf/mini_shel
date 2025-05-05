@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_commands.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/03 14:30:28 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:29:55 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int check_redirections(t_node *node)
 {
     t_io_node *tmp_io;
     int status;
-
+    
     tmp_io = node->io_list;
     while(tmp_io)
     {
@@ -81,7 +81,6 @@ int exec_child(t_node *node)
 int  exec_simple_cmd(t_node *node, bool pipe)
 {
     int stauts;
-
     if (!node->expanded_args)
     {
         stauts = check_redirections(node);

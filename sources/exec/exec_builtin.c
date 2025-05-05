@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:01 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/05 01:21:26 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:26:45 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ bool    is_builtin(char *arg)
 {
 	if (!arg)
 		return (false);
+    
 	if (!ft_strcmp(arg, "echo")
         || !ft_strcmp(arg, "cd")
 		|| !ft_strcmp(arg, "exit")

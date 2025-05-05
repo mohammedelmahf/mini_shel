@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 19:18:49 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/05 01:15:53 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:45:50 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ long	ft_atoi(const char *str);
 int     ft_exit(char **s);
 bool    ft_isnumber(char *s);
 int     ft_isdigit(int c);
+
+
 
 #endif

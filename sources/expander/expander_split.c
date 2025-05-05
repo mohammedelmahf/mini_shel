@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 09:41:04 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/29 16:25:10 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 10:58:39 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char    **allocater(char *str , char **strs)
     size_t  i;
     size_t  j;
 
+    i =0;
+    j = 0;
     while(str[i])
     {
         if(str[i] != ' ')
@@ -79,6 +81,8 @@ char    **filler(char *str , char **strs)
     size_t  i;
     size_t  j;
 
+    i = 0;
+    j = 0;
     while(str[i] && strs[j])
     {
         if(str[i] != ' ')
@@ -113,7 +117,7 @@ char    **expander_split(char *str)
     strs = ft_calloc(count +1 , sizeof(char *));
     tofree = strs;
     strs = allocater(str , strs);
-    if(!strs || !count);
-        return (free_spliter2(tofree) , NULL);
+    if(!strs || !count)
+        return (free_char2(tofree) , NULL);
     return (filler(str , strs));
 }

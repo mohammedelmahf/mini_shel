@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:34:32 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/05 09:47:14 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:01:14 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char    **join_str_arr(char ***str)
         str_count += j;
         i++;
     }
-    return(free_spliter3(str) , joined);
+    return(free_char3(str) , joined);
 }
 
 size_t  multi_str_count(char ***str)
@@ -67,7 +67,7 @@ size_t  multi_str_count(char ***str)
     return (str_count);
 }
 
-size_t  pattern_count(char **pattern)
+size_t  pattern_count(char *pattern)
 {
     DIR     *dir;
     size_t  count;
@@ -84,4 +84,18 @@ size_t  pattern_count(char **pattern)
     }
     closedir(dir);
     return(count);
+}
+
+bool	contains_wildcard(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '*')
+			return (true);
+		i++;
+	}
+	return (false);
 }
