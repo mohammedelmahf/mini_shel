@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/06 08:20:54 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/06 08:26:32 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void    execution(void)
 {
     signal(SIGQUIT , handler_sigquit);
     init_tree(data.ast);
+    if (data.heredoc_sigint)
+	{
+		ft_clear_ast(&data.ast);
+		data.heredoc_sigint = false;
+	}
     tcsetattr(STDIN_FILENO, TCSANOW, &data.original_term);
 	data.exit_s = exec_node(data.ast, false);
 	// clear_ast(&data.ast);
