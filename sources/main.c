@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/06 08:20:24 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/06 08:20:54 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,51 +64,3 @@ int main(int ac , char **av  , char **env)
     garbage_collector(NULL , true);
 
 }
-// #include "../includes/minishell.h"
-
-// t_data	data;
-
-// static void	init_minishell(char **env)
-// {
-// 	ft_memset(&data, 0, sizeof(data));
-// 	data.environ = env;
-// 	init_envlst(); // كتدير parsing ديال env
-// 	data.stdin = dup(0);
-// 	data.stdout = dup(1);
-// 	tcgetattr(STDIN_FILENO, &data.original_term);
-// }
-
-// int	main(int ac, char **av, char **env)
-// {
-// 	(void)ac;
-// 	(void)av;
-
-// 	init_minishell(env);
-
-// 	while (1)
-// 	{
-// 		init_signal();
-// 		data.line = readline("minishell> ");
-// 		if (!data.line)
-// 		{
-// 			ft_putstr_fd("exit\n", 1);
-// 			exit(data.exit_s);
-// 		}
-// 		// if (data.line[0])
-// 		// 	add_history(data.line);
-
-// 		// data.tokens = tokenize();
-// 		// if (!data.tokens)
-// 		// {
-// 		// 	free(data.line);
-// 		// 	continue;
-// 		// }
-
-// 	if( ft_strcmp( data.line , "cd") == 0)
-// 	{
-// 		ft_export(&data.line);
-// 	}
-// 	}
-// 	garbage_collector(NULL, true);
-// 	return (0);
-// }
