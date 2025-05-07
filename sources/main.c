@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/07 10:25:01 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:42:21 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ int main(int ac , char **av  , char **env)
         if(!data.tokens)
             continue;
         data.ast = start_parsing();
-        // if(data.parse_error.type)
-        // {
-        //     handle_parse_error();
-        //     continue;
-        // }
+        if(data.parse_error.type)
+        {
+            handle_parse_error();
+            continue;
+        }
         execution();
     }
     garbage_collector(NULL , true);

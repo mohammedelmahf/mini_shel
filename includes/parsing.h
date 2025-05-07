@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/07 09:18:42 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:44:55 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ t_io_node		*new_io_node(t_token_type type, char *value);
 void	append_io_node(t_io_node **lst, t_io_node *new);
 void	clear_cmd_node(t_node *node);
 void	clear_io_list(t_io_node **lst);
+void	handle_parse_error(void);
 #endif

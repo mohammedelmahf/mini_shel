@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:13 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/05 18:53:27 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/07 11:47:03 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void   exec_pipe_child(t_node* tree , int pipfd[2] ,t_direction derection)
 
 int	get_exit_status(int status)
 {
-	if (WIFSIGNALED(status))
+	if (WIFSIGNALED(status))0
 		return (128 + WTERMSIG(status));
 	return (WEXITSTATUS(status));
 }
@@ -77,8 +77,12 @@ int exec_node( t_node *tree , bool piped)
     
 	if(!tree)
         return 1;
+	printf("exec_node: %d\n", tree->type);
     if(tree->type == N_PIPE)
+	{	
+		printf("pipe\n");
         return(exec_pipe(tree));
+	}
 	else if (tree->type == N_AND)
 	{
 		status = exec_node(tree->left, false);
