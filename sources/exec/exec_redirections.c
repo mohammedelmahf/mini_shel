@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:17 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/03 14:30:18 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:34:42 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int exec_in(t_io_node *io_list , int *status)
     dup2(fd ,STDIN_FILENO);
     close(fd);
     *status = 0;
-	return (0);
+	return (*status);
 }
 
 int exec_out(t_io_node *io_list , int *status)
@@ -56,7 +56,7 @@ int exec_out(t_io_node *io_list , int *status)
     dup2(fd ,STDOUT_FILENO);
     close(fd);
     *status = 0;
-	return (0);
+	return (*status);
 }
 
 int exec_append(t_io_node *io_list , int *status)
@@ -75,7 +75,7 @@ int exec_append(t_io_node *io_list , int *status)
 		*status = ft_err_msg(check_write(io_list->expanded_value[0]));
 		return (*status);
 	}
-    dup2(fd ,STDIN_FILENO);
+    dup2(fd ,STDOUT_FILENO);
     close(fd);
     *status = 0;
 	return (0);

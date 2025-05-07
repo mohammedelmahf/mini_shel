@@ -1,5 +1,14 @@
-
-
-
-
-
+➜  mini_shel git:(maelmahf) ✗ ./minishell 
+minishell>   cat <"1""2""3""4""5" 
+cat: -: Bad file descriptor
+cat: closing standard input: Bad file descriptor
+minishell>   cat < "1""2""3""4""5" 
+cat: -: Bad file descriptor
+cat: closing standard input: Bad file descriptor
+minishell> 
+exit
+➜  mini_shel git:(maelmahf) ✗   cat <"1""2""3""4""5" 
+zsh: no such file or directory: 12345
+➜  mini_shel git:(maelmahf) ✗ cat <"1""2""3""4""5"  
+zsh: no such file or directory: 12345
+➜  mini_shel git:(maelmahf) ✗ 

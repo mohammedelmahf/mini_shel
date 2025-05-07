@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/05 23:06:20 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:36:24 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int check_redirections(t_node *node)
     tmp_io = node->io_list;
     while(tmp_io)
     {
-        if(node->type == IO_IN && exec_in(tmp_io , &status) != ENO_SUCCESS)
+        if(tmp_io->type == IO_IN && exec_in(tmp_io , &status) != ENO_SUCCESS)
             return (status);
-        else if(node->type == IO_OUT  && exec_out(tmp_io , &status) != ENO_SUCCESS)
+        else if(tmp_io->type == IO_OUT  && exec_out(tmp_io , &status) != ENO_SUCCESS)
             return (status);
-        else if(node->type == IO_APPEND  && exec_append(tmp_io , &status) != ENO_SUCCESS)
+        else if(tmp_io->type == IO_APPEND  && exec_append(tmp_io , &status) != ENO_SUCCESS)
             return (status);
-        else if(node->type == IO_HEREDOC)
+        else if(tmp_io->type == IO_HEREDOC)
         {
             dup2(tmp_io->here_doc , 0);
             close(tmp_io->here_doc);
