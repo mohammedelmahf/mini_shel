@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 09:36:49 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/07 09:43:59 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:26:14 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static bool	leave_leaf(int p[2], int *pid)
 
 void    init_leaf(t_node *node)
 {
-	printf("here2\n");
     t_io_node	*io;
 	int			p[2];
 	int			pid;
