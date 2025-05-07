@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/07 09:15:14 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:40:38 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static  void    init_minishell(char **env)
 
 void    execution(void)
 {
+    printf("here1\n");
     signal(SIGQUIT , handler_sigquit);
     init_tree(data.ast);
     if (data.heredoc_sigint)
@@ -35,7 +36,7 @@ void    execution(void)
 	}
     tcsetattr(STDIN_FILENO, TCSANOW, &data.original_term);
 	data.exit_s = exec_node(data.ast, false);
-	// clear_ast(&data.ast);
+	clear_ast(&data.ast);
 }
 
 int main(int ac , char **av  , char **env)
@@ -51,10 +52,6 @@ int main(int ac , char **av  , char **env)
             (clean_all(), ft_putstr_fd("exit\n" , 1) , exit(data.exit_s));
         if(data.line[0])
             add_history(data.line);
-        if( ft_strcmp( data.line , "env") == 0)
-	    {
-		    ft_env();
-	    }
         data.tokens = tokenize();
         if(!data.tokens)
             continue;
@@ -67,5 +64,5 @@ int main(int ac , char **av  , char **env)
         execution();
     }
     garbage_collector(NULL , true);
-    return (/*clean_all(),*/ data.exit_s);
+    return (clean_all(), data.exit_s);
 }

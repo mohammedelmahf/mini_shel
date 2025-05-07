@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 09:41:04 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/05 10:58:39 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:22:36 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char    **allocater(char *str , char **strs)
         {
             start = i;
             skip_word(str , &i);
-            strs[j] = ft_calloc(i - start + 1 , sizeof(char *));
+            strs[j] = ft_calloc(i - start + 1 , sizeof(char));
             if(!strs[j])
                 return (NULL);
             j++;
@@ -57,23 +57,23 @@ char    **allocater(char *str , char **strs)
 
 void  word_filler(const char *str , char **strs , size_t *i , size_t j)
 {
-    char quotes;
-    size_t k;
+	char	quotes;
+	size_t	k;
 
-    k = 0;
-    while(str[*i] && str[*i] != ' ')
-    {
-        if(str[*i] != '\'' && str[*i])
-            strs[j][k++] = str[(*i)++];
-        else
-        {
-            quotes = str[(*i)++];
-            strs[j][k++] = quotes;
-            while (str[*i] != quotes)
-                strs[j][k++] = str[(*i)++];
-            strs[j][k++] = str[(*i)++];
-        }
-    }
+	k = 0;
+	while (str[(*i)] && str[(*i)] != ' ')
+	{
+		if (str[(*i)] != '\'' && str[(*i)] != '"')
+			strs[j][k++] = str[(*i)++];
+		else
+		{
+			quotes = str[(*i)++];
+			strs[j][k++] = quotes;
+			while (str[(*i)] != quotes)
+				strs[j][k++] = str[(*i)++];
+			strs[j][k++] = str[(*i)++];
+		}
+	}
 }  
 
 char    **filler(char *str , char **strs)

@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:00:58 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/05 14:47:19 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:23:03 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char    *cmd_pre_expand(char *str)
         else
             expanded = ft_strjoin_f(expanded , handle_normal_str(str , &i));
     }
+    printf("expanded = %s\n" , expanded);
     return (expanded);
 }
 
@@ -69,11 +70,12 @@ char    **expand_args(char *str)
     char    **expanded;
     char    **globbed;
     size_t  i;
-    
     str = cmd_pre_expand(str);
+    printf("str = %s\n" , str);
     if(!str)
         return (NULL);
     str = remove_empty_quotes(str);
+    printf("str = %s\n" , str);
     if(!str)
         return (NULL);
     expanded = expander_split(str);
@@ -81,6 +83,9 @@ char    **expand_args(char *str)
     if(!expanded)
         return (NULL);
     globbed = globber(expanded);
+    printf("globbed = %s\n" , globbed[0]);
+    printf("globbed = %s\n" , globbed[1]);
+    printf("globbed = %s\n" , globbed[2]);
     if(!globbed)
         return (NULL);
     i = 0;
@@ -89,7 +94,5 @@ char    **expand_args(char *str)
         globbed[i] = strip_quotes(globbed[i]);
         i++;
     }
-    printf("expanded : %s\n" , expanded[0]);
     return (globbed);
-
 }
