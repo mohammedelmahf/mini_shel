@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_help.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:54:47 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/17 00:21:19 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:18:07 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_node    *parse_single_cmd(void)
         if(data.curr_token->type == T_IDENTIFIER)
         {
             if(!join_args(&(node->args)))
-                return(/*clear_cmd_node(node) , set_error(E_MEM),*/ NULL);
+                return(clear_cmd_node(node) , set_error(E_MEM), NULL);
         }
         else if (redirection(data.curr_token->type))
         {

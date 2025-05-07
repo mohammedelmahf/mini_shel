@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/06 16:04:05 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:19:03 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int main(int ac , char **av  , char **env)
         init_signal();
         data.line = readline(PROMPT);
         if (!data.line)
-            (/*clean_all(), */ft_putstr_fd("exit\n" , 1) , exit(data.exit_s));
+            (clean_all(), ft_putstr_fd("exit\n" , 1) , exit(data.exit_s));
         if(data.line[0])
             add_history(data.line);
         if( ft_strcmp( data.line , "env") == 0)
@@ -67,5 +67,5 @@ int main(int ac , char **av  , char **env)
         execution();
     }
     garbage_collector(NULL , true);
-
+    return (/*clean_all(),*/ data.exit_s);
 }

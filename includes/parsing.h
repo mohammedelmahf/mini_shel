@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/17 00:21:14 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:18:42 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ t_node			*start_parsing(void);
 void			set_error(t_parse_err_type type);
 void			set_error(t_parse_err_type type);
 bool			curr_token_type_is_binop(void);
-//t_node			parse_single_cmd(void);
 t_node_type		get_node_type(t_token_type type);
 t_node			*lstnew(t_node_type type);
 void			next_token(void);
@@ -82,4 +81,6 @@ bool			join_args(char **args);
 t_node    *parse_single_cmd(void);
 t_io_node		*new_io_node(t_token_type type, char *value);
 void	append_io_node(t_io_node **lst, t_io_node *new);
+void	clear_cmd_node(t_node *node);
+void	clear_io_list(t_io_node **lst);
 #endif
