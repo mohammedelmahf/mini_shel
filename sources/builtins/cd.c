@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:07 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/07 13:07:36 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/07 15:21:26 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ int cd_err_msg(char *msg)
 	return (1);
 }
 
+int cd_err_msg_1(void)
+{
+	ft_putstr_fd("minishell: cd:", 2);
+	ft_putstr_fd(" too many arguments\n", 2);
+	return (1);
+}
+
 int cont_arg(char **arg)
 {
 	int i;
@@ -67,7 +74,7 @@ int ft_cd(char **path)
 	if (argc == 1)
 		return cd_home();
 	if (argc > 2) 
-		return (cd_err_msg(path[2]));
+		return (cd_err_msg_1());
 	if (chdir(path[1]) != ENO_SUCCESS )
 		return (cd_err_msg(path[1]));
 	update_envlst("OLDPWD" ,get_envlst_value("PWD") , false);
