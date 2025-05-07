@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:01 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/05 14:28:08 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/05 23:11:29 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int exec_builtins(char **args)
 {
-    printf("args[0] : %s\n" , args[0]);
     if(ft_strcmp(args[0] , "echo") == 0)
         return (ft_echo(args));
     else  if(ft_strcmp(args[0] , "cd") == 0)

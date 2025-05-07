@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/06 08:26:32 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:04:05 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    execution(void)
     init_tree(data.ast);
     if (data.heredoc_sigint)
 	{
-		ft_clear_ast(&data.ast);
+		//ft_clear_ast(&data.ast);
 		data.heredoc_sigint = false;
 	}
     tcsetattr(STDIN_FILENO, TCSANOW, &data.original_term);
