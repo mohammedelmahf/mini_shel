@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 19:18:49 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/05 10:45:50 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:44:34 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_env t_env;
 //pwd.c
 int     ft_pwd(void);
 //cd.c
-int     ft_cd(char *arg);
+int     ft_cd(char **arg);
 int     change_pwd(void);
 int     cd_err_msg(char * msg);
 int     cd_home(void);

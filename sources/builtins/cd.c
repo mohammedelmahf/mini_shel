@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:07 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/07 11:45:34 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:07:36 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,32 @@ int	cd_home(void)
 
 int cd_err_msg(char *msg)
 {
-	ft_putstr_fd("minishell: cd: `", 2);
+	ft_putstr_fd("minishell: cd: ", 2);
 	ft_putstr_fd(msg, 2);
-	ft_putstr_fd("': No such file or directory\n", 2);
+	ft_putstr_fd(": No such file or directory\n", 2);
 	return (1);
 }
 
-int ft_cd(char *path)
+int cont_arg(char **arg)
 {
-	if (!path)
-		return (cd_home());
-	if (chdir(path) != 0 )
-		return (cd_err_msg(path));
+	int i;
+	i = 0;
+	while(arg[i])
+		i++;
+	return i;	
+}
+
+int ft_cd(char **path)
+{
+	int argc;
+
+	argc = cont_arg(path);
+	if (argc == 1)
+		return cd_home();
+	if (argc > 2) 
+		return (cd_err_msg(path[2]));
+	if (chdir(path[1]) != ENO_SUCCESS )
+		return (cd_err_msg(path[1]));
 	update_envlst("OLDPWD" ,get_envlst_value("PWD") , false);
 	return (change_pwd());
 }

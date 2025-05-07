@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:01 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/07 11:41:21 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:58:50 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 int exec_builtins(char **args)
 {
+//     int i = 0;
+//     while (args[i])
+//   {
+//     printf("%s\n" ,args[i]);
+//     i++;
+//   }
+//   printf ("hni kharj \n");
+//   exit(1);
     if(ft_strcmp(args[0] , "echo") == 0)
         return (ft_echo(args));
-    if (ft_strcmp(args[0], "cd") == 0)
-		return (ft_cd(args[1]));
+    else  if(ft_strcmp(args[0] , "cd") == 0)
+        return (ft_cd(args));
     else if(ft_strcmp(args[0] , "pwd") == 0)
         return (ft_pwd());
     else if(ft_strcmp(args[0] , "export") == 0)
