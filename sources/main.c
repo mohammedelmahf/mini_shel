@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/06 08:26:32 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:15:14 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    execution(void)
     init_tree(data.ast);
     if (data.heredoc_sigint)
 	{
-		ft_clear_ast(&data.ast);
+	    clear_ast(&data.ast);
 		data.heredoc_sigint = false;
 	}
     tcsetattr(STDIN_FILENO, TCSANOW, &data.original_term);
@@ -48,7 +48,7 @@ int main(int ac , char **av  , char **env)
         init_signal();
         data.line = readline(PROMPT);
         if (!data.line)
-            (/*clean_all(), */ft_putstr_fd("exit\n" , 1) , exit(data.exit_s));
+            (clean_all(), ft_putstr_fd("exit\n" , 1) , exit(data.exit_s));
         if(data.line[0])
             add_history(data.line);
         if( ft_strcmp( data.line , "env") == 0)
@@ -67,5 +67,5 @@ int main(int ac , char **av  , char **env)
         execution();
     }
     garbage_collector(NULL , true);
-
+    return (/*clean_all(),*/ data.exit_s);
 }
