@@ -1,0 +1,21 @@
+c3r1p5% ./minishell
+minishell> cd $PWD hi 
+minishell> echo $?
+0
+
+
+
+bash origin :
+➜  mini_shel git:(maelmahf) ✗ cd $PWD hi 
+cd: no such file or directory: hi
+➜  mini_shel git:(maelmahf) ✗ cd $PWD hi 
+cd: no such file or directory: hi
+➜  mini_shel git:(maelmahf) ✗ echo $?
+1
+➜  mini_shel git:(maelmahf) ✗ 
+
+
+
+
+
+
