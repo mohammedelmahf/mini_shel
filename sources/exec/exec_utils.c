@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:04:41 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/07 17:20:36 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:23:15 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,26 @@ void    *garbage_collector(char *str , bool clean)
 		ft_lstadd_back(&garbage_list, ft_lstnew(str));
 		return (str);
 	}
+}
+
+bool	is_delimiter(char *delimiter, char *str)
+{
+	while (*str)
+	{
+		if (*delimiter == '"' || *delimiter == '\'')
+		{
+			delimiter++;
+			continue ;
+		}
+		else if (*str == *delimiter)
+		{
+			str++;
+			delimiter++;
+		}
+		else
+			return (false);
+	}
+	while (*delimiter == '"' || *delimiter == '\'')
+		delimiter++;
+	return (!*delimiter);
 }

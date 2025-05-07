@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:17:15 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/05 14:42:34 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:04:04 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char   *handle_dquotes(char *str , size_t *i)
 {
     char *ret;
 
-    ret = ft_strdup("");
+    ret = ft_strdup("\"");
     (*i)++;
     while(str[*i] != '"')
     {
@@ -44,14 +44,14 @@ char   *handle_dquotes(char *str , size_t *i)
 
 char    *handle_dquotes_str(char *str , size_t *i)
 {
-    char *ret;
-    size_t start;
+	size_t	start;
 
-    start = *i;
-    while(str[*i] != '$' && str[*i] != '"')
-        (*i)++;
-    ret = ft_substr(str , start , *i - start);
-    return(ret);
+	start = *i;
+	while (str[*i] != '"' && str[*i] != '$')
+	{
+		(*i)++;
+	}
+	return (ft_substr(str, start, *i - start));
 }
 
 bool    is_valid_var_char(char c)

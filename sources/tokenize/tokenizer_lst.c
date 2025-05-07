@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:13:27 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/10 12:34:40 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:36:48 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void    free_token_list(t_token **token_list)
     while(curr_node)
     {
         free(curr_node->value);
-        next_node = curr_node;
+        next_node = curr_node->next;
         free(curr_node);
         curr_node = next_node;
     }

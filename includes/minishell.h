@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/05 11:46:15 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:30:34 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ char	*ft_itoa(int n);
 void	free_char2(char **tofree);
 void	free_char3(char ***tofree);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+void	ft_putnbr_fd(int n, int fd);
 //env
 char    *extract_value(char *str);
 char    *extract_value(char *str);
@@ -163,6 +164,7 @@ int exec_builtins(char **args);
 bool    is_valid_var_char(char c);
 void    init_tree(t_node *node);
 void    init_leaf(t_node *node);
+bool	is_delimiter(char *delimiter, char *str);
 //expand
 char	*remove_empty_quotes(char *str);
 char   *handle_dollar(char *str , size_t *i);
@@ -186,6 +188,7 @@ size_t  len_arr(char **str);
 bool	pattern_match_exists(char **pattern, char **last_wildcard,char **last_match, char **str);
 char    **join_str_arr(char ***str);
 void	heredoc(t_io_node *io, int p[2]);
+void	heredoc_expander(char *str, int fd);
 //exist_check
 t_err check_exec(char *file, bool cmd);
 t_err check_write(char *file);

@@ -6,7 +6,8 @@ LDFLAGS     := -lreadline  # Link against the readline library
 env         :=  sources/env/env.c sources/env/env_utils.c
 exec        :=  sources/exec/exec_utils.c sources/exec/exec_builtin.c sources/exec/exist_check.c \
                 sources/exec/get_path.c sources/exec/error_msg.c  sources/exec/exec_redirections.c \
-                sources/exec/exec_pipe.c  sources/exec/external_commands.c sources/exec/init_tree.c
+                sources/exec/exec_pipe.c  sources/exec/external_commands.c sources/exec/init_tree.c \
+                sources/exec/heredoc_expande.c
 expander    :=  sources/expander/expanded_utils.c sources/expander/expanded.c sources/expander/expander_split.c \
                 sources/expander/globber_utils.c sources/expander/globber.c sources/expander/remove_empty_quotes.c \
                 sources/expander/strip_quotes.c sources/expander/wlidcard.c 
@@ -18,7 +19,7 @@ utils       :=  sources/utils/ft_calloc.c sources/utils/ft_lstadd_back.c sources
                 sources/utils/ft_strjoin.c sources/utils/ft_strjoin_args.c sources/utils/ft_isspace.c \
                 sources/utils/ft_strchr.c sources/utils/ft_atoi.c sources/utils/ft_putchar_fd.c sources/utils/ft_split.c\
                 sources/utils/ft_strnstr.c sources/utils/ft_strjoin_f.c sources/utils/ft_itoa.c sources/utils/ft_free_char.c \
-                sources/utils/ft_strlcpy.c
+                sources/utils/ft_strlcpy.c sources/utils/ft_putnbr_fd.c
 tokenize    :=  sources/tokenize/tokenizer.c sources/tokenize/tokenizer_lst.c sources/tokenize/tokenizer_appenders.c \
                 sources/tokenize/tokenizer_handlers.c sources/tokenize/tokenizer_utils.c
 main        :=  sources/main.c 
