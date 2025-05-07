@@ -1,14 +1,43 @@
-➜  mini_shel git:(maelmahf) ✗ ./minishell 
-minishell>   cat <"1""2""3""4""5" 
-cat: -: Bad file descriptor
-cat: closing standard input: Bad file descriptor
-minishell>   cat < "1""2""3""4""5" 
-cat: -: Bad file descriptor
-cat: closing standard input: Bad file descriptor
-minishell> 
-exit
-➜  mini_shel git:(maelmahf) ✗   cat <"1""2""3""4""5" 
-zsh: no such file or directory: 12345
-➜  mini_shel git:(maelmahf) ✗ cat <"1""2""3""4""5"  
-zsh: no such file or directory: 12345
-➜  mini_shel git:(maelmahf) ✗ 
+Test  64: ✅⚠️  cat <"1""2""3""4""5" 
+mini error = ( No such file or directory12345)
+bash error = ( No such file or directory)
+Test  65: ✅⚠️  echo <"./test_files/infile" <missing <"./test_files/infile" 
+mini error = ( No such file or directorymissing)
+bash error = ( No such file or directory)
+Test  66: ✅⚠️  echo <missing <"./test_files/infile" <missing 
+mini error = ( No such file or directorymissing)
+bash error = ( No such file or directory)
+Test  76: ✅⚠️  cat <missing 
+mini error = ( No such file or directorymissing)
+bash error = ( No such file or directory)
+Test  77: ✅⚠️  cat <missing | cat 
+mini error = ( No such file or directorymissing)
+bash error = ( No such file or directory)
+Test  78: ✅⚠️  cat <missing | echo oi 
+mini error = ( No such file or directorymissing)
+bash error = ( No such file or directory)
+Test  79: ✅⚠️  cat <missing | cat <"./test_files/infile" 
+mini error = ( No such file or directorymissing)
+bash error = ( No such file or directory)
+Test  80: ✅⚠️  echo <123 <456 hi | echo 42 
+mini error = ( No such file or directory123)
+bash error = ( No such file or directory)
+Test 104: ✅⚠️  cat <missing >./outfiles/outfile01 
+mini error = ( No such file or directorymissing)
+bash error = ( No such file or directory)
+Test 105: ✅⚠️  cat >./outfiles/outfile01 <missing 
+mini error = ( No such file or directorymissing)
+bash error = ( No such file or directory)
+Test 106: ✅⚠️  cat <missing >./test_files/invalid_permission 
+mini error = ( No such file or directorymissing)
+bash error = ( No such file or directory)
+Test 107: ✅ cat >./test_files/invalid_permission <missing 
+Test 108: ✅⚠️  cat >./outfiles/outfile01 <missing >./test_files/invalid_permission 
+mini error = ( No such file or directorymissing)
+bash error = ( No such file or directory)
+
+Test 118: ✅ ls >./outfiles/outfile01 >>./test_files/invalid_permission >>./outfiles/outfile02 
+Test 119: ✅⚠️  ls <missing >>./test_files/invalid_permission >>./outfiles/outfile02 
+mini error = ( No such file or directorymissing)
+bash error = ( No such file or directory)
+Test 120: ✅ ls >>./test_files/invalid_permissi
