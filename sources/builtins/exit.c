@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:15 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/05 01:52:43 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/08 18:57:42 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,28 @@ int ft_exit(char **s)
 {
     int exit_s;
 
+    if (s[1])
+    {
+        if (!ft_isnumber(s[1]))
+        {
+            printf("exit\n");
+            ft_putstr_fd("minishell: exit: ", 2);
+            ft_putstr_fd(s[1], 2);
+            ft_putstr_fd(": numeric argument required\n", 2);
+            exit(2);
+        }
+        if (s[2])
+        {
+            ft_putstr_fd("minishell: exit: too many arguments\n", 2);
+            data.exit_s = 1;
+            return (1);
+        }
+        exit_s =  ft_atoi(s[1]);
+        printf("exit\n");
+        exit((unsigned char)exit_s);
+    }
+
     printf("exit\n");
-    if (!s[1])
-    {
-        exit(data.exit_s);
-    }
-    if (!ft_isnumber(s[1]))
-    {
-        ft_putstr_fd("minishell: exit: ", 2);
-        ft_putstr_fd(s[1], 2);
-        ft_putstr_fd(": numeric argument required\n", 2);
-        exit(255);
-    }
-    if (s[2] != NULL)
-    {
-        ft_putstr_fd("minishell: exit: too many arguments\n", 2);
-        data.exit_s = 1;
-        return (1); 
-    }
-    exit_s = ft_atoi(s[1]);
-    exit_s = exit_s % 256;
-    if (exit_s < 0)
-        exit_s += 256;
-    exit(exit_s);
+    exit(data.exit_s);
 }
+

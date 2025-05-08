@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:26 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/03 14:31:27 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:27:05 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ int ft_unset(char **s)
 {   
     
     bool err;
-    char *key;
     int i;
+    err = false;    
     
-    i = 0;
-    key = garbage_collector(extract_key(s[i]) , false);
+    i = 1;
+    if(!s)
+        return 0;
     while(s[i])
     {
         if (!parsing_key(s[i]))
@@ -61,8 +62,8 @@ int ft_unset(char **s)
             err = true;
         }
         else
-            ft_unset_help(key);
+            ft_unset_help(garbage_collector(extract_key(s[i]) , false));
         i++;
     }
-    return 0;
+    return (err);
 }
