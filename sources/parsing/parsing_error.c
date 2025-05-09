@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 09:55:29 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/07 10:44:52 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/09 12:05:32 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	handle_parse_error(void)
 			ft_putstr_fd("minishell: syntax error near unexpected token `", 2);
 			ft_putstr_fd(types[token_type], 2);
 			ft_putstr_fd("'\n", 2);
-			data.exit_s = 258;
+			data.exit_s = 2;
 		}
 		clear_ast(&data.ast);
 		ft_bzero(&data.parse_error, sizeof(t_parse_err));

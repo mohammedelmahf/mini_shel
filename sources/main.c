@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/09 16:09:42 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/09 18:29:27 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    execution(void)
     init_tree(data.ast);
     if (data.heredoc_sigint)
 	{
-		//ft_clear_ast(&data.ast);
+		//clear_ast(&data.ast);
 		data.heredoc_sigint = false;
 	}
     tcsetattr(STDIN_FILENO, TCSANOW, &data.original_term);

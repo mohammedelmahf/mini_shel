@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:26 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/08 23:32:19 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/09 18:30:02 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void ft_unset_help(char *key)
 
 int ft_unset(char **s)
 {   
-    
     bool err;
     int i;
     err = false;    
