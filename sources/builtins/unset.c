@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:26 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/03 14:31:27 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:03:35 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void ft_unset_help(char *key)
 
 int ft_unset(char **s)
 {   
-    
     bool err;
     char *key;
     int i;

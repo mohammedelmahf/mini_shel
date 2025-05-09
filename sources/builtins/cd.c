@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:07 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/07 15:24:00 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:53:42 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int change_pwd(void)
 	return (0);
 }
 
-int	cd_home(void)
+int	cd_home(void) //chdir("HOME")
 {
 	char	*home;
 	
