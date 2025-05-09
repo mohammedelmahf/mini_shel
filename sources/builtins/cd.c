@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:07 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/07 16:53:42 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/09 09:21:44 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int change_pwd(void)
 	return (0);
 }
 
-int	cd_home(void) //chdir("HOME")
+int	cd_home(void)
 {
 	char	*home;
 	
@@ -70,9 +70,9 @@ int ft_cd(char **path)
 {
 	int argc;
 
+	if(!path[0] && !path[1])
+		return (cd_err_msg(path[1]));
 	argc = cont_arg(path);
-	if (argc == 1)
-		return cd_home();
 	if (argc > 2) 
 		return (cd_err_msg_1());
 	if (chdir(path[1]) != ENO_SUCCESS )

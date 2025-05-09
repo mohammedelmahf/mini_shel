@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:26 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/07 17:03:35 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/09 09:21:50 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ void ft_unset_help(char *key)
 int ft_unset(char **s)
 {   
     bool err;
-    char *key;
     int i;
+    err = false;    
     
-    i = 0;
-    key = garbage_collector(extract_key(s[i]) , false);
+    i = 1;
+    if(!s)
+        return 0;
     while(s[i])
     {
         if (!parsing_key(s[i]))
@@ -60,8 +61,8 @@ int ft_unset(char **s)
             err = true;
         }
         else
-            ft_unset_help(key);
+            ft_unset_help(garbage_collector(extract_key(s[i]) , false));
         i++;
     }
-    return 0;
+    return (err);
 }
