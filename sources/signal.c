@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:40:08 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/17 09:34:25 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/09 21:18:49 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void    init_signal(void)
     struct termios term;
 
     term = data.original_term;
-    term.c_lflag &= ~ECHOCTL;
+    term.c_lflag |= ECHOCTL;
     tcsetattr(STDIN_FILENO , TCSANOW , &term);
     data.heredoc_sigint = false;
     data.signint_child = false;
