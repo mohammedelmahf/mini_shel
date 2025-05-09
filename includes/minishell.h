@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/07 09:30:34 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:58:48 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct s_data
 	int				stdout;
 	char			**environ;
 	t_env			*envlst;
+	char 			*save_oldpwd;
 	bool			heredoc_sigint;
 	struct termios	original_term;
 }					t_data;

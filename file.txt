@@ -1,43 +1,87 @@
-Test  64: ✅⚠️  cat <"1""2""3""4""5" 
-mini error = ( No such file or directory12345)
-bash error = ( No such file or directory)
-Test  65: ✅⚠️  echo <"./test_files/infile" <missing <"./test_files/infile" 
-mini error = ( No such file or directorymissing)
-bash error = ( No such file or directory)
-Test  66: ✅⚠️  echo <missing <"./test_files/infile" <missing 
-mini error = ( No such file or directorymissing)
-bash error = ( No such file or directory)
-Test  76: ✅⚠️  cat <missing 
-mini error = ( No such file or directorymissing)
-bash error = ( No such file or directory)
-Test  77: ✅⚠️  cat <missing | cat 
-mini error = ( No such file or directorymissing)
-bash error = ( No such file or directory)
-Test  78: ✅⚠️  cat <missing | echo oi 
-mini error = ( No such file or directorymissing)
-bash error = ( No such file or directory)
-Test  79: ✅⚠️  cat <missing | cat <"./test_files/infile" 
-mini error = ( No such file or directorymissing)
-bash error = ( No such file or directory)
-Test  80: ✅⚠️  echo <123 <456 hi | echo 42 
-mini error = ( No such file or directory123)
-bash error = ( No such file or directory)
-Test 104: ✅⚠️  cat <missing >./outfiles/outfile01 
-mini error = ( No such file or directorymissing)
-bash error = ( No such file or directory)
-Test 105: ✅⚠️  cat >./outfiles/outfile01 <missing 
-mini error = ( No such file or directorymissing)
-bash error = ( No such file or directory)
-Test 106: ✅⚠️  cat <missing >./test_files/invalid_permission 
-mini error = ( No such file or directorymissing)
-bash error = ( No such file or directory)
-Test 107: ✅ cat >./test_files/invalid_permission <missing 
-Test 108: ✅⚠️  cat >./outfiles/outfile01 <missing >./test_files/invalid_permission 
-mini error = ( No such file or directorymissing)
-bash error = ( No such file or directory)
+minishell> export a+="1" b+="2" c+="3"
+minishell: export:a+=1: not a valid identifier
+minishell: export:b+=2: not a valid identifier
+minishell: export:c+=3: not a valid identifier
+minishell> 
 
-Test 118: ✅ ls >./outfiles/outfile01 >>./test_files/invalid_permission >>./outfiles/outfile02 
-Test 119: ✅⚠️  ls <missing >>./test_files/invalid_permission >>./outfiles/outfile02 
-mini error = ( No such file or directorymissing)
-bash error = ( No such file or directory)
-Test 120: ✅ ls >>./test_files/invalid_permissi
+
+
+minishell> cd a
+minishell> mkdir v
+minishell> d v
+minishell: d: command not found 
+minishell> cd v
+minishell> mkdir c
+minishell> cd c
+minishell> ls
+minishell> rm -rf ../../v
+minishell> pwd
+pwd: No such file or directory
+minishell> 
+
+
+
+
+
+minishell> (ls && ls && (ls | ls)) > o
+minishell: syntax error near unexpected token `>'
+minishell> 
+
+iel-asef@c3r10p9:~/Desktop/mini_shel$ ^C
+iel-asef@c3r10p9:~/Desktop/mini_shel$ $?
+130: command not found
+iel-asef@c3r10p9:~/Desktop/mini_shel$ 
+
+
+
+
+exit
+➜  mini_shel git:(maelmahf) ✗ env -i ./minishell
+minishell> env
+minishell> export
+minishell> exit
+➜  mini_shel git:(maelmahf) ✗ env -i ./minishell
+
+
+
+
+save oldpwd 
+
+
+
+ls | ls | ls || ls || ls || ls << 
+ its work
+
+
+
+
+ minishell> cat << o
+> $HOME           $HOME
+> o
+           /home/iel-asef
+
+
+
+minishell> export a="abc" && echo $a
+
+minishell> 
+
+
+
+ ls > $a
+
+
+minishell> ls > $aawd
+minishell: $aawd: ambiguous redirectminishell> $?
+minishell: 1: command not found 
+
+
+
+
+minishell> ls > a $a
+abc
+
+
+
+minishell> $HOME , $HOME 
+minishell> 

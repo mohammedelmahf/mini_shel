@@ -1,0 +1,8 @@
+file.txt
+includes
+Makefile
+minishell
+minishell_tester
+README
+sources
+txt.txt
