@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:40:08 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/09 21:18:49 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/09 22:27:41 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void handler_sigint(int num)
         rl_replace_line("" , 0);
         rl_on_new_line();
         rl_redisplay();
+        data.exit_s = 130;
     }
 }
 
