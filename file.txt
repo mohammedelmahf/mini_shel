@@ -66,10 +66,9 @@ ls | ls | ls || ls || ls || ls <<
 > o
            /home/iel-asef
 
-  // shlvl =+ 1;
-
+----------------------------
 minishell> export a="abc" && echo $a
-
+--------------------------------
 minishell> 
 
 
