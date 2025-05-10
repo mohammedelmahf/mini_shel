@@ -123,7 +123,10 @@ minishell>
 --------------------------------------------------------------------
 
 
-
+iel-asef@c3r10p9:~/Desktop/mini_shel$ $HOME , $HOME 
+bash: /home/iel-asef: Is a directory
+iel-asef@c3r10p9:~/Desktop/mini_shel$ 
+ chof m3a hadi
 
 
 

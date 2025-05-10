@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 12:19:38 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 20:56:55 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	reset_std(bool pipd)
 	dup2(g_data.stdout, 1);
 }
 
+
+
 int exec_child(t_node *node)
 {
     t_path path_status;
@@ -67,6 +69,22 @@ int exec_child(t_node *node)
             clean_all();
             exit(status);
         }
+        if (access(path_status.path, F_OK) == 0)
+        {
+            if (opendir(path_status.path))
+            {
+                fprintf(stderr, "minishell: %s: Is a directory\n", path_status.path);
+                clean_all();
+                exit(126);
+            }
+        }
+        else
+        {
+            perror("minishell");
+            clean_all();
+            exit(127);
+        }
+
         if(execve(path_status.path ,node->expanded_args , g_data.environ) == -1)
         {
             clean_all();
