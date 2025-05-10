@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:13 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/07 11:48:57 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:19:20 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int exec_pipe(t_node *tree)
 	int pid_l;
     int pid_r;
 
-	data.signint_child= true;
+	g_data.signint_child= true;
 	pipe(pipfd);
 	
 	pid_l = fork();
@@ -65,7 +65,7 @@ int exec_pipe(t_node *tree)
 			close(pipfd[1]);
 			waitpid(pid_l, &status, 0);
 			waitpid(pid_r, &status, 0);
-			data.signint_child = false;
+			g_data.signint_child = false;
 			return (get_exit_status(status));
 		}
 	}

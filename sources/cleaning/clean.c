@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:39:18 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/10 10:29:21 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:20:42 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ static  void    clear_envlst(void)
     t_env   *envlst;
     t_env   *envlst_tofree;
     
-    envlst = data.envlst;
+    envlst = g_data.envlst;
     while(envlst)
     {
         envlst_tofree = envlst;
         envlst = envlst->next;
         free(envlst_tofree);
     }
-    data.envlst = NULL;
+    g_data.envlst = NULL;
 }
 void    clean_all(void)
 {
     garbage_collector(NULL , true);
-    clear_ast(&data.ast);
+    clear_ast(&g_data.ast);
     clear_envlst();
     rl_clear_history();
-    tcsetattr(STDIN_FILENO, TCSANOW, &data.original_term);
+    tcsetattr(STDIN_FILENO, TCSANOW, &g_data.original_term);
 }

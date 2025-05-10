@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:26 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/09 18:30:02 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:21:37 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void msg_err(char *s)
     ft_putstr_fd ("minishell: export:" , 2);
     ft_putstr_fd (s , 2);
     ft_putstr_fd (": not a valid identifier\n", 2);
-    data.exit_s = 1;
+    g_data.exit_s = 1;
 }
 
 void ft_unset_help(char *key)
@@ -26,7 +26,7 @@ void ft_unset_help(char *key)
     t_env *prev;
 
     prev = NULL;
-    current = data.envlst;
+    current = g_data.envlst;
 
     while(current)
     {
@@ -35,7 +35,7 @@ void ft_unset_help(char *key)
             if(prev)
                 prev->next = current->next;
             else
-                data.envlst = current->next;
+                g_data.envlst = current->next;
             free(current);
             return;
         }

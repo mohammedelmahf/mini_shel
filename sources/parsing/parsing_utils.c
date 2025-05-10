@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 09:48:42 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/14 15:55:27 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:18:11 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ bool curr_token_type_is_binop(void)
 {
     t_token_type type;
 
-    if (!data.curr_token)
+    if (!g_data.curr_token)
         return (false);
-    type = data.curr_token->type;
+    type = g_data.curr_token->type;
     if (type == T_AND || type == T_OR || type == T_PIPE)
         return (true);
     return (false);
@@ -26,12 +26,12 @@ bool curr_token_type_is_binop(void)
 
 void    next_token(void)
 {
-    data.curr_token = data.curr_token->next;
+    g_data.curr_token = g_data.curr_token->next;
 }
 
 int    curr_token_prec(void)
 {
-    return (prec(data.curr_token->type));
+    return (prec(g_data.curr_token->type));
 }
 
 int     prec(t_token_type type)

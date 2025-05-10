@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:52:12 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/10 10:27:14 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:17:48 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ t_node  *terms(void)
 {
     t_node *node;
 
-    if(data.parse_error.type)
+    if(g_data.parse_error.type)
         return (NULL);
-    if(curr_token_type_is_binop() || data.curr_token->type == T_C_PARENT)
+    if(curr_token_type_is_binop() || g_data.curr_token->type == T_C_PARENT)
         return (set_error(E_SYNTAX) , NULL);
-    else if(data.curr_token->type == T_O_PARENT)
+    else if(g_data.curr_token->type == T_O_PARENT)
     {
         next_token();
         node = parsing_ast(0);
         if(!node)
             return (set_error(E_MEM) , NULL);
-        if(!data.curr_token|| data.curr_token->type != T_C_PARENT)
+        if(!g_data.curr_token|| g_data.curr_token->type != T_C_PARENT)
             return (set_error(E_SYNTAX) , node);
         next_token();
         return (node);
@@ -43,16 +43,16 @@ t_node  *parsing_ast(int minimum_precedence)
     t_token_type    type;
     int n_prec ;
     
-    if(data.parse_error.type || !data.curr_token)
+    if(g_data.parse_error.type || !g_data.curr_token)
         return (NULL);
     left = terms();
     if(!left)
         return (NULL);
     while(curr_token_type_is_binop() && curr_token_prec() >= minimum_precedence)
     {
-        type = data.curr_token->type;
+        type = g_data.curr_token->type;
         next_token();
-        if(!data.curr_token)
+        if(!g_data.curr_token)
             return (set_error(E_SYNTAX) , left);
         n_prec = prec(type) + 1;
         right = parsing_ast(n_prec);
@@ -69,7 +69,7 @@ t_node      *join_nodes(t_token_type type , t_node *left , t_node *right)
 {
     t_node *node;
 
-    if(data.parse_error.type)
+    if(g_data.parse_error.type)
         return (NULL);
     node = lstnew(get_node_type(type));
     if(!node)
@@ -83,9 +83,9 @@ t_node  *start_parsing(void)
 {
     t_node  *ast;
     
-    data.curr_token = data.tokens;
+    g_data.curr_token = g_data.tokens;
     ast = parsing_ast(0);
-    if(data.curr_token)
+    if(g_data.curr_token)
         return (set_error(E_SYNTAX) , NULL);
     return (ast);
 }

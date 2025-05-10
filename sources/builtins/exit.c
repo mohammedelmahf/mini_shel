@@ -3,22 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:15 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/09 14:45:45 by iel-asef         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/03 14:31:15 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/08 19:05:00 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:21:18 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +51,7 @@ int ft_exit(char **s)
         if (s[2])
         {
             ft_putstr_fd("minishell: exit: too many arguments\n", 2);
-            data.exit_s = 1;
+            g_data.exit_s = 1;
             return (1);
         }
         printf("exit\n");
@@ -71,5 +59,5 @@ int ft_exit(char **s)
     }
 
     printf("exit\n");
-    exit(data.exit_s);
+    exit(g_data.exit_s);
 }

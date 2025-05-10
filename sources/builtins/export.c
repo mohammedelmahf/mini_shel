@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:20 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/08 23:32:14 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:21:26 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void export_list(void)
 	t_env *env;
 	size_t i;
 
-	env = data.envlst;
+	env = g_data.envlst;
 	while (env)
 	{
 		if (env->value && ft_strcmp(env->key, "_") != 0)

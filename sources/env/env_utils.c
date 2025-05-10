@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:27:00 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/28 13:04:21 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:20:26 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void    envlst_back(t_env *new)
 {
     t_env *curr;
 
-    if(!data.envlst)
+    if(!g_data.envlst)
     {
-        data.envlst = new;
+        g_data.envlst = new;
         return ;
     }
-    curr = data.envlst;
+    curr = g_data.envlst;
     while (curr && curr->next)
         curr = curr->next;
     curr->next = new;
@@ -46,7 +46,7 @@ void    update_envlst(char *key,char *value, bool create)
 {
     t_env   *envlst;
 
-    envlst = data.envlst;
+    envlst = g_data.envlst;
     while(envlst)
     {
         if(!ft_strcmp(key ,envlst->key))
@@ -65,7 +65,7 @@ char *get_envlst_value(char *key)
 {
     t_env *envlst;
     
-    envlst = data.envlst;
+    envlst = g_data.envlst;
     while(envlst)
     {
         if(!strcmp(key , envlst->key))

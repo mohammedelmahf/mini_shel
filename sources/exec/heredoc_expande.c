@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 09:24:45 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/07 09:26:09 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:19:51 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	heredoc_expand_writer(char *str, size_t i, int fd)
 
 	start = ++i;
 	if (str[i] == '?')
-		return (ft_putnbr_fd(data.exit_s, fd), 2);
+		return (ft_putnbr_fd(g_data.exit_s, fd), 2);
 	while (str[i] && str[i] != '$' && str[i] != ' ')
 		i++;
 	if (i != start)

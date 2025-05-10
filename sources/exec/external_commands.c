@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_commands.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/07 13:36:24 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:19:38 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	reset_std(bool pipd)
 {
 	if (pipd)
 		return ;
-	dup2(data.stdin, 0);
-	dup2(data.stdout, 1);
+	dup2(g_data.stdin, 0);
+	dup2(g_data.stdout, 1);
 }
 
 int exec_child(t_node *node)
@@ -50,7 +50,7 @@ int exec_child(t_node *node)
     int fork_pid ;
     int status;
 
-    data.signint_child = true;
+    g_data.signint_child = true;
    fork_pid = fork();
     if(!fork_pid)
     {
@@ -67,14 +67,14 @@ int exec_child(t_node *node)
             clean_all();
             exit(status);
         }
-        if(execve(path_status.path ,node->expanded_args , data.environ) == -1)
+        if(execve(path_status.path ,node->expanded_args , g_data.environ) == -1)
         {
             clean_all();
             exit(status);
         }
         }
         waitpid(fork_pid ,&status , 0);
-        data.signint_child = false;
+        g_data.signint_child = false;
         return (get_exit_status (status));
 }
 

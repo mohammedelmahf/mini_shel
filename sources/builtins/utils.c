@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:28 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/03 14:31:29 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:21:42 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_env *get_env(char *key)
 {
 	t_env *tmp;
 
-	tmp = data.envlst;
+	tmp = g_data.envlst;
 	while (tmp)
 	{
 		if (ft_strcmp(tmp->key, key) == 0)

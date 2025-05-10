@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:40:08 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/09 22:27:41 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:25:12 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void handler_sigint(int num)
 {
     (void)num;
-    if(data.signint_child)
+    if(g_data.signint_child)
     {
         ft_putstr_fd("\n",1);
-        data.signint_child = false;
-        data.heredoc_sigint = true;
+        g_data.signint_child = false;
+        g_data.heredoc_sigint = true;
     }
     else
     {
@@ -27,7 +27,7 @@ static void handler_sigint(int num)
         rl_replace_line("" , 0);
         rl_on_new_line();
         rl_redisplay();
-        data.exit_s = 130;
+        g_data.exit_s = 130;
     }
 }
 
@@ -41,11 +41,11 @@ void    init_signal(void)
 {
     struct termios term;
 
-    term = data.original_term;
+    term = g_data.original_term;
     term.c_lflag |= ECHOCTL;
     tcsetattr(STDIN_FILENO , TCSANOW , &term);
-    data.heredoc_sigint = false;
-    data.signint_child = false;
+    g_data.heredoc_sigint = false;
+    g_data.signint_child = false;
     signal(SIGINT , handler_sigint);
     signal(SIGQUIT, SIG_IGN);
 }

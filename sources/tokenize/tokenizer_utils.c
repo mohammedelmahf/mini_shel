@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 10:39:26 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/09 13:02:51 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:16:15 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void    print_delimiter_error(char c)
 	ft_putstr_fd("minishell: unexpected EOF while looking for matching `", 2);
 	ft_putchar_fd(c, 2);
 	ft_putstr_fd("'\n", 2);
-	data.exit_s = 2;
+	g_data.exit_s = 2;
 }
 
 void    skipe_spaces(char **line)
