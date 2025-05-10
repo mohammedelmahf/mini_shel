@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:26 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 12:21:37 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 18:38:30 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+
+int parsing_key(char *str)
+{
+	int i = 0;
+
+	if (!str || (!ft_isalpha(str[i]) && str[i] != '_'))
+		return 0;
+
+	while (str[i] && str[i] != '=' && !(str[i] == '+' && str[i + 1] == '='))
+	{
+		if (!ft_isalnum(str[i]) && str[i] != '_')
+			return 0;
+		i++;
+	}
+	return 1;
+}
 
 void msg_err(char *s)
 {
@@ -36,7 +53,7 @@ void ft_unset_help(char *key)
                 prev->next = current->next;
             else
                 g_data.envlst = current->next;
-            free(current);
+            // free(current);
             return;
         }
         prev = current;
