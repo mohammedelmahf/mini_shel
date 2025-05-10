@@ -3,91 +3,101 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:20 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 12:21:26 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 20:23:29 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int parsing_key(char *str)
+void	export_list(void)
 {
-	int i = 0;
-
-	if (!str || (!ft_isalpha(str[i]) && str[i] != '_'))
-		return 0;
-	i++;
-	while (str[i] && str[i] != '=')
-	{
-		if (!ft_isalnum(str[i]) && str[i] != '_')
-			return 0;
-		i++;
-	}
-	return 1;
-}
-
-void export_list(void)
-{
-	t_env *env;
-	size_t i;
+	t_env	*env;
 
 	env = g_data.envlst;
 	while (env)
 	{
-		if (env->value && ft_strcmp(env->key, "_") != 0)
+		if (ft_strcmp(env->key, "_") != 0)
 		{
-			printf("declare -x %s=\"", env->key);
-			i = 0;
-			while (env->value[i])
+			printf("declare -x %s", env->key);
+			if (env->value)
 			{
-				if (env->value[i] == '$' || env->value[i] == '"')
-					printf("\\%c", env->value[i]);
-				else
-					printf("%c", env->value[i]);
-				i++;
+				printf("=\"");
+				for (size_t i = 0; env->value[i]; i++)
+				{
+					if (env->value[i] == '$' || env->value[i] == '"')
+						printf("\\%c", env->value[i]);
+					else
+						printf("%c", env->value[i]);
+				}
+				printf("\"");
 			}
-			printf("\"\n");
+			printf("\n");
 		}
-		else if (ft_strcmp(env->key, "_") != 0)
-			printf("declare -x %s\n", env->key);
 		env = env->next;
 	}
 }
 
-int ft_export(char **str)
+int	ft_export(char **args)
 {
-	int i ;
-	int exit_status = 0;
-	char *key;
-	t_env *existing;
+    int     i = 1;
+    int     status = 0;
+    char    *key;
+    char    *val;
+    char    *joined;
+    t_env   *existing;
+    bool    append;
 
-	if (!str[1])
-	{
-		export_list();
-		return 0;
-	}
-	i = 1;
-	while (str[i])
-	{
-		if (!parsing_key(str[i]))
-		{
-			ft_putstr_fd("minishell: export:" , 2);
-			ft_putstr_fd(str[i] , 2);
-			ft_putstr_fd (": not a valid identifier\n", 2);
-			exit_status = 1;
-		}
-		else
-		{
-			key = extract_key(str[i]);
-			existing = get_env(key); 
-			if (existing)
-				update_envlst(key, extract_value(str[i]), false); // update
-			else
-				update_envlst(key, extract_value(str[i]), true);  // add
-		}
-		i++;
-	}
-	return exit_status;
+    if (!args[1])
+        return (export_list(), 0);
+
+    while (args[i])
+    {
+        if (!args[i][0])
+        {
+            i++;
+            continue;
+        }
+
+        if (!is_valid_identifier(args[i]))
+        {
+            ft_putstr_fd("minishell: export: `", 2);
+            ft_putstr_fd(args[i], 2);
+            ft_putstr_fd("': not a valid identifier\n", 2);
+            status = 1;
+            i++;
+            continue;
+        }
+
+        append = ft_strnstr(args[i], "+=", ft_strlen(args[i])) != NULL;
+        key = extract_key_export(args[i]);
+        val = extract_value_export(args[i]);
+        existing = get_env(key);
+
+        if (append)
+        {
+            if (existing && existing->value)
+            {
+                joined = ft_strjoin(existing->value, val ? val : "");
+                update_envlst_export(key, joined, false);
+                free(joined);
+            }
+            else
+            {
+                update_envlst_export(key, val ? val : "", true);
+            }
+        }
+        else
+        {
+            update_envlst_export(key, val, existing ? false : true);
+        }
+
+        free(key);
+        if (val)
+            free(val);
+        i++;
+    }
+    return (status);
 }

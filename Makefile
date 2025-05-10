@@ -7,7 +7,7 @@ env         :=  sources/env/env.c sources/env/env_utils.c
 exec        :=  sources/exec/exec_utils.c sources/exec/exec_builtin.c sources/exec/exist_check.c \
                 sources/exec/get_path.c sources/exec/error_msg.c  sources/exec/exec_redirections.c \
                 sources/exec/exec_pipe.c  sources/exec/external_commands.c sources/exec/init_tree.c \
-                sources/exec/heredoc_expande.c
+                sources/exec/heredoc_expande.c sources/builtins/utils_export.c
 expander    :=  sources/expander/expanded_utils.c sources/expander/expanded.c sources/expander/expander_split.c \
                 sources/expander/globber_utils.c sources/expander/globber.c sources/expander/remove_empty_quotes.c \
                 sources/expander/strip_quotes.c sources/expander/wlidcard.c 
