@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 19:18:49 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 12:23:46 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 17:24:11 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int						cd_home(void);
 // utils
 char					*ft_getenv(const char *name);
 t_env					*get_env(char *key);
+void                    update_oldpwd(char *key, char *value, bool create);
+t_env                   *envlst_new_old(char *key , char *value);
 
 // export
 int						parsing_key(char *str);
@@ -41,7 +43,7 @@ int						parsinge_echo(char *str);
 // env
 char					*extract_key(char *str);
 void					envlst_back(t_env *new);
-int						ft_env(void);
+int	ft_env(char **args);
 char					*ft_getenv(const char *name);
 // unset
 int						parsing_key(char *str);

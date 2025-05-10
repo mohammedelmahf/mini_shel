@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:01 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 16:31:13 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 17:28:30 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int exec_builtins(char **args)
     else if(ft_strcmp(args[0] , "unset") == 0)
         return (ft_unset(args));
     else if(ft_strcmp(args[0] , "env") == 0)
-        return (ft_env());
+        return (ft_env(args));
     else if(ft_strcmp(args[0] , "exit") == 0)
         return(ft_exit(args));
     return 0;

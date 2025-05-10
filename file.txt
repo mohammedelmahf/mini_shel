@@ -4,30 +4,48 @@ minishell: export:b+=2: not a valid identifier
 minishell: export:c+=3: not a valid identifier
 minishell> 
 
+----------------------------------------------------------------------------
 
-
+minishell> mkdir a
 minishell> cd a
-minishell> mkdir v
-minishell> d v
-minishell: d: command not found 
-minishell> cd v
-minishell> mkdir c
-minishell> cd c
+minishell> mkdir b 
+minishell> cd b
 minishell> ls
-minishell> rm -rf ../../v
+minishell> mkdir c
 minishell> pwd
-pwd: No such file or directory
+/home/iel-asef/Desktop/mini_shel/a/b
+minishell> cd c
+minishell> pwd
+/home/iel-asef/Desktop/mini_shel/a/b/c
+minishell> rm -rf ../../b
+minishell> pwd
+/home/iel-asef/Desktop/mini_shel/a/b
+minishell> env | grep OLDPWD
+OLDPWD=/home/iel-asef/Desktop/mini_shel/a/b
+minishell> env | grep PWD
+PWD=/home/iel-asef/Desktop/mini_shel/a/b/c
+OLDPWD=/home/iel-asef/Desktop/mini_shel/a/b
 minishell> 
 
-
-
-
-
-minishell> (ls && ls && (ls | ls)) > o
-minishell: syntax error near unexpected token `>'
-minishell> 
-
-
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+iel-asef@c3r10p9:~/Desktop/mini_shel$ mkdir a
+iel-asef@c3r10p9:~/Desktop/mini_shel$ cd a
+iel-asef@c3r10p9:~/Desktop/mini_shel/a$ mkdir b
+iel-asef@c3r10p9:~/Desktop/mini_shel/a$ cd b
+iel-asef@c3r10p9:~/Desktop/mini_shel/a/b$ mkdir c
+iel-asef@c3r10p9:~/Desktop/mini_shel/a/b$ cd c
+iel-asef@c3r10p9:~/Desktop/mini_shel/a/b/c$ pwd
+/home/iel-asef/Desktop/mini_shel/a/b/c
+iel-asef@c3r10p9:~/Desktop/mini_shel/a/b/c$ rm -rf ../../b
+iel-asef@c3r10p9:~/Desktop/mini_shel/a/b/c$ pwd
+/home/iel-asef/Desktop/mini_shel/a/b/c
+iel-asef@c3r10p9:~/Desktop/mini_shel/a/b/c$ env | grep OLDPWD
+OLDPWD=/home/iel-asef/Desktop/mini_shel/a/b
+iel-asef@c3r10p9:~/Desktop/mini_shel/a/b/c$ env | grep PWD
+PWD=/home/iel-asef/Desktop/mini_shel/a/b/c
+OLDPWD=/home/iel-asef/Desktop/mini_shel/a/b
+iel-asef@c3r10p9:~/Desktop/mini_shel/a/b/c$ 
+------------------------------------------------------------------------------
 
 
 
@@ -39,9 +57,6 @@ minishell> exit
 ➜  mini_shel git:(maelmahf) ✗ env -i ./minishell
 
 
-
-
-save oldpwd 
 
 
 

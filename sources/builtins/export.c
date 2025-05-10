@@ -12,27 +12,26 @@
 
 #include "../../includes/minishell.h"
 
-int	parsing_key(char *str)
+int parsing_key(char *str)
 {
-	int	i;
+	int i = 0;
 
-	i = 0;
 	if (!str || (!ft_isalpha(str[i]) && str[i] != '_'))
-		return (0);
+		return 0;
 	i++;
 	while (str[i] && str[i] != '=')
 	{
 		if (!ft_isalnum(str[i]) && str[i] != '_')
-			return (0);
+			return 0;
 		i++;
 	}
-	return (1);
+	return 1;
 }
 
-void	export_list(void)
+void export_list(void)
 {
-	t_env	*env;
-	size_t	i;
+	t_env *env;
+	size_t i;
 
 	env = g_data.envlst;
 	while (env)
@@ -57,9 +56,9 @@ void	export_list(void)
 	}
 }
 
-int	ft_export(char **str)
+int ft_export(char **str)
 {
-	int i;
+	int i ;
 	int exit_status = 0;
 	char *key;
 	t_env *existing;
@@ -67,28 +66,28 @@ int	ft_export(char **str)
 	if (!str[1])
 	{
 		export_list();
-		return (0);
+		return 0;
 	}
 	i = 1;
 	while (str[i])
 	{
 		if (!parsing_key(str[i]))
 		{
-			ft_putstr_fd("minishell: export:", 2);
-			ft_putstr_fd(str[i], 2);
-			ft_putstr_fd(": not a valid identifier\n", 2);
+			ft_putstr_fd("minishell: export:" , 2);
+			ft_putstr_fd(str[i] , 2);
+			ft_putstr_fd (": not a valid identifier\n", 2);
 			exit_status = 1;
 		}
 		else
 		{
 			key = extract_key(str[i]);
-			existing = get_env(key);
+			existing = get_env(key); 
 			if (existing)
 				update_envlst(key, extract_value(str[i]), false); // update
 			else
-				update_envlst(key, extract_value(str[i]), true); // add
+				update_envlst(key, extract_value(str[i]), true);  // add
 		}
 		i++;
 	}
-	return (exit_status);
+	return exit_status;
 }
