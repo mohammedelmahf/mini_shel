@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:52:12 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 17:01:35 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 10:27:14 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_node  *start_parsing(void)
     t_node  *ast;
     
     data.curr_token = data.tokens;
-    ast = parsing_ast(0); //expression
+    ast = parsing_ast(0);
     if(data.curr_token)
         return (set_error(E_SYNTAX) , NULL);
     return (ast);

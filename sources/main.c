@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/09 18:29:27 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/10 10:24:53 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    execution(void)
     init_tree(data.ast);
     if (data.heredoc_sigint)
 	{
-		//clear_ast(&data.ast);
+		clear_ast(&data.ast);
 		data.heredoc_sigint = false;
 	}
     tcsetattr(STDIN_FILENO, TCSANOW, &data.original_term);
@@ -42,7 +42,6 @@ int main(int ac , char **av  , char **env)
 {  
     (void)ac;
     (void)av;
-    // shlvl =+ 1;
     init_minishell(env);
     while(1)
     {

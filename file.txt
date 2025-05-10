@@ -27,10 +27,6 @@ minishell> (ls && ls && (ls | ls)) > o
 minishell: syntax error near unexpected token `>'
 minishell> 
 
-iel-asef@c3r10p9:~/Desktop/mini_shel$ ^C
-iel-asef@c3r10p9:~/Desktop/mini_shel$ $?
-130: command not found
-iel-asef@c3r10p9:~/Desktop/mini_shel$ 
 
 
 

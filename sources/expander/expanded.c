@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:00:58 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/07 10:24:27 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 10:18:48 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char   *handle_dollar(char *str , size_t *i)
         return (ft_itoa(data.exit_s));
     }
     else if(!is_valid_var_char(str[*i]))
-        return(ft_strdup("$"));
+        return(ft_strdup(""));
     start = *i;
     while(is_valid_var_char(str[*i]))
         (*i)++;
