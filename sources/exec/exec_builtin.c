@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:01 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/09 09:22:16 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 16:31:13 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int exec_builtins(char **args)
         return (ft_unset(args));
     else if(ft_strcmp(args[0] , "env") == 0)
         return (ft_env());
-    ft_exit(args);
+    else if(ft_strcmp(args[0] , "exit") == 0)
+        return(ft_exit(args));
     return 0;
 }
 

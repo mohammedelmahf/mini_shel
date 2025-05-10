@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:08 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/09 10:46:42 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 16:27:39 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	ft_err_msg(t_err err)
 	else if (err.msg == ERRMSG_TOO_MANY_ARGS)
 		return (
 			ft_putstr_fd("minishell: exit: too many arguments\n", 2),
+			g_data.exit_s = 1,
 			err.num
 		);
 	else if (err.msg == ERRMSG_NUMERIC_REQUI)
