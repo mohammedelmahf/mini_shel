@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:38:05 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/04/09 13:46:38 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:38:24 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-  
+
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;

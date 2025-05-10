@@ -12,9 +12,9 @@
 
 #include "../../includes/minishell.h"
 
-t_env *get_env(char *key)
+t_env	*get_env(char *key)
 {
-	t_env *tmp;
+	t_env	*tmp;
 
 	tmp = g_data.envlst;
 	while (tmp)

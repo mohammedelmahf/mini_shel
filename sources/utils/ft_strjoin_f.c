@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:14:33 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/05 14:42:47 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:38:43 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strjoin_f(char *s1, char *s2)
 	size_t	total_length;
 	size_t	i;
 	size_t	j;
-	
+
 	if (!s1 || !s2)
 		return (NULL);
 	total_length = ft_strlen(s1) + ft_strlen(s2) + 1;

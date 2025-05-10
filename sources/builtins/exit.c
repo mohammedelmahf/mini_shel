@@ -10,54 +10,53 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../includes/minishell.h"
 
-int ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
-    return (c >= '0' && c <= '9');
+	return (c >= '0' && c <= '9');
 }
 
-bool ft_isnumber(char *s)
+bool	ft_isnumber(char *s)
 {
-    int i = 0;
-    
-    if (!s[i])
-        return (false);
-    
-    if (s[i] == '-' || s[i] == '+')
-        i++;
-    while (s[i])
-    {
-        if (!ft_isdigit(s[i]))
-            return (false);
-        i++;
-    }
-    return (true);
+	int	i;
+
+	i = 0;
+	if (!s[i])
+		return (false);
+	if (s[i] == '-' || s[i] == '+')
+		i++;
+	while (s[i])
+	{
+		if (!ft_isdigit(s[i]))
+			return (false);
+		i++;
+	}
+	return (true);
 }
 
-int ft_exit(char **s)
+int	ft_exit(char **s)
 {
-    if (s[1])
-    {
-        if (!ft_isnumber(s[1]))
-        {
-            printf("exit\n");
-            ft_putstr_fd("minishell: exit: ", 2);
-            ft_putstr_fd(s[1], 2);
-            ft_putstr_fd(": numeric argument required\n", 2);
-            exit(2);
-        }
-        if (s[2])
-        {
-            ft_putstr_fd("minishell: exit: too many arguments\n", 2);
-            g_data.exit_s = 1;
-            return (1);
-        }
-        printf("exit\n");
-        exit((unsigned char)ft_atoi(s[1]));
-    }
+	if (s[1])
+	{
+		if (!ft_isnumber(s[1]))
+		{
+			printf("exit\n");
+			ft_putstr_fd("minishell: exit: ", 2);
+			ft_putstr_fd(s[1], 2);
+			ft_putstr_fd(": numeric argument required\n", 2);
+			exit(2);
+		}
+		if (s[2])
+		{
+			ft_putstr_fd("minishell: exit: too many arguments\n", 2);
+			g_data.exit_s = 1;
+			return (1);
+		}
+		printf("exit\n");
+		exit((unsigned char)ft_atoi(s[1]));
+	}
 
-    printf("exit\n");
-    exit(g_data.exit_s);
+	printf("exit\n");
+	exit(g_data.exit_s);
 }

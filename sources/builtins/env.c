@@ -14,7 +14,7 @@
 
 int	ft_env(void)
 {
-	t_env	*list;
+	t_env *list;
 
 	list = g_data.envlst;
 	while (list)
