@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/10 17:38:56 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/11 10:17:49 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,10 +202,6 @@ void				handler_sigquit(int num);
 // cleaning
 void				clean_all(void);
 void				execute_cmd(char **args, char **envp);
-
 void				free_tokens(t_token *tokens);
 void				free_ast(t_node *ast);
-
-void				clean_cmd_data(void);
-
 #endif

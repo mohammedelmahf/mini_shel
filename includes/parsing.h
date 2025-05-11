@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/10 12:24:33 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 10:17:35 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,16 @@ typedef enum e_parse_err_type
 
 typedef enum e_node_type
 {
-	N_PIPE,
-	N_AND,
-	N_OR,
-	N_CMD
-}						t_node_type;
+    N_PIPE,
+    N_AND,
+    N_OR,
+    N_CMD,
+    N_REDIR_IN,    // 
+    N_REDIR_OUT,   // >
+    N_REDIR_APPEND, // >>
+    N_HEREDOC,     // 
+    N_WORD         // For redirection targets
+}                       t_node_type;
 
 typedef enum e_io_type
 {

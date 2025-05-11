@@ -6,28 +6,34 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:52:12 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/10 12:17:48 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 10:17:19 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_node  *terms(void)
+t_node *terms(void)
 {
     t_node *node;
 
-    if(g_data.parse_error.type)
+    if (g_data.parse_error.type)
         return (NULL);
-    if(curr_token_type_is_binop() || g_data.curr_token->type == T_C_PARENT)
-        return (set_error(E_SYNTAX) , NULL);
-    else if(g_data.curr_token->type == T_O_PARENT)
+
+    if (curr_token_type_is_binop() || g_data.curr_token->type == T_C_PARENT)
+        return (set_error(E_SYNTAX), NULL);
+
+    else if (g_data.curr_token->type == T_O_PARENT)
     {
         next_token();
         node = parsing_ast(0);
-        if(!node)
-            return (set_error(E_MEM) , NULL);
-        if(!g_data.curr_token|| g_data.curr_token->type != T_C_PARENT)
-            return (set_error(E_SYNTAX) , node);
+        if (!node)
+            return (set_error(E_MEM), NULL);
+
+        if (!g_data.curr_token || g_data.curr_token->type != T_C_PARENT)
+        {
+            clear_ast(&node);
+            return (set_error(E_SYNTAX), NULL);
+        }
         next_token();
         return (node);
     }
