@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/11 00:11:52 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:14:28 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	reset_std(bool pipd)
 	dup2(g_data.stdout, 1);
 }
 
+
+
 int exec_child(t_node *node)
 {
     t_path path_status;
@@ -67,6 +69,22 @@ int exec_child(t_node *node)
             clean_all();
             exit(status);
         }
+        if (access(path_status.path, F_OK) == 0)
+        {
+            if (opendir(path_status.path))
+            {
+                fprintf(stderr, "minishell: %s: Is a directory\n", path_status.path);
+                clean_all();
+                exit(126);
+            }
+        }
+        else
+        {
+            perror("minishell");
+            clean_all();
+            exit(127);
+        }
+
         if(execve(path_status.path ,node->expanded_args , g_data.environ) == -1)
         {
             clean_all();
@@ -81,6 +99,12 @@ int exec_child(t_node *node)
 int  exec_simple_cmd(t_node *node, bool pipe)
 {
     int stauts;
+    if (!node->expanded_args || !node->expanded_args[0] || node->expanded_args[0][0] == '\0')
+    {
+        stauts = check_redirections(node);
+        reset_std(pipe);
+        return (ENO_SUCCESS);
+    }
     if (!node->expanded_args)
     {
         printf("Command not found\n");
