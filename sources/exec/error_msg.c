@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:08 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/11 11:08:14 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/11 11:32:12 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_err_msg(t_err err)
 		return (
 			ft_putstr_fd("minishell: ", 2),
 			ft_putstr_fd(err.cause, 2),
-			ft_putstr_fd(": ambiguous redirect ", 2),
+			ft_putstr_fd(": ambiguous redirect\n", 2),
 			err.num
 		);
 	else if (err.msg == ERRMSG_TOO_MANY_ARGS)

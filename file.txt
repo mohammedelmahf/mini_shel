@@ -1,6 +1,4 @@
 
-
-exit
 ➜  mini_shel git:(maelmahf) ✗ env -i ./minishell
 minishell> env
 minishell> export
@@ -9,27 +7,16 @@ minishell> exit
 
 
 
-
-
- minishell> cat << o
+minishell> cat << o
 > $HOME           $HOME
 > o
            /home/iel-asef
+minishell> 
+
 
 ----------------------------
 minishell> export a="abc" && echo $a
 --------------------------------
-minishell> 
-
-
-
- ls > $a
-
-
-minishell> ls > $aawd
-minishell: $aawd: ambiguous redirectminishell> $?
-minishell: 1: command not found 
-
 
 
 ➜  mini_shel git:(maelmahf) ✗ env -i ./minishell 
