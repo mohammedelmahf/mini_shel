@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:08 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 20:45:36 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/11 11:08:14 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	ft_err_msg(t_err err)
 {
 	if (err.msg == ERRMSG_CMD_NOT_FOUND)
 		return (
-			ft_putstr_fd("minishell", 2),
-			ft_putstr_fd(": command not found ", 2),
+			ft_putstr_fd("minishell: ", 2),
 			ft_putstr_fd(err.cause, 2),
-			ft_putstr_fd(" \n",2),
-			err.num
+			ft_putstr_fd(": command not found", 2),
+			ft_putstr_fd("\n",2),
+			g_data.exit_s = 127
 		);
 	else if (err.msg == ERRMSG_NO_SUCH_FILE)
 		return (
@@ -28,7 +28,7 @@ int	ft_err_msg(t_err err)
 			ft_putstr_fd(err.cause, 2),
 			ft_putstr_fd(": No such file or directory ", 2),
 			ft_putstr_fd("\n", 2),
-			err.num
+			g_data.exit_s = 127
 		);
 	else if (err.msg == ERRMSG_PERM_DENIED)
 		return (

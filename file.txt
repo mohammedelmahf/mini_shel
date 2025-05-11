@@ -1,48 +1,4 @@
 
-----------------------------------------------------------------------------
-
-minishell> mkdir a
-minishell> cd a
-minishell> mkdir b 
-minishell> cd b
-minishell> ls
-minishell> mkdir c
-minishell> pwd
-/home/iel-asef/Desktop/mini_shel/a/b
-minishell> cd c
-minishell> pwd
-/home/iel-asef/Desktop/mini_shel/a/b/c
-minishell> rm -rf ../../b
-minishell> pwd
-/home/iel-asef/Desktop/mini_shel/a/b
-minishell> env | grep OLDPWD
-OLDPWD=/home/iel-asef/Desktop/mini_shel/a/b
-minishell> env | grep PWD
-PWD=/home/iel-asef/Desktop/mini_shel/a/b/c
-OLDPWD=/home/iel-asef/Desktop/mini_shel/a/b
-minishell> 
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-iel-asef@c3r10p9:~/Desktop/mini_shel$ mkdir a
-iel-asef@c3r10p9:~/Desktop/mini_shel$ cd a
-iel-asef@c3r10p9:~/Desktop/mini_shel/a$ mkdir b
-iel-asef@c3r10p9:~/Desktop/mini_shel/a$ cd b
-iel-asef@c3r10p9:~/Desktop/mini_shel/a/b$ mkdir c
-iel-asef@c3r10p9:~/Desktop/mini_shel/a/b$ cd c
-iel-asef@c3r10p9:~/Desktop/mini_shel/a/b/c$ pwd
-/home/iel-asef/Desktop/mini_shel/a/b/c
-iel-asef@c3r10p9:~/Desktop/mini_shel/a/b/c$ rm -rf ../../b
-iel-asef@c3r10p9:~/Desktop/mini_shel/a/b/c$ pwd
-/home/iel-asef/Desktop/mini_shel/a/b/c
-iel-asef@c3r10p9:~/Desktop/mini_shel/a/b/c$ env | grep OLDPWD
-OLDPWD=/home/iel-asef/Desktop/mini_shel/a/b
-iel-asef@c3r10p9:~/Desktop/mini_shel/a/b/c$ env | grep PWD
-PWD=/home/iel-asef/Desktop/mini_shel/a/b/c
-OLDPWD=/home/iel-asef/Desktop/mini_shel/a/b
-iel-asef@c3r10p9:~/Desktop/mini_shel/a/b/c$ 
-------------------------------------------------------------------------------
-
-
 
 exit
 ➜  mini_shel git:(maelmahf) ✗ env -i ./minishell
@@ -51,12 +7,6 @@ minishell> export
 minishell> exit
 ➜  mini_shel git:(maelmahf) ✗ env -i ./minishell
 
-
-
-
-
-ls | ls | ls || ls || ls || ls << 
-       its work
 
 
 

@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/11 10:26:34 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/11 11:08:46 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int exec_child(t_node *node)
             clean_all();
             exit(127);
         }
-
         if(execve(path_status.path ,node->expanded_args , g_data.environ) == -1)
         {
             clean_all();
