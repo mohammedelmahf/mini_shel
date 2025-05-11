@@ -6,10 +6,9 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:15 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 17:02:36 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/11 21:05:09 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../includes/minishell.h"
 
@@ -57,7 +56,6 @@ int	ft_exit(char **s)
 		printf("exit\n");
 		exit((unsigned char)ft_atoi(s[1]));
 	}
-
 	printf("exit\n");
 	exit(g_data.exit_s);
 }

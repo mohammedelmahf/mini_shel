@@ -6,13 +6,13 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:13 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 15:28:45 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/11 21:01:26 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int env_err_msg(char *msg)
+int	env_err_msg(char *msg)
 {
 	ft_putstr_fd("env: ", 2);
 	ft_putstr_fd(msg, 2);

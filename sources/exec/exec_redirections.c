@@ -6,77 +6,74 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:17 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/07 13:34:42 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:42:21 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-
-int exec_in(t_io_node *io_list , int *status)
+int	exec_in(t_io_node *io_list, int *status)
 {
-    int fd;
-
-    if (!io_list->expanded_value || io_list->expanded_value[1])
-	{
-		*status = ft_err_msg(
-				(t_err){ENO_GENERAL, ERRMSG_AMBIGUOUS, io_list->value});
-		return (*status);
-	}
-    
-    fd = open(io_list->expanded_value[0], O_RDONLY);
-    if(fd == -1)
-    {
-        *status = ft_err_msg(check_read(io_list->expanded_value[0]));
-		return (*status);
-    }
-    dup2(fd ,STDIN_FILENO);
-    close(fd);
-    *status = 0;
-	return (*status);
-}
-
-int exec_out(t_io_node *io_list , int *status)
-{
-    int fd;
+	int	fd;
 
 	if (!io_list->expanded_value || io_list->expanded_value[1])
 	{
-		*status = ft_err_msg(
-				(t_err){ENO_GENERAL, ERRMSG_AMBIGUOUS, io_list->value});
+		*status = ft_err_msg((t_err){ENO_GENERAL, ERRMSG_AMBIGUOUS,
+				io_list->value});
 		return (*status);
 	}
-
-    fd = open(io_list->expanded_value[0] , O_CREAT | O_WRONLY | O_TRUNC, 0644);
-    if(fd == -1)
-    {
-        *status = ft_err_msg(check_write(io_list->expanded_value[0]));
+	fd = open(io_list->expanded_value[0], O_RDONLY);
+	if (fd == -1)
+	{
+		*status = ft_err_msg(check_read(io_list->expanded_value[0]));
 		return (*status);
-    }
-    dup2(fd ,STDOUT_FILENO);
-    close(fd);
-    *status = 0;
+	}
+	dup2(fd, STDIN_FILENO);
+	close(fd);
+	*status = 0;
 	return (*status);
 }
 
-int exec_append(t_io_node *io_list , int *status)
+int	exec_out(t_io_node *io_list, int *status)
 {
-    int fd;
-    
-    if (!io_list->expanded_value || io_list->expanded_value[1])
+	int	fd;
+
+	if (!io_list->expanded_value || io_list->expanded_value[1])
 	{
-		*status = ft_err_msg(
-				(t_err){ENO_GENERAL, ERRMSG_AMBIGUOUS, io_list->value});
+		*status = ft_err_msg((t_err){ENO_GENERAL, ERRMSG_AMBIGUOUS,
+				io_list->value});
 		return (*status);
 	}
-    fd = open(io_list->expanded_value[0] , O_CREAT | O_WRONLY | O_APPEND, 0644);
-    if (fd == -1)
+	fd = open(io_list->expanded_value[0], O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if (fd == -1)
 	{
 		*status = ft_err_msg(check_write(io_list->expanded_value[0]));
 		return (*status);
 	}
-    dup2(fd ,STDOUT_FILENO);
-    close(fd);
-    *status = 0;
+	dup2(fd, STDOUT_FILENO);
+	close(fd);
+	*status = 0;
+	return (*status);
+}
+
+int	exec_append(t_io_node *io_list, int *status)
+{
+	int	fd;
+
+	if (!io_list->expanded_value || io_list->expanded_value[1])
+	{
+		*status = ft_err_msg((t_err){ENO_GENERAL, ERRMSG_AMBIGUOUS,
+				io_list->value});
+		return (*status);
+	}
+	fd = open(io_list->expanded_value[0], O_CREAT | O_WRONLY | O_APPEND, 0644);
+	if (fd == -1)
+	{
+		*status = ft_err_msg(check_write(io_list->expanded_value[0]));
+		return (*status);
+	}
+	dup2(fd, STDOUT_FILENO);
+	close(fd);
+	*status = 0;
 	return (0);
 }

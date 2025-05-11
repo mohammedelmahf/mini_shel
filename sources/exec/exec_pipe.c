@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   exec_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:13 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 12:19:20 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:42:30 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-
-void   exec_pipe_child(t_node* tree , int pipfd[2] ,t_direction derection)
+void	exec_pipe_child(t_node *tree, int pipfd[2], t_direction derection)
 {
-    int status = 0;
+	int	status;
 
-    if(derection == TD_LEFT)
-    {
-        close(pipfd[0]);
+	status = 0;
+	if (derection == TD_LEFT)
+	{
+		close(pipfd[0]);
 		dup2(pipfd[1], STDOUT_FILENO);
 		close(pipfd[1]);
-    }
-    else if(derection == TD_RIGHT)
-    {
-        close(pipfd[1]);
+	}
+	else if (derection == TD_RIGHT)
+	{
+		close(pipfd[1]);
 		dup2(pipfd[0], STDIN_FILENO);
 		close(pipfd[0]);
-    }
-   status = exec_node(tree , true);
-   clean_all();
-   exit(status);
+	}
+	status = exec_node(tree, true);
+	clean_all();
+	exit(status);
 }
 
 int	get_exit_status(int status)
@@ -41,23 +41,22 @@ int	get_exit_status(int status)
 	return (WEXITSTATUS(status));
 }
 
-int exec_pipe(t_node *tree)
+int	exec_pipe(t_node *tree)
 {
-	int status;
-	int pipfd[2];
-	int pid_l;
-    int pid_r;
+	int	status;
+	int	pipfd[2];
+	int	pid_l;
+	int	pid_r;
 
-	g_data.signint_child= true;
+	g_data.signint_child = true;
 	pipe(pipfd);
-	
 	pid_l = fork();
 	if (!pid_l)
 		exec_pipe_child(tree->left, pipfd, TD_LEFT);
-	else 
+	else
 	{
 		pid_r = fork();
-		if(!pid_r)
+		if (!pid_r)
 			exec_pipe_child(tree->right, pipfd, TD_RIGHT);
 		else
 		{
@@ -72,14 +71,14 @@ int exec_pipe(t_node *tree)
 	return (ENO_GENERAL);
 }
 
-int exec_node( t_node *tree , bool piped)
+int	exec_node(t_node *tree, bool piped)
 {
-	int status;
-    
-	if(!tree)
-        return 1;
-    if(tree->type == N_PIPE)
-        return(exec_pipe(tree));
+	int	status;
+
+	if (!tree)
+		return (1);
+	if (tree->type == N_PIPE)
+		return (exec_pipe(tree));
 	else if (tree->type == N_AND)
 	{
 		status = exec_node(tree->left, false);
@@ -95,7 +94,6 @@ int exec_node( t_node *tree , bool piped)
 		return (exec_node(tree->right, false));
 	}
 	else
-		return(exec_simple_cmd(tree, piped));
-	
+		return (exec_simple_cmd(tree, piped));
 	return (ENO_GENERAL);
 }

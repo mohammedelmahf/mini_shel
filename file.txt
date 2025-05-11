@@ -22,3 +22,192 @@ declare -x OLDPWD
 declare -x PWD="/home/iel-asef/Desktop/mini_shel"
 declare -x SHLVL="1"
 iel-asef@c3r9p3:/home/iel-asef/Desktop/mini_shel$ 
+--------------------------------------
+
+
+minishell> "''"
+minishell> 
+-------------------------------
+
+^C
+minishell> cat << ll
+> hh
+> 
+------------------------------
+minishell> cat << kk
+> 
+minishell> echo $?
+1
+minishell> ^C
+minishell> echo $?
+130
+
+
+/home/iel-asef/Desktop/last_mini
+minishell> unset PATH
+minishell> ls
+minishell: ls: command not found
+minishell> 
+
+iel-asef@c3r10p4:~/Desktop/last_mini$ ls
+bash: ls: No such file or directory
+iel-asef@c3r10p4:~/Desktop/last_mini$ 
+
+
+minishell> ../
+minishell: ../: Is a directory
+minishell> ..
+minishell: /usr/local/sbin/..: Is a directory
+minishell> 
+
+ishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+^Cminishell> 
+minishell> ^C
+minishell> 
+minishell> 
+minishell> 
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> 
+minishell> 
+minishell> ^C
+minishell> 
+^Cminishell> 
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> ^C
+minishell> 
+minishell> 
+^Cminishell> 
+minishell> ^C
+minishell> 
+minishell> bc
+bc 1.07.1
+Copyright 1991-1994, 1997, 1998, 2000, 2004, 2006, 2008, 2012-2017 Free Software Foundation, Inc.
+This is free software with ABSOLUTELY NO WARRANTY.
+For details type `warranty'. 
+^C
+
+(interrupt) use quit to exit.
+
+minishell> 
+
+minishell> minishell> 
+(interrupt) use quit to exit.
+
+minishell> 
+minishell> 
+(interrupt) use quit to exit.
+^C
+(interrupt) use quit to exit.
+
+minishell> 
+minishell> ^C
+(interrupt) use quit to exit.
+
+minishell> 
+minishell> 
+^Cminishell> 
+
+(interrupt) use quit to exit.
+minishell> ^C
+(interrupt) use quit to exit.
+
+minishell> 
+minishell> ^C
+(interrupt) use quit to exit.
+
+
+minishell> minishell> ^C
+(interrupt) use quit to exit.
+
+minishell> 
+minishell> 
+minishell> ^C
+
+(interrupt) use quit to exit.
+minishell> ^C
+
+(interrupt) use quit to exit.
+
+minishell> minishell> 
+minishell> 

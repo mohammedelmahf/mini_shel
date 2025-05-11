@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:04:41 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/07 09:23:15 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:40:56 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	ft_del(void *str)
 	str = NULL;
 }
 
-void    *garbage_collector(char *str , bool clean)
+void	*garbage_collector(char *str, bool clean)
 {
-    static t_list *garbage_list;
+	static t_list	*garbage_list;
 
-    if(clean)
-    {
-        ft_lstclear(&garbage_list, ft_del);
+	if (clean)
+	{
+		ft_lstclear(&garbage_list, ft_del);
 		return (NULL);
 	}
 	else

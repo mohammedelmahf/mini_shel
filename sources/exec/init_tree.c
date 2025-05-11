@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_tree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 09:36:49 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 17:41:35 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:37:33 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,15 @@ static bool	leave_leaf(int p[2], int *pid)
 	return (false);
 }
 
-void    init_leaf(t_node *node)
+void	init_leaf(t_node *node)
 {
-    t_io_node	*io;
+	t_io_node	*io;
 	int			p[2];
 	int			pid;
 
-    // if(node->args)
-    //     node->expanded_args = expand_args(node->args);
-    io = node->io_list;
+	// if(node->args)
+	// node->expanded_args = expand_args(node->args);
+	io = node->io_list;
 	while (io)
 	{
 		if (io->type == IO_HEREDOC)
@@ -86,19 +86,16 @@ void    init_leaf(t_node *node)
 	}
 }
 
-void    init_tree(t_node *node)
+void	init_tree(t_node *node)
 {
-    if (!node)
-        return ;
-    if(node->type == N_PIPE 
-        || node->type == N_AND
-        || node->type == N_OR)
-    {
-        init_tree(node->left);
-        if(!g_data.heredoc_sigint)
-            init_tree(node->right);
-    }
-    else    
-        init_leaf(node);
+	if (!node)
+		return ;
+	if (node->type == N_PIPE || node->type == N_AND || node->type == N_OR)
+	{
+		init_tree(node->left);
+		if (!g_data.heredoc_sigint)
+			init_tree(node->right);
+	}
+	else
+		init_leaf(node);
 }
-

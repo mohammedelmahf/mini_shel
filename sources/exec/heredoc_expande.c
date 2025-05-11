@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_expande.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 09:24:45 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 17:04:37 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:39:36 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static int	heredoc_expand_writer(char *str, size_t i, int fd)
 void	heredoc_expander(char *str, int fd)
 {
 	size_t	i;
-	size_t consumed;
+	size_t	consumed;
+	char	*prefix;
 
 	i = 0;
 	while (str[i])
@@ -44,7 +45,7 @@ void	heredoc_expander(char *str, int fd)
 		{
 			if (i > 0)
 			{
-				char *prefix = ft_substr(str, 0, i);
+				prefix = ft_substr(str, 0, i);
 				ft_putstr_fd(prefix, fd);
 				free(prefix);
 			}
