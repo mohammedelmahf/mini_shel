@@ -20,23 +20,20 @@ char	*remove_empty_quotes(char *str)
 	char	*cleaned_str;
 	size_t	final_len;
 
-	if ((str[0] == '\'' && str[1] == '\'' && !str[2])
-		|| (str[0] == '"' && str[1] == '"' && !str[2]))
+	if ((str[0] == '\'' && str[1] == '\'' && !str[2]) || (str[0] == '"'
+			&& str[1] == '"' && !str[2]))
 		return (str);
-
 	scratch_buffer = ft_calloc(ft_strlen(str) + 1, sizeof(char));
 	src_i = 0;
 	dst_i = 0;
-
 	while (str[src_i])
 	{
-		if ((str[src_i] == '\'' && str[src_i + 1] == '\'')
-			|| (str[src_i] == '"' && str[src_i + 1] == '"'))
+		if ((str[src_i] == '\'' && str[src_i + 1] == '\'') || (str[src_i] == '"'
+				&& str[src_i + 1] == '"'))
 			src_i += 2;
 		else
 			scratch_buffer[dst_i++] = str[src_i++];
 	}
-
 	free(str);
 	final_len = ft_strlen(scratch_buffer) + 1;
 	cleaned_str = ft_calloc(final_len, sizeof(char));

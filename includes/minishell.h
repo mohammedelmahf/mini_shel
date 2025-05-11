@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 13:52:27 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 21:23:48 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef enum e_direction
 
 typedef enum e_err_num
 {
-	ENO_SUCCESS,   // 0
-	ENO_GENERAL,   // 1
+	ENO_SUCCESS,// 0
+	ENO_GENERAL,// 1
 	ENO_NOT_FOUND, // 2
 	ENO_CANT_EXEC = 126,
 	ENO_EXEC_255 = 255 // SDTERR
@@ -98,7 +98,7 @@ typedef struct s_data
 	struct termios	original_term;
 }					t_data;
 
-extern t_data		g_data;
+extern	t_data	g_data;
 
 typedef struct s_list
 {
@@ -109,7 +109,7 @@ typedef struct s_list
 void				init_tree(t_node *node);
 // utils
 void				*ft_calloc(size_t count, size_t size);
-long	ft_atoi(const char *str);
+long				ft_atoi(const char *str);
 void				ft_putstr_fd(char *s, int fd);
 char				*ft_strdup(const char *src);
 size_t				ft_strlen(const char *str);

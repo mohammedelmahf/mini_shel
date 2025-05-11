@@ -3,59 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   expander_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 09:41:04 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 17:31:15 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 21:12:38 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void    skip_word(char *str , size_t *i)
+void	skip_word(char *str, size_t *i)
 {
-    char quotes;
+	char	quotes;
 
-    while(str[*i] && str[*i] != ' ')
-    {
-        if(str[*i] !='\'' && str[*i] != '"')
-            (*i)++;
-        else
-        {
-            quotes = str[(*i)++];
-            while(str[*i] && str[*i] != quotes)
-                (*i)++;
-            (*i)++;
-        }
-    }
+	while (str[*i] && str[*i] != ' ')
+	{
+		if (str[*i] != '\'' && str[*i] != '"')
+			(*i)++;
+		else
+		{
+			quotes = str[(*i)++];
+			while (str[*i] && str[*i] != quotes)
+				(*i)++;
+			(*i)++;
+		}
+	}
 }
 
-char    **allocater(char *str , char **strs)
+char	**allocater(char *str, char **strs)
 {
-    size_t  start;
-    size_t  i;
-    size_t  j;
+	size_t	start;
+	size_t	i;
+	size_t	j;
 
-    i =0;
-    j = 0;
-    while(str[i])
-    {
-        if(str[i] != ' ')
-        {
-            start = i;
-            skip_word(str , &i);
-            strs[j] = ft_calloc(i - start + 1 , sizeof(char));
-            if(!strs[j])
-                return (NULL);
-            j++;
-        }
-        while(str[i] && str[i] == ' ')
-            i++;
-    }
-    return (strs);
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ')
+		{
+			start = i;
+			skip_word(str, &i);
+			strs[j] = ft_calloc(i - start + 1, sizeof(char));
+			if (!strs[j])
+				return (NULL);
+			j++;
+		}
+		while (str[i] && str[i] == ' ')
+			i++;
+	}
+	return (strs);
 }
 
-void  word_filler(const char *str , char **strs , size_t *i , size_t j)
+void	word_filler(const char *str, char **strs, size_t *i, size_t j)
 {
 	char	quotes;
 	size_t	k;
@@ -74,50 +74,50 @@ void  word_filler(const char *str , char **strs , size_t *i , size_t j)
 			strs[j][k++] = str[(*i)++];
 		}
 	}
-}  
-
-char    **filler(char *str , char **strs)
-{
-    size_t  i;
-    size_t  j;
-
-    i = 0;
-    j = 0;
-    while(str[i] && strs[j])
-    {
-        if(str[i] != ' ')
-        {
-            word_filler(str , strs , &i , j);
-            j++;
-        }
-        while(str[i] && str[i] == ' ')
-            i++;
-    }
-    return (strs);
 }
 
-char    **expander_split(char *str)
+char	**filler(char *str, char **strs)
 {
-    size_t  count;
-    char    **tofree;
-    char    **strs;
-    size_t  i;
-    
-    if(!str)
-        return (NULL);
-    i = 0;
-    count = 0;
-    while(str[i])
-    {
-        if(str[i] != ' ' && ++count)
-            skip_word(str , &i);
-        while(str[i] && str[i] == ' ')
-            i++;
-    }
-    strs = ft_calloc(count +1 , sizeof(char *));
-    tofree = strs;
-    strs = allocater(str , strs);
-    if(!strs || !count)
-        return (free_char2(tofree) , NULL);
-    return (filler(str , strs));
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	while (str[i] && strs[j])
+	{
+		if (str[i] != ' ')
+		{
+			word_filler(str, strs, &i, j);
+			j++;
+		}
+		while (str[i] && str[i] == ' ')
+			i++;
+	}
+	return (strs);
+}
+
+char	**expander_split(char *str)
+{
+	size_t	count;
+	char	**tofree;
+	char	**strs;
+	size_t	i;
+
+	if (!str)
+		return (NULL);
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ' && ++count)
+			skip_word(str, &i);
+		while (str[i] && str[i] == ' ')
+			i++;
+	}
+	strs = ft_calloc(count + 1, sizeof(char *));
+	tofree = strs;
+	strs = allocater(str, strs);
+	if (!strs || !count)
+		return (free_char2(tofree), NULL);
+	return (filler(str, strs));
 }

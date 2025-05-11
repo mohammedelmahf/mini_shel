@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strip_quotes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 10:28:18 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/07 09:58:20 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 21:10:35 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static size_t	unquoted_strlen(char *str)
 				len += (i++ || 1);
 		}
 		else
-				len += (i++ || 1);
+			len += (i++ || 1);
 	}
 	return (len);
 }

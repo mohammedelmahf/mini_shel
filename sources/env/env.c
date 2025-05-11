@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:28:33 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 19:24:39 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/11 21:14:50 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,12 @@ void	init_envlst(void)
 
 	t_env *shlvl = get_env("SHLVL");
 	if (!shlvl)
-	{
 		update_envlst(ft_strdup("SHLVL"), ft_strdup("1"), true);
-	}
-
 	if (!get_env("PATH"))
 	{
 		update_envlst(ft_strdup("PATH"),
 			ft_strdup("/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"),
 			true);
 	}
-
 	update_envlst(ft_strdup("_"), ft_strdup("./minishell"), true);
 }

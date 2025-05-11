@@ -13,8 +13,8 @@
 #ifndef PARSING_H
 # define PARSING_H
 
-# include <stdbool.h>
 # include "tokenizing.h"
+# include <stdbool.h>
 typedef enum e_parse_err_type
 {
 	E_MEM = 1,
@@ -24,16 +24,16 @@ typedef enum e_parse_err_type
 
 typedef enum e_node_type
 {
-    N_PIPE,
-    N_AND,
-    N_OR,
-    N_CMD,
-    N_REDIR_IN,    // 
-    N_REDIR_OUT,   // >
-    N_REDIR_APPEND, // >>
-    N_HEREDOC,     // 
-    N_WORD         // For redirection targets
-}                       t_node_type;
+	N_PIPE,
+	N_AND,
+	N_OR,
+	N_CMD,
+	N_REDIR_IN,     //
+	N_REDIR_OUT,    // >
+	N_REDIR_APPEND, // >>
+	N_HEREDOC,      //
+	N_WORD          // For redirection targets
+}						t_node_type;
 
 typedef enum e_io_type
 {

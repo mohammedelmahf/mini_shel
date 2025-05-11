@@ -12,9 +12,9 @@
 
 #include "../../includes/minishell.h"
 
-void    set_error(t_parse_err_type type)
+void	set_error(t_parse_err_type type)
 {
-    g_data.parse_error.type = type;
+	g_data.parse_error.type = type;
 }
 
 void	handle_parse_error(void)
@@ -23,8 +23,8 @@ void	handle_parse_error(void)
 	t_token_type		token_type;
 	char				**types;
 
-	types = (char *[]){"T_IDENTIFIER",
-		"<", ">", "<<", ">>", "|", "(", ")", "&&", "||", "newline"};
+	types = (char *[]){"T_IDENTIFIER", "<", ">", "<<", ">>", "|", "(", ")",
+		"&&", "||", "newline"};
 	type = g_data.parse_error.type;
 	(void)token_type;
 	(void)types;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_nodes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:23:38 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/04/16 14:19:23 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 21:07:52 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_io_node	*new_io_node(t_token_type type, char *value)
 		return (NULL);
 	new_io_node->type = get_io_type(type);
 	new_io_node->value = ft_strdup(value);
-	if(!new_io_node->value)
-		return (free(new_io_node) ,NULL);
+	if (!new_io_node->value)
+		return (free(new_io_node), NULL);
 	return (new_io_node);
 }
