@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:32 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/03 14:30:33 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/10 21:22:10 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,26 @@
 
 t_path get_path(char *cmd)
 {
-    t_err err;
-    char *value;
+	t_err	err;
+	t_env	*env;
+	char	*value;
 
-    if (!cmd || !cmd[0])
-        return (t_path){(t_err){ENO_NOT_FOUND, ERRMSG_CMD_NOT_FOUND, cmd}, NULL};
+	if (!cmd || !cmd[0])
+		return (t_path){(t_err){ENO_NOT_FOUND, ERRMSG_CMD_NOT_FOUND, cmd}, NULL};
 
-    if (ft_strnstr(cmd, "/", ft_strlen(cmd)))
-    {
-        err = check_exec(cmd, false);
-        return (t_path){err, cmd};
-    }
+	if (ft_strchr(cmd, '/'))
+	{
+		err = check_exec(cmd, false);
+		return (t_path){err, ft_strdup(cmd)};
+	}
 
-    value = getenv("PATH");
-    if (value)
-        return get_env_path(value, cmd);
+	env = get_env("PATH");
+	value = NULL;
+	if (env)
+		value = env->value;
 
-    return (t_path){(t_err){ENO_NOT_FOUND, ERRMSG_NO_SUCH_FILE, cmd}, NULL};
+	if (!value || !*value)
+		return (t_path){(t_err){ENO_NOT_FOUND, ERRMSG_CMD_NOT_FOUND, cmd}, NULL};
+
+	return get_env_path(value, cmd);
 }

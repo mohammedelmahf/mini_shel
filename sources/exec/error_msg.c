@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:08 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 16:27:39 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 09:13:28 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,19 @@ int	ft_err_msg(t_err err)
 {
 	if (err.msg == ERRMSG_CMD_NOT_FOUND)
 		return (
-			ft_putstr_fd("minishell", 2),
-			ft_putstr_fd(": command not found ", 2),
+			ft_putstr_fd("minishell: ", 2),
 			ft_putstr_fd(err.cause, 2),
-			ft_putstr_fd(" \n",2),
-			err.num
+			ft_putstr_fd(": command not found", 2),
+			ft_putstr_fd("\n",2),
+			g_data.exit_s = 127
 		);
 	else if (err.msg == ERRMSG_NO_SUCH_FILE)
 		return (
 			ft_putstr_fd("minishell: ", 2),
-			ft_putstr_fd("No such file or directory", 2),
-			ft_putstr_fd(err.cause, 2),
+			ft_putstr_fd(err.cause , 2),
 			ft_putstr_fd(": No such file or directory", 2),
 			ft_putstr_fd("\n", 2),
-			err.num
+			g_data.exit_s = 127
 		);
 	else if (err.msg == ERRMSG_PERM_DENIED)
 		return (

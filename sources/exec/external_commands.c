@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 21:04:03 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/10 21:44:41 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int exec_child(t_node *node)
     int status;
 
     g_data.signint_child = true;
-   fork_pid = fork();
+    fork_pid = fork();
     if(!fork_pid)
     {
         status = check_redirections(node);
@@ -84,7 +84,6 @@ int exec_child(t_node *node)
             clean_all();
             exit(127);
         }
-
         if(execve(path_status.path ,node->expanded_args , g_data.environ) == -1)
         {
             clean_all();

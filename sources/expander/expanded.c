@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:00:58 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/10 16:23:04 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 09:42:44 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,35 +65,45 @@
 // }
 
 
-char   *handle_dollar(char *str , size_t *i)
+char *handle_dollar(char *str, size_t *i)
 {
     size_t start;
     char *var;
     char *env_value;
 
-    
     (*i)++;
-    if(ft_isdigit(str[*i]) || str[*i] == '@')
-    {
-        (*i)++;
-        return(ft_strdup(""));
-    }
-    else if(str[*i] == '?')
+
+    if (str[*i] == '\0')  
+        return (ft_strdup("$"));
+
+    if (str[*i] == '?')
     {
         (*i)++;
         return (ft_itoa(g_data.exit_s));
     }
-    else if(!is_valid_var_char(str[*i]))
-         return(ft_strdup("$"));
-    start = *i;
-    while(is_valid_var_char(str[*i]))
+    else if (str[*i] == '!')
+    {
         (*i)++;
-    var = ft_substr(str , start , *i - start );
+        return (ft_strdup(""));
+    }
+    else if (!is_valid_var_char(str[*i]))
+        return (ft_strdup("$"));
+
+    start = *i;
+    while (is_valid_var_char(str[*i]))
+        (*i)++;
+
+    var = ft_substr(str, start, *i - start);
     env_value = get_envlst_value(var);
+    free(var);
+
     if (!env_value)
-        return (free(var), ft_strdup(""));
-    return (free(var), ft_strdup(env_value)); 
+        return (ft_strdup(""));
+    
+    return (ft_strdup(env_value));
 }
+
+
 
 char    *cmd_pre_expand(char *str)
 {
