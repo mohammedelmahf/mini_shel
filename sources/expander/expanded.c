@@ -6,63 +6,11 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:00:58 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 09:42:44 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:14:53 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-// char *handle_dollar(char *str, size_t *i)
-// {
-//     char *result = ft_strdup("");
-//     char *tmp;
-
-//     while (str[*i] == '$') {
-//         (*i)++;
-//         if (!str[*i]) {
-//             tmp = ft_strdup("$");
-//         }
-//         else if (str[*i] == '$') {
-//             (*i)++;
-//             tmp = ft_itoa(getpid());
-//         }
-//         // $? → last exit status
-//         else if (str[*i] == '?') {
-//             (*i)++;
-//             tmp = ft_itoa(g_data.exit_s);
-//         }
-//         // $1, $@, etc → unsupported
-//         else if (ft_isdigit(str[*i]) || str[*i] == '@') {
-//             (*i)++;
-//             tmp = ft_strdup("");
-//         }
-//         // $ followed by invalid char (space, etc.) → literal $
-//         else if (!is_valid_var_char(str[*i]))
-//         {
-//             if (str[*i] == '\0')
-//                 tmp = ft_strdup("");      // End of string after $
-//             else if (str[*i] == '$')
-//                 tmp = ft_itoa(getpid());  // Handle $$ (already above, but safe here)
-//             else
-//                 tmp = ft_strdup("");      // Invalid var character → expand to ""
-//         }
-//         // $VAR → lookup
-//         else
-//         {
-//             size_t start = *i;
-//             while (is_valid_var_char(str[*i]))
-//                 (*i)++;
-//             char *var = ft_substr(str, start, *i - start);
-//             char *val = get_envlst_value(var);
-//             tmp = ft_strdup(val ? val : "");
-//             free(var);
-//         }
-
-//         result = ft_strjoin_f(result, tmp);  // joins and frees old result
-//     }
-
-//     return result;
-// }
 
 
 char *handle_dollar(char *str, size_t *i)
@@ -70,10 +18,11 @@ char *handle_dollar(char *str, size_t *i)
     size_t start;
     char *var;
     char *env_value;
+    char tmp[3];
 
     (*i)++;
 
-    if (str[*i] == '\0')  
+    if (str[*i] == '\0')
         return (ft_strdup("$"));
 
     if (str[*i] == '?')
@@ -81,14 +30,14 @@ char *handle_dollar(char *str, size_t *i)
         (*i)++;
         return (ft_itoa(g_data.exit_s));
     }
-    else if (str[*i] == '!')
+    if (!is_valid_var_char(str[*i]))
     {
+        tmp[0] = '$';
+        tmp[1] = str[*i];
+        tmp[2] = '\0';
         (*i)++;
-        return (ft_strdup(""));
+        return (ft_strdup(tmp));
     }
-    else if (!is_valid_var_char(str[*i]))
-        return (ft_strdup("$"));
-
     start = *i;
     while (is_valid_var_char(str[*i]))
         (*i)++;
@@ -99,9 +48,10 @@ char *handle_dollar(char *str, size_t *i)
 
     if (!env_value)
         return (ft_strdup(""));
-    
+
     return (ft_strdup(env_value));
 }
+
 
 
 
@@ -134,7 +84,7 @@ char    **expand_args(char *str)
     str = cmd_pre_expand(str);
     if(!str)
         return (NULL);
-    str = remove_empty_quotes(str);
+    //str = remove_empty_quotes(str);
     if(!str)
         return (NULL);
     expanded = expander_split(str);

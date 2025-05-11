@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 09:49:27 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 13:52:11 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	init_minishell(char **env)
 {
 	ft_memset(&g_data, 0, sizeof(g_data));
 	g_data.environ = env;
+	// init_envlst();
 	init_envlst();
 	g_data.stdin = dup(0);
 	g_data.stdout = dup(1);

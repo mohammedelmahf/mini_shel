@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_commands.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 21:44:41 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 11:08:46 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	reset_std(bool pipd)
 	dup2(g_data.stdout, 1);
 }
 
-
-
 int exec_child(t_node *node)
 {
     t_path path_status;
@@ -73,11 +71,14 @@ int exec_child(t_node *node)
         {
             if (opendir(path_status.path))
             {
-                fprintf(stderr, "minishell: %s: Is a directory\n", path_status.path);
+                ft_putstr_fd("minishell: ", 2);
+                ft_putstr_fd(path_status.path, 2);
+                ft_putstr_fd(": Is a directory\n", 2);
                 clean_all();
                 exit(126);
             }
         }
+
         else
         {
             perror("minishell");
@@ -106,7 +107,7 @@ int  exec_simple_cmd(t_node *node, bool pipe)
     }
     if (!node->expanded_args)
     {
-        printf("Command not found\n");
+        ft_putstr_fd("Command not found\n" ,2);
         stauts = check_redirections(node);
         reset_std(pipe);
         return (stauts && ENO_GENERAL);
