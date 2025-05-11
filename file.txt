@@ -17,7 +17,7 @@ minishell>
 ----------------------------
 minishell> export a="abc" && echo $a
 --------------------------------
-
+9
 
 ➜  mini_shel git:(maelmahf) ✗ env -i ./minishell 
 minishell> export

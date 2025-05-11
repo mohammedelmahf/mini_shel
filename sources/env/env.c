@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:28:33 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 10:39:44 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/11 12:47:38 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,21 +92,6 @@ char *ft_itoa_simple(int n)
     return (str);
 }
 
-// /**
-//  * Creates a new environment variable node
-//  */
-// t_env *envlst_new(char *key, char *value)
-// {
-//     t_env *new;
-
-//     new = (t_env *)malloc(sizeof(*new));
-//     if (!new)
-//         return (NULL);
-//     new->key = key;
-//     new->value = value;
-//     new->next = NULL;
-//     return (new);
-// }
 void init_envlst(void)
 {
     int     i;
@@ -115,14 +100,9 @@ void init_envlst(void)
     char    *value;
     char    cwd[PATH_MAX];
 
-    // First clear any existing environment list
-    // (This function should be implemented if you need to reinit)
-    // clear_envlst();
-    
     g_data.envlst = NULL;
     environ = g_data.environ;
     
-    // Initialize from environ if available
     if (environ)
     {
         i = 0;
@@ -134,14 +114,9 @@ void init_envlst(void)
             i++;
         }
     }
-     // Set OLDPWD if it doesn't exist (as empty like bash does)
     if (!get_env("OLDPWD"))
         update_envlst(ft_strdup("OLDPWD"), NULL, true);
     
-    // Set _ to path of shell
-    update_envlst(ft_strdup("_"), ft_strdup("./minishell"), true);
-    
-    // Ensure PWD is set
     if (!get_env("PWD"))
     {
         if (getcwd(cwd, sizeof(cwd)))
@@ -150,32 +125,18 @@ void init_envlst(void)
             update_envlst(ft_strdup("PWD"), ft_strdup("/"), true);
     }
     
-    // Handle SHLVL (set to 1 if not exists, increment if exists)
     t_env *shlvl = get_env("SHLVL");
     if (!shlvl)
     {
         update_envlst(ft_strdup("SHLVL"), ft_strdup("1"), true);
     }
-    // else if (shlvl->value)
-    // {
-    //     int level = ft_atoi(shlvl->value);
-    //     // Check for invalid SHLVL and reset if needed
-    //     if (level < 0 || !ft_isnumber(shlvl->value))
-    //         level = 0;
-    //     level++; // Increment level
-    //     if (level > 999) // Bash resets to 1 if level > 999
-    //         level = 1;
-    //     update_envlst(ft_strdup("SHLVL"), ft_itoa_simple(level), false);
-    // }
-    // else
-    // {
-    //     update_envlst(ft_strdup("SHLVL"), ft_strdup("1"), false);
-    // }
     
-    // Set OLDPWD if it doesn't exist (as empty like bash does)
-    if (!get_env("OLDPWD"))
-        update_envlst(ft_strdup("OLDPWD"), NULL, true);
+    if (!get_env("PATH"))
+    {
+        update_envlst(ft_strdup("PATH"), 
+                     ft_strdup("/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"), 
+                     true);
+    }
     
-    // Set _ to path of shell
     update_envlst(ft_strdup("_"), ft_strdup("./minishell"), true);
 }
