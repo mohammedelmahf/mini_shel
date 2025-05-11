@@ -6,7 +6,7 @@
 /*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/10 17:38:56 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/11 10:36:15 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
 void				init_tree(t_node *node);
 // utils
 void				*ft_calloc(size_t count, size_t size);
@@ -205,7 +206,7 @@ void				execute_cmd(char **args, char **envp);
 
 void				free_tokens(t_token *tokens);
 void				free_ast(t_node *ast);
-
+void init_envlst(void);
 void				clean_cmd_data(void);
 
 #endif

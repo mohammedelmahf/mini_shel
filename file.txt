@@ -79,3 +79,17 @@ minishell>
 minishell> ls > $aawd
 minishell: $aawd: ambiguous redirectminishell> $?
 minishell: 1: command not found 
+
+
+
+➜  mini_shel git:(maelmahf) ✗ env -i ./minishell 
+minishell> export
+minishell> bash
+minishell: bash: No such file or directory 
+minishell> exit
+➜  mini_shel git:(maelmahf) ✗ env -i bash       
+iel-asef@c3r9p3:/home/iel-asef/Desktop/mini_shel$ export
+declare -x OLDPWD
+declare -x PWD="/home/iel-asef/Desktop/mini_shel"
+declare -x SHLVL="1"
+iel-asef@c3r9p3:/home/iel-asef/Desktop/mini_shel$ 
