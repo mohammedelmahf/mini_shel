@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_commands.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/11 11:08:46 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:41:12 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int exec_child(t_node *node)
                 exit(126);
             }
         }
-
         else
         {
             perror("minishell");
@@ -99,6 +98,8 @@ int exec_child(t_node *node)
 int  exec_simple_cmd(t_node *node, bool pipe)
 {
     int stauts;
+
+    node->expanded_args = expand_args(node->args);
     if (!node->expanded_args || !node->expanded_args[0] || node->expanded_args[0][0] == '\0')
     {
         stauts = check_redirections(node);

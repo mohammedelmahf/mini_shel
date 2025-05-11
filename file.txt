@@ -6,14 +6,6 @@ minishell> exit
 ➜  mini_shel git:(maelmahf) ✗ env -i ./minishell
 
 
-
-minishell> cat << o
-> $HOME           $HOME
-> o
-           /home/iel-asef
-minishell> 
-
-
 ----------------------------
 minishell> export a="abc" && echo $a
 --------------------------------

@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 09:36:49 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/10 12:20:00 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:41:35 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ void    init_leaf(t_node *node)
     t_io_node	*io;
 	int			p[2];
 	int			pid;
-    if(node->args)
-        node->expanded_args = expand_args(node->args);
+
+    // if(node->args)
+    //     node->expanded_args = expand_args(node->args);
     io = node->io_list;
 	while (io)
 	{

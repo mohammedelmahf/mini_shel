@@ -6,54 +6,41 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:00:58 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 17:14:53 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:41:09 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 
-char *handle_dollar(char *str, size_t *i)
+char	*handle_dollar(char *str, size_t *i)
 {
-    size_t start;
-    char *var;
-    char *env_value;
-    char tmp[3];
+	size_t	start;
+	char	*var;
+	char	*env_val;
 
-    (*i)++;
-
-    if (str[*i] == '\0')
-        return (ft_strdup("$"));
-
-    if (str[*i] == '?')
-    {
-        (*i)++;
-        return (ft_itoa(g_data.exit_s));
-    }
-    if (!is_valid_var_char(str[*i]))
-    {
-        tmp[0] = '$';
-        tmp[1] = str[*i];
-        tmp[2] = '\0';
-        (*i)++;
-        return (ft_strdup(tmp));
-    }
-    start = *i;
-    while (is_valid_var_char(str[*i]))
-        (*i)++;
-
-    var = ft_substr(str, start, *i - start);
-    env_value = get_envlst_value(var);
-    free(var);
-
-    if (!env_value)
-        return (ft_strdup(""));
-
-    return (ft_strdup(env_value));
+	(*i)++;
+	if (ft_isdigit(str[*i]) || str[*i] == '@')
+	{
+		(*i)++;
+		return (ft_strdup(""));
+	}
+	else if (str[*i] == '?')
+	{
+		(*i)++;
+		return (ft_itoa(g_data.exit_s));
+	}
+	else if (!is_valid_var_char(str[*i]))
+		return (ft_strdup("$"));
+	start = *i;
+	while (is_valid_var_char(str[*i]))
+		(*i)++;
+	var = ft_substr(str, start, *i - start);
+	env_val = get_envlst_value(var);
+	if (!env_val)
+		return (free(var), ft_strdup(""));
+	return (free(var), ft_strdup(env_val));
 }
-
-
-
 
 char    *cmd_pre_expand(char *str)
 {
@@ -84,7 +71,7 @@ char    **expand_args(char *str)
     str = cmd_pre_expand(str);
     if(!str)
         return (NULL);
-    //str = remove_empty_quotes(str);
+    str = remove_empty_quotes(str);
     if(!str)
         return (NULL);
     expanded = expander_split(str);
