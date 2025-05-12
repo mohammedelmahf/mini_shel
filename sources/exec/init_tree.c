@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 09:36:49 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/12 09:53:11 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/12 14:53:27 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,33 +19,60 @@ static void	heredoc_sigint_handler(int signum)
 	exit(SIGINT);
 }
 
-void	heredoc(t_io_node *io, int p[2])
+void heredoc(t_io_node *io, int p[2])
 {
-	char	*line;
-	char	*quotes;
+    char *line;
+    char *quotes;
+    int delimiter_found = 0;
 
-	signal(SIGINT, heredoc_sigint_handler);
-	quotes = io->value;
-	while (*quotes && *quotes != '"' && *quotes != '\'')
-		quotes++;
-	while (1)
-	{
-		line = readline("> ");
-		if (!line)
-			break ;
-		if (is_delimiter(io->value, line))
-			break ;
-		if (!*quotes)
-			heredoc_expander(line, p[1]);
-		else
-		{
-			ft_putstr_fd(line, p[1]);
-			ft_putstr_fd("\n", p[1]);
-		}
-	}
-	clean_all();
-	exit(0);
+    signal(SIGINT, heredoc_sigint_handler); // handle Ctrl+C during heredoc
+    quotes = io->value;
+
+    // Check if delimiter contains quotes and handle accordingly
+    while (*quotes && *quotes != '"' && *quotes != '\'')
+        quotes++;
+
+    while (1)
+    {
+        line = readline("> ");  // Read input from user
+        
+        // If EOF (Ctrl+D) is encountered, break the loop
+        if (!line)
+        {
+            // If we haven't found the delimiter, issue a warning
+            if (!delimiter_found)
+            {
+                ft_putstr_fd("bash: warning: here-document at line 1 delimited by end-of-file (wanted `", 2);
+                ft_putstr_fd(io->value, 2);
+                ft_putstr_fd("')\n", 2);
+            }
+            break;
+        }
+
+        // Check if the line exactly matches the delimiter
+        if (is_delimiter(io->value, line))
+        {
+            free(line); // Free the line if delimiter is matched
+            delimiter_found = 1;
+            break; // Exit the heredoc loop
+        }
+
+        // Handle variable expansion if there are no quotes in the delimiter
+        if (!*quotes)
+            heredoc_expander(line, p[1]);
+        else
+        {
+            ft_putstr_fd(line, p[1]);
+            ft_putstr_fd("\n", p[1]);
+        }
+
+        free(line); // Free the line after processing
+    }
+
+    clean_all(); // Clean up resources
+    exit(0);     // Exit the heredoc process
 }
+
 
 static bool	leave_leaf(int p[2], int *pid)
 {
