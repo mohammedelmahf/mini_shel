@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/12 10:29:11 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:44:29 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,15 @@ int	exec_child(t_node *node)
 		{
 			clean_all();
 			exit(ENO_GENERAL);
+		}
+		if (ft_strcmp(node->expanded_args[0], ".") == 0
+			|| ft_strcmp(node->expanded_args[0], "..") == 0)
+		{
+			ft_putstr_fd("minishell: ", 2);
+			ft_putstr_fd(node->expanded_args[0], 2);
+			ft_putstr_fd(": command not found\n", 2);
+			clean_all();
+			exit(127);
 		}
 		path_status = get_path((node->expanded_args[0]));
 		if (path_status.err.num != ENO_SUCCESS)
