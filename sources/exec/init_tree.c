@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 09:36:49 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/12 14:53:27 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/12 14:56:28 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,16 @@ void heredoc(t_io_node *io, int p[2])
     char *quotes;
     int delimiter_found = 0;
 
-    signal(SIGINT, heredoc_sigint_handler); // handle Ctrl+C during heredoc
+    signal(SIGINT, heredoc_sigint_handler);
     quotes = io->value;
-
-    // Check if delimiter contains quotes and handle accordingly
     while (*quotes && *quotes != '"' && *quotes != '\'')
         quotes++;
 
     while (1)
     {
-        line = readline("> ");  // Read input from user
-        
-        // If EOF (Ctrl+D) is encountered, break the loop
+        line = readline("> ");
         if (!line)
         {
-            // If we haven't found the delimiter, issue a warning
             if (!delimiter_found)
             {
                 ft_putstr_fd("bash: warning: here-document at line 1 delimited by end-of-file (wanted `", 2);
@@ -48,16 +43,12 @@ void heredoc(t_io_node *io, int p[2])
             }
             break;
         }
-
-        // Check if the line exactly matches the delimiter
         if (is_delimiter(io->value, line))
         {
-            free(line); // Free the line if delimiter is matched
+            free(line);
             delimiter_found = 1;
-            break; // Exit the heredoc loop
+            break;
         }
-
-        // Handle variable expansion if there are no quotes in the delimiter
         if (!*quotes)
             heredoc_expander(line, p[1]);
         else
@@ -65,12 +56,10 @@ void heredoc(t_io_node *io, int p[2])
             ft_putstr_fd(line, p[1]);
             ft_putstr_fd("\n", p[1]);
         }
-
-        free(line); // Free the line after processing
+        free(line);
     }
-
-    clean_all(); // Clean up resources
-    exit(0);     // Exit the heredoc process
+    clean_all();
+    exit(0);
 }
 
 
