@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 09:36:49 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/12 18:02:41 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:03:25 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void heredoc(t_io_node *io, int p[2])
         }
         free(line);
     }
-	printf("g_data.heredoc_sigint = %d\n", g_data.heredoc_sigint);
     clean_all();
     exit(0);
 }

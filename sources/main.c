@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:02:17 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/12 18:09:13 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:14:17 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int ac, char **av, char **env)
 		init_signal();
 		g_data.line = readline(PROMPT);
 		if (!g_data.line)
-			(clean_all(), ft_putstr_fd("exit\n", 1), exit(g_data.exit_s));
+			(garbage_collector(NULL, true) ,clean_all(), ft_putstr_fd("exit\n", 1), exit(g_data.exit_s));
 		if (g_data.line[0])
 			add_history(g_data.line);
 		g_data.tokens = tokenize();
