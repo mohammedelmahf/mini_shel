@@ -1,33 +1,4 @@
 
-➜  mini_shel git:(maelmahf) ✗ env -i ./minishell
-minishell> env
-minishell> export
-minishell> exit
-➜  mini_shel git:(maelmahf) ✗ env -i ./minishell
-
-
-----------------------------
-minishell> export a="abc" && echo $a
---------------------------------
-9
-
-➜  mini_shel git:(maelmahf) ✗ env -i ./minishell 
-minishell> export
-minishell> bash
-minishell: bash: No such file or directory 
-minishell> exit
-➜  mini_shel git:(maelmahf) ✗ env -i bash       
-iel-asef@c3r9p3:/home/iel-asef/Desktop/mini_shel$ export
-declare -x OLDPWD
-declare -x PWD="/home/iel-asef/Desktop/mini_shel"
-declare -x SHLVL="1"
-iel-asef@c3r9p3:/home/iel-asef/Desktop/mini_shel$ 
---------------------------------------
-
-
-minishell> "''"
-minishell> 
--------------------------------
 
 ^C
 minishell> cat << ll
@@ -60,7 +31,7 @@ minishell> ..
 minishell: /usr/local/sbin/..: Is a directory
 minishell> 
 
-ishell> 
+minishell> 
 minishell> ^C
 minishell> 
 minishell> ^C

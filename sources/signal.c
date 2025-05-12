@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:40:08 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 21:17:04 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/12 10:28:39 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	handler_sigint(int num)
 		ft_putstr_fd("\n", 1);
 		g_data.signint_child = false;
 		g_data.heredoc_sigint = true;
+		g_data.exit_s = 130;
 	}
 	else
 	{
@@ -42,10 +43,10 @@ void	init_signal(void)
 	struct termios		term;
 
 	term = g_data.original_term;
-	term.c_lflag |= ECHOCTL;
+	 term.c_lflag |= ECHOCTL;
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
-	g_data.heredoc_sigint = false;
-	g_data.signint_child = false;
 	signal(SIGINT, handler_sigint);
 	signal(SIGQUIT, SIG_IGN);
+	g_data.heredoc_sigint = false;
+	g_data.signint_child = false;
 }
