@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expanded.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:00:58 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 21:12:17 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/12 17:43:07 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,32 @@ char	*handle_dollar(char *str, size_t *i)
 	char	*env_val;
 
 	(*i)++;
+	if (str[*i] == '\0')
+		return (ft_strdup("$"));
+	if (str[*i] == '"')
+		return (ft_strdup("$"));
 	if (ft_isdigit(str[*i]) || str[*i] == '@')
 	{
 		(*i)++;
 		return (ft_strdup(""));
 	}
-	else if (str[*i] == '?')
+	if (str[*i] == '?')
 	{
 		(*i)++;
 		return (ft_itoa(g_data.exit_s));
 	}
-	else if (!is_valid_var_char(str[*i]))
+	if (!is_valid_var_char(str[*i]))
 		return (ft_strdup("$"));
 	start = *i;
 	while (is_valid_var_char(str[*i]))
 		(*i)++;
 	var = ft_substr(str, start, *i - start);
 	env_val = get_envlst_value(var);
+	free(var);
+
 	if (!env_val)
-		return (free(var), ft_strdup(""));
-	return (free(var), ft_strdup(env_val));
+		return (ft_strdup(""));
+	return (ft_strdup(env_val));
 }
 
 char	*cmd_pre_expand(char *str)

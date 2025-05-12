@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 09:36:49 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/12 14:56:28 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:02:41 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void heredoc(t_io_node *io, int p[2])
         }
         free(line);
     }
+	printf("g_data.heredoc_sigint = %d\n", g_data.heredoc_sigint);
     clean_all();
     exit(0);
 }
@@ -69,6 +70,7 @@ static bool	leave_leaf(int p[2], int *pid)
 	signal(SIGQUIT, handler_sigquit);
 	g_data.signint_child = false;
 	close(p[1]);
+	g_data.exit_s = 130;
 	if (WIFEXITED(*pid) && WEXITSTATUS(*pid) == SIGINT)
 		return (true);
 	return (false);
