@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/12 09:39:11 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:26:20 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,25 @@ void				clean_all(void);
 void				execute_cmd(char **args, char **envp);
 void				free_tokens(t_token *tokens);
 void				free_ast(t_node *ast);
-
+void	*garbage_collector(char *str, bool clean);
 void				clean_cmd_data(void);
+
+
+
+
+
+
+
+
+int	check_key(char *str);
+bool	env_entry_exists(char *key);
+
+
+
+
+
+
+
+
 
 #endif

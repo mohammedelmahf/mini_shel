@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:04:41 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 19:40:56 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:48:30 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,28 @@ static void	ft_del(void *str)
 void	*garbage_collector(char *str, bool clean)
 {
 	static t_list	*garbage_list;
+	t_list			*new_node;
 
 	if (clean)
 	{
-		ft_lstclear(&garbage_list, ft_del);
+		if (garbage_list)
+		{
+			ft_lstclear(&garbage_list, ft_del);
+			garbage_list = NULL;
+		}
 		return (NULL);
 	}
-	else
+	else if (str)
 	{
-		ft_lstadd_back(&garbage_list, ft_lstnew(str));
+		new_node = ft_lstnew(str);
+		if (!new_node)
+			return (NULL);
+		ft_lstadd_back(&garbage_list, new_node);
 		return (str);
 	}
+	return (NULL);
 }
+
 
 bool	is_delimiter(char *delimiter, char *str)
 {

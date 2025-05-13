@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:39:18 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 21:17:33 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:59:56 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	clear_envlst(void)
 	t_env	*envlst;
 	t_env	*envlst_tofree;
 
+	if (g_data.envlst == NULL)
+		return;
 	envlst = g_data.envlst;
 	while (envlst)
 	{

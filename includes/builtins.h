@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:40:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/11 21:40:41 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:24:31 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_env	*envlst_new_old(char *key, char *value);
 
 // export
 int		ft_export(char **str);
-void	export_list(void);
+// void	export_list(void);
 
 // echo
 int		ft_echo(char **str);
@@ -50,7 +50,6 @@ int		ft_env(char **args);
 // unset
 int		parsing_key(char *str);
 int		ft_unset(char **s);
-void	*garbage_collector(char *str, bool clean);
 void	msg_err(char *s);
 
 // exit

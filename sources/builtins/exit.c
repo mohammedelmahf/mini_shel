@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:15 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/11 21:05:09 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:14:30 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int	ft_exit(char **s)
 		exit((unsigned char)ft_atoi(s[1]));
 	}
 	printf("exit\n");
+	clean_all();
 	exit(g_data.exit_s);
 }
