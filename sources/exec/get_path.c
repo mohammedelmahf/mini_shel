@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   get_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:32 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/11 19:38:10 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/13 10:32:01 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void	free_split(char **split)
+{
+	size_t	i;
+
+	if (!split)
+		return;
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
 
 t_path	get_env_path(char *path, char *cmd)
 {
@@ -23,14 +38,22 @@ t_path	get_env_path(char *path, char *cmd)
 	split_path = ft_split(path, ':');
 	while (split_path[i])
 	{
-		cmd_path = garbage_collector(ft_strjoin_args(ft_strdup(split_path[i]),
-					ft_strdup(cmd), '/'), false);
+		char *tmp1 = ft_strdup(split_path[i]);
+		char *tmp2 = ft_strdup(cmd);
+		char *joined = ft_strjoin_args(tmp1, tmp2, '/');
+		cmd_path = garbage_collector(joined, false);
+		free(tmp1);
+		free(tmp2);
+
 		err = check_exec(cmd_path, true);
-		if (err.num == ENO_SUCCESS)
-			return ((t_path){(t_err){ENO_SUCCESS, ERRMSG_NONE, NULL},
-				cmd_path});
+		if (err.num == ENO_SUCCESS)  
+		{
+			free_split(split_path);
+			return ((t_path){(t_err){ENO_SUCCESS, ERRMSG_NONE, NULL}, cmd_path});
+		}
 		i++;
 	}
+	free_split(split_path);
 	return ((t_path){(t_err){ENO_NOT_FOUND, ERRMSG_CMD_NOT_FOUND, cmd}, NULL});
 }
 

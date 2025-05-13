@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:28 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/10 17:28:55 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/13 10:37:35 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_env	*envlst_new_old(char *key, char *value)
+t_env *envlst_new_old(char *key, char *value)
 {
-	t_env	*new;
+	t_env *new;
 
-	new = (t_env *)ft_calloc(1, sizeof(t_env));
+	new = garbage_collector(ft_calloc(1, sizeof(t_env)), false);
 	if (!new)
 		return (NULL);
 	new->key = garbage_collector(ft_strdup(key), false);

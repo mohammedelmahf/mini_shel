@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:39:13 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 10:17:35 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/13 10:32:02 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,11 @@ void					append_io_node(t_io_node **lst, t_io_node *new);
 void					clear_cmd_node(t_node *node);
 void					clear_io_list(t_io_node **lst);
 void					handle_parse_error(void);
+
+
+
+
+
+
+void	free_split(char **split);
 #endif
