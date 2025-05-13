@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expanded.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:00:58 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/12 17:43:07 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/13 16:12:22 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ char	*cmd_pre_expand(char *str)
 {
 	char	*expanded;
 	size_t	i;
-
+	
+	if (str == NULL)
+   		return NULL;
 	expanded = ft_strdup("");
 	i = 0;
 	while (str[i])
@@ -62,7 +64,7 @@ char	*cmd_pre_expand(char *str)
 			expanded = ft_strjoin_f(expanded, handle_dquotes(str, &i));
 		else if (str[i] == '$')
 			expanded = ft_strjoin_f(expanded, handle_dollar(str, &i));
-		else
+		else	
 			expanded = ft_strjoin_f(expanded, handle_normal_str(str, &i));
 	}
 	return (expanded);

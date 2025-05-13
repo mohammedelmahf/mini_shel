@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/13 14:55:04 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/13 16:01:36 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,6 @@ void				clean_cmd_data(void);
 
 
 
-
+char	*expand_delimiter(char *raw);
 int	check_key(char *str);
 #endif
