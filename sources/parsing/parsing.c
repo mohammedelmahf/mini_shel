@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:52:12 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 21:08:49 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:48:19 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,21 @@ t_node	*terms(void)
 		return (parse_single_cmd());
 }
 
+static bool	is_binop_with_prec(int min_prec)
+{
+	return (curr_token_type_is_binop() && curr_token_prec() >= min_prec);
+}
+
+static t_node	*parse_right_node(int n_prec)
+{
+	t_node	*right;
+
+	if (!g_data.curr_token)
+		return (set_error(E_SYNTAX), NULL);
+	right = parsing_ast(n_prec);
+	return (right);
+}
+
 t_node	*parsing_ast(int minimum_precedence)
 {
 	t_node			*left;
@@ -50,15 +65,12 @@ t_node	*parsing_ast(int minimum_precedence)
 	left = terms();
 	if (!left)
 		return (NULL);
-	while (curr_token_type_is_binop()
-		&& curr_token_prec() >= minimum_precedence)
+	while (is_binop_with_prec(minimum_precedence))
 	{
 		type = g_data.curr_token->type;
 		next_token();
-		if (!g_data.curr_token)
-			return (set_error(E_SYNTAX), left);
 		n_prec = prec(type) + 1;
-		right = parsing_ast(n_prec);
+		right = parse_right_node(n_prec);
 		if (!right)
 			return (left);
 		left = join_nodes(type, left, right);
@@ -66,29 +78,4 @@ t_node	*parsing_ast(int minimum_precedence)
 			return (clear_ast(&left), clear_ast(&right), NULL);
 	}
 	return (left);
-}
-
-t_node	*join_nodes(t_token_type type, t_node *left, t_node *right)
-{
-	t_node	*node;
-
-	if (g_data.parse_error.type)
-		return (NULL);
-	node = lstnew(get_node_type(type));
-	if (!node)
-		return (set_error(E_MEM), NULL);
-	node->left = left;
-	node->right = right;
-	return (node);
-}
-
-t_node	*start_parsing(void)
-{
-	t_node	*ast;
-
-	g_data.curr_token = g_data.tokens;
-	ast = parsing_ast(0);
-	if (g_data.curr_token)
-		return (set_error(E_SYNTAX), NULL);
-	return (ast);
 }
