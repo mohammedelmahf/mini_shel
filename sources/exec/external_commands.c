@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_commands.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/12 11:44:29 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:44:07 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,20 +111,20 @@ int	exec_simple_cmd(t_node *node, bool pipe)
 	int	stauts;
 
 	node->expanded_args = expand_args(node->args);
-	if (!node->expanded_args || !node->expanded_args[0]
+	if(!node->expanded_args || !node->expanded_args[0]
+		|| node->expanded_args[0][0] == '\0')
+	{
+		stauts = check_redirections(node);
+		reset_std(pipe);
+		return (ENO_SUCCESS);
+	}
+	else if (!node->expanded_args || !node->expanded_args[0]
 		|| node->expanded_args[0][0] == '\0')
 	{
 		ft_putstr_fd("minishell: command not found\n", 2);
 		stauts = check_redirections(node);
 		reset_std(pipe);
 		return (ENO_COMMAND_NOT_FOUND);
-	}
-	else if(!node->expanded_args || !node->expanded_args[0]
-		|| node->expanded_args[0][0] == '\0')
-	{
-		stauts = check_redirections(node);
-		reset_std(pipe);
-		return (ENO_SUCCESS);
 	}
 	else if(!node->expanded_args)
 	{

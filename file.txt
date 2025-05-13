@@ -196,3 +196,86 @@ minishell>
 
 
 valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all ./minishell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+minishell> exit 999999999999999999999999999
+exit
+c3r10p3% $?
+zsh: command not found: 255
+
+bash-5.2$ exit 999999999999999999999999
+exit
+bash: exit: 999999999999999999999999: numeric argument required
+sh-5.2$ $?
+sh: 2: command not found
+sh-5.2$ 
+
+
+a
+a="a"
+minishell> export a="a"
+minishell> 
+
+
+
+minishell> ls
+apk_flutter  ff  frontend  learn_python  mini_shel  Sahti
+minishell> mkdir a
+minishell> chmod 000 a
+minishell> ls
+a  apk_flutter  ff  frontend  learn_python  mini_shel  Sahti
+minishell> cd a
+minishell: cd: a: No such file or directory
+minishell> 
+
+
+
+
+
+
+
+minishell> ls < o << o >> o >> o 0la
+> 
+minishell> ls < o << o >> o >> o 0la
+> 
+bash: warning: here-document at line 1 delimited by end-of-file (wanted `o')
+minishell: o: No such file or directory
+minishell> ls < o << o >> o >> o 0la
+> 
+minishell> 
+
+
+
+
+
+bash-5.2$ bash
+bash-5.2$ ls < o << o >> o >> o 0la
+> ^C
+bash-5.2$ ls < o << o >> o >> o 0la
+> 
+bash: warning: here-document at line 2 delimited by end-of-file (wanted `o')
+ls: cannot access '0la': No such file or directory
+bash-5.2$ 
+

@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:40:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/13 12:24:31 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:55:30 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_env	*envlst_new_old(char *key, char *value);
 
 // export
 int		ft_export(char **str);
+bool	env_entry_exists(char *key);
 // void	export_list(void);
 
 // echo
