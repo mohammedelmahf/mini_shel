@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:27:00 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/13 11:41:56 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/14 18:48:02 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,24 @@ void	envlst_back(t_env *new)
 	curr->next = new;
 }
 
-void	update_envlst(char *key, char *value, bool create)
-{
-	t_env	*envlst;
 
-	envlst = g_data.envlst;
-	while (envlst)
-	{
-		if (!ft_strcmp(key, envlst->key))
-		{
-			if (value)
-				envlst = garbage_collector(ft_strdup(value), false);
-			return ;
-		}
-		envlst = envlst->next;
-	}
-	if (create)
-		envlst_back(envlst_new(key, value));
+void update_envlst(char *key, char *value, bool create)
+{
+    t_env *envlst;
+
+    envlst = g_data.envlst;
+    while (envlst)
+    {
+        if (!ft_strcmp(key, envlst->key))
+        {
+            if (value)
+                envlst->value = garbage_collector(ft_strdup(value), false);
+            return;
+        }
+        envlst = envlst->next;
+    }
+    if (create)
+        envlst_back(envlst_new(key, value));
 }
 
 char	*get_envlst_value(char *key)

@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:40:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/13 14:55:30 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/14 18:49:35 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,4 @@ long	ft_atoi(const char *str);
 int		ft_exit(char **s);
 bool	ft_isnumber(char *s);
 int		ft_isdigit(int c);
-
-// utils_export
-void	update_envlst_export(char *key, char *value, bool create);
-char	*extract_value_export(char *str);
-char	*extract_key_export(char *str);
-int		is_valid_identifier(const char *str);
-
 #endif
