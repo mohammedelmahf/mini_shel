@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:15 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/13 12:14:30 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:22:23 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,33 @@ bool	ft_isnumber(char *s)
 	return (true);
 }
 
-int	ft_exit(char **s)
+int ft_exit(char **s)
 {
-	if (s[1])
-	{
-		if (!ft_isnumber(s[1]))
-		{
-			printf("exit\n");
-			ft_putstr_fd("minishell: exit: ", 2);
-			ft_putstr_fd(s[1], 2);
-			ft_putstr_fd(": numeric argument required\n", 2);
-			exit(2);
-		}
-		if (s[2])
-		{
-			ft_putstr_fd("minishell: exit: too many arguments\n", 2);
-			g_data.exit_s = 1;
-			return (1);
-		}
-		printf("exit\n");
-		exit((unsigned char)ft_atoi(s[1]));
-	}
-	printf("exit\n");
-	clean_all();
-	exit(g_data.exit_s);
+    unsigned char exit_code = g_data.exit_s;
+    
+    printf("exit\n");
+    
+    if (s[1])
+    {
+        if (!ft_isnumber(s[1]))
+        {
+            ft_putstr_fd("minishell: exit: ", 2);
+            ft_putstr_fd(s[1], 2);
+            ft_putstr_fd(": numeric argument required\n", 2);
+            clean_all();
+            exit(2);
+        }
+        
+        if (s[2])
+        {
+            ft_putstr_fd("minishell: exit: too many arguments\n", 2);
+            g_data.exit_s = 1;
+            return (1);
+        }
+        
+        exit_code = (unsigned char)ft_atoi(s[1]);
+    }
+    
+    clean_all();
+    exit(exit_code);
 }
