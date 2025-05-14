@@ -20,7 +20,7 @@ static int	export_err_msg(char *identifier)
 	return (1);
 }
 
-static	void	export_list(void)
+static void	export_list(void)
 {
 	t_env	*list;
 	size_t	i;
@@ -90,7 +90,6 @@ int	ft_export(char **argv)
 	return (exit_s);
 }
 
-
 bool	env_entry_exists(char *key)
 {
 	t_env	*envlst;
@@ -104,4 +103,3 @@ bool	env_entry_exists(char *key)
 	}
 	return (false);
 }
-

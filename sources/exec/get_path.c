@@ -17,7 +17,7 @@ void	free_split(char **split)
 	size_t	i;
 
 	if (!split)
-		return;
+		return ;
 	i = 0;
 	while (split[i])
 	{
@@ -33,23 +33,26 @@ t_path	get_env_path(char *path, char *cmd)
 	t_err	err;
 	char	*cmd_path;
 	char	**split_path;
+	char	*tmp1;
+	char	*tmp2;
+	char	*joined;
 
 	i = 0;
 	split_path = ft_split(path, ':');
 	while (split_path[i])
 	{
-		char *tmp1 = ft_strdup(split_path[i]);
-		char *tmp2 = ft_strdup(cmd);
-		char *joined = ft_strjoin_args(tmp1, tmp2, '/');
+		tmp1 = ft_strdup(split_path[i]);
+		tmp2 = ft_strdup(cmd);
+		joined = ft_strjoin_args(tmp1, tmp2, '/');
 		cmd_path = garbage_collector(joined, false);
 		free(tmp1);
 		free(tmp2);
-
 		err = check_exec(cmd_path, true);
-		if (err.num == ENO_SUCCESS)  
+		if (err.num == ENO_SUCCESS)
 		{
 			free_split(split_path);
-			return ((t_path){(t_err){ENO_SUCCESS, ERRMSG_NONE, NULL}, cmd_path});
+			return ((t_path){(t_err){ENO_SUCCESS, ERRMSG_NONE, NULL},
+				cmd_path});
 		}
 		i++;
 	}

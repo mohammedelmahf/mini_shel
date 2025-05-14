@@ -12,9 +12,9 @@
 
 #include "../../includes/minishell.h"
 
-t_env *envlst_new_old(char *key, char *value)
+t_env	*envlst_new_old(char *key, char *value)
 {
-	t_env *new;
+	t_env	*new;
 
 	new = garbage_collector(ft_calloc(1, sizeof(t_env)), false);
 	if (!new)

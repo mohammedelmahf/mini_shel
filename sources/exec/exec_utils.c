@@ -43,7 +43,6 @@ void	*garbage_collector(char *str, bool clean)
 	return (NULL);
 }
 
-
 bool	is_delimiter(char *delimiter, char *str)
 {
 	while (*str)
