@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:40:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/14 18:49:35 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/15 09:18:01 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,12 @@
 # include "minishell.h"
 # include <stdbool.h>
 
-struct	s_env;
-typedef struct s_env	t_env;
+typedef struct s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}				t_env;
 
 // pwd.c
 int		ft_pwd(void);
@@ -58,4 +62,5 @@ long	ft_atoi(const char *str);
 int		ft_exit(char **s);
 bool	ft_isnumber(char *s);
 int		ft_isdigit(int c);
+
 #endif

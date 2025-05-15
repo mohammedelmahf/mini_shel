@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 09:24:45 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/13 15:56:36 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/15 08:53:21 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,20 @@ static int	heredoc_expand_writer(char *str, size_t i, int fd)
 	return (i);
 }
 
+static void	write_prefix(char *str, size_t start, size_t end, int fd)
+{
+	char	*prefix;
+
+	prefix = ft_substr(str, start, end - start);
+	ft_putstr_fd(prefix, fd);
+	free(prefix);
+}
+
 void	heredoc_expander(char *str, int fd)
 {
 	size_t	i;
 	size_t	consumed;
 	size_t	start;
-	char	*prefix;
 
 	i = 0;
 	start = 0;
@@ -46,11 +54,7 @@ void	heredoc_expander(char *str, int fd)
 		if (str[i] == '$')
 		{
 			if (i > start)
-			{
-				prefix = ft_substr(str, start, i - start);
-				ft_putstr_fd(prefix, fd);
-				free(prefix);
-			}
+				write_prefix(str, start, i, fd);
 			consumed = heredoc_expand_writer(str, i, fd);
 			i += consumed;
 			start = i;
@@ -59,10 +63,6 @@ void	heredoc_expander(char *str, int fd)
 			i++;
 	}
 	if (i > start)
-	{
-		prefix = ft_substr(str, start, i - start);
-		ft_putstr_fd(prefix, fd);
-		free(prefix);
-	}
+		write_prefix(str, start, i, fd);
 	ft_putchar_fd('\n', fd);
 }

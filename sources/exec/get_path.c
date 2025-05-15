@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:32 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/13 10:32:01 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/15 08:52:44 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,37 +27,47 @@ void	free_split(char **split)
 	free(split);
 }
 
-t_path	get_env_path(char *path, char *cmd)
+static char	*build_cmd_path(char *dir, char *cmd)
 {
-	size_t	i;
-	t_err	err;
-	char	*cmd_path;
-	char	**split_path;
 	char	*tmp1;
 	char	*tmp2;
 	char	*joined;
 
+	tmp1 = ft_strdup(dir);
+	tmp2 = ft_strdup(cmd);
+	joined = ft_strjoin_args(tmp1, tmp2, '/');
+	free(tmp1);
+	free(tmp2);
+	return (garbage_collector(joined, false));
+}
+
+static t_path	find_cmd_in_path(char **split_path, char *cmd)
+{
+	t_err	err;
+	size_t	i;
+	char	*cmd_path;
+
 	i = 0;
-	split_path = ft_split(path, ':');
 	while (split_path[i])
 	{
-		tmp1 = ft_strdup(split_path[i]);
-		tmp2 = ft_strdup(cmd);
-		joined = ft_strjoin_args(tmp1, tmp2, '/');
-		cmd_path = garbage_collector(joined, false);
-		free(tmp1);
-		free(tmp2);
+		cmd_path = build_cmd_path(split_path[i], cmd);
 		err = check_exec(cmd_path, true);
 		if (err.num == ENO_SUCCESS)
-		{
-			free_split(split_path);
-			return ((t_path){(t_err){ENO_SUCCESS, ERRMSG_NONE, NULL},
-				cmd_path});
-		}
+			return ((t_path){err, cmd_path});
 		i++;
 	}
-	free_split(split_path);
 	return ((t_path){(t_err){ENO_NOT_FOUND, ERRMSG_CMD_NOT_FOUND, cmd}, NULL});
+}
+
+t_path	get_env_path(char *path, char *cmd)
+{
+	t_path	result;
+	char	**split_path;
+
+	split_path = ft_split(path, ':');
+	result = find_cmd_in_path(split_path, cmd);
+	free_split(split_path);
+	return (result);
 }
 
 t_path	get_path(char *cmd)

@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:39:18 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/14 18:31:30 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/15 08:41:50 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	clear_envlst(void)
 	t_env	*envlst_tofree;
 
 	if (g_data.envlst == NULL)
-		return;
+		return ;
 	envlst = g_data.envlst;
 	while (envlst)
 	{
