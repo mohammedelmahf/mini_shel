@@ -111,7 +111,7 @@ int	exec_simple_cmd(t_node *node, bool pipe)
 	int	stauts;
 
 	node->expanded_args = expand_args(node->args);
-	if(!node->expanded_args || !node->expanded_args[0]
+	if (!node->expanded_args || !node->expanded_args[0]
 		|| node->expanded_args[0][0] == '\0')
 	{
 		stauts = check_redirections(node);
@@ -126,7 +126,7 @@ int	exec_simple_cmd(t_node *node, bool pipe)
 		reset_std(pipe);
 		return (ENO_COMMAND_NOT_FOUND);
 	}
-	else if(!node->expanded_args)
+	else if (!node->expanded_args)
 	{
 		ft_putstr_fd("Command not found\n", 2);
 		stauts = check_redirections(node);

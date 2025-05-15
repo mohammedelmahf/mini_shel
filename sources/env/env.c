@@ -3,39 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:28:33 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/14 18:45:44 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/14 23:54:16 by iel-asef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char *extract_key(char *str)
+char	*extract_key(char *str)
 {
-    size_t i;
-    char *key;
+	size_t	i;
+	char	*key;
 
-    i = 0;
-    while (str[i])
-    {
-        if (str[i] == '=')
-        {
-            key = ft_substr(str, 0, i);
-            if (!key)
-                return NULL;
-            return garbage_collector(key, false);
-        }
-        i++;
-    }
-    
-    key = ft_strdup(str);
-    if (!key)
-        return NULL;
-    return garbage_collector(key, false);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '=')
+		{
+			key = ft_substr(str, 0, i);
+			if (!key)
+				return (NULL);
+			return (garbage_collector(key, false));
+		}
+		i++;
+	}
+	key = ft_strdup(str);
+	if (!key)
+		return (NULL);
+	return (garbage_collector(key, false));
 }
-
 
 char	*extract_value(char *str)
 {
