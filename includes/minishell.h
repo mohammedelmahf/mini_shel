@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/15 09:14:41 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/15 16:57:25 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ t_path			get_path(char *cmd);
 int				get_exit_status(int status);
 bool			is_builtin(char *arg);
 int				exec_builtins(char **args);
+char			*gc_strdup(const char *s);
 
 /* exec--init */
 bool			is_valid_var_char(char c);

@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:32 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/15 08:52:44 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/15 16:56:51 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_path	get_path(char *cmd)
 	if (ft_strchr(cmd, '/'))
 	{
 		err = check_exec(cmd, false);
-		return ((t_path){err, ft_strdup(cmd)});
+		return ((t_path){err, gc_strdup(cmd)});
 	}
 	env = get_env("PATH");
 	value = NULL;
