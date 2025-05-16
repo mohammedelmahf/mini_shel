@@ -6,11 +6,40 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:15 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/15 10:19:46 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/16 09:11:50 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+static	bool	is_valid_long_long(const char *str)
+{
+	int			i = 0;
+	int			sign = 1;
+	unsigned long long	num = 0;
+	unsigned long long	max = (unsigned long long)LLONG_MAX + 1;
+
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+
+	if (!str[i])
+		return (false);
+
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (false);
+		num = num * 10 + (str[i] - '0');
+		if ((sign == 1 && num > LLONG_MAX) || (sign == -1 && num > max))
+			return (false);
+		i++;
+	}
+	return (true);
+}
 
 int	ft_isdigit(int c)
 {
@@ -43,7 +72,7 @@ int	ft_exit(char **s)
 	printf("exit\n");
 	if (s[1])
 	{
-		if (!ft_isnumber(s[1]))
+		if (!is_valid_long_long(s[1]))
 		{
 			ft_putstr_fd("minishell: exit: ", 2);
 			ft_putstr_fd(s[1], 2);
