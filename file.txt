@@ -1,3 +1,59 @@
+minishell> !
+minishell: !: command not found
+
+minishell> ABC=hola
+minishell: ABC=hola: command not found
+
+minishell> echo \$HOME
+\/home/iel-asef
+
+echo $UID
+
+minishell> echo "$DONTEXIST" "Makefile"
+Makefile
+//escape
+
+-----------------------------
+
+minishell> sleep 3 | sleep 3 | sleep 3
+^C
+
+minishell> 
+
+
+minishell> env env
+env: env: No such file or directory
+minishell> env env env env env
+env: env: No such file or directory
+minishell> 
+
+el-asef@c3r8p5:~/Desktop$  export ""
+bash: export: `': not a valid identifier
+iel-asef@c3r8p5:~/Desktop$ 
+
+minishell> export HOLA$USER=bonjour
+minishell: export: `HOLAiel-asef=bonjour': not a valid identifier
+minishell> 
+
+minishell> unset PWD
+minishell> env | grep PWD
+minishell: grep: command not found
+minishell> pwd
+/home/iel-asef/Desktop/mini_shel
+minishell> 
+
+
+minishell> history
+minishell: history: command not found
+minishell> 
+
+
+minishell> pwd -p
+/home/iel-asef/Desktop/mini_shel
+minishell> 
+
+
+
 
 
 
