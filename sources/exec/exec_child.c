@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 08:48:44 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/15 09:15:44 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/17 13:00:49 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,17 @@ void	handle_special_commands(char *cmd)
 
 void	handle_invalid_path(char *path)
 {
+	DIR *dir;
+	
 	if (access(path, F_OK) == 0)
 	{
-		if (opendir(path))
+		dir = opendir(path);
+		if (dir)
 		{
 			ft_putstr_fd("minishell: ", 2);
 			ft_putstr_fd(path, 2);
 			ft_putstr_fd(": Is a directory\n", 2);
+			closedir(dir);
 			clean_all();
 			exit(126);
 		}
