@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   globber_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:34:32 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 21:11:36 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/17 08:42:40 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**join_str_arr(char ***str)
 		j = 0;
 		while (str[i][j])
 		{
-			joined[str_count + j] = ft_strdup(str[i][j]);
+			joined[str_count + j] =  gc_strdup(str[i][j]);
 			j++;
 		}
 		str_count += j;

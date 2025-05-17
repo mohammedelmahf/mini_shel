@@ -2,3 +2,234 @@
 
 
 valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all ./minishell
+
+
+
+minishell> > o
+Command not found
+minishell> cat o
+
+
+sh-5.2$ bash
+bash-5.2$ > o
+bash-5.2$ 
+----------------------------------------------------------------------------------------------
+minishell> ?
+minishell: ?: command not found
+==1949126== 
+==1949126== HEAP SUMMARY:
+==1949126==     in use at exit: 208,181 bytes in 222 blocks
+==1949126==   total heap usage: 1,076 allocs, 854 frees, 370,466 bytes allocated
+==1949126== 
+==1949126== LEAK SUMMARY:
+==1949126==    definitely lost: 0 bytes in 0 blocks
+==1949126==    indirectly lost: 0 bytes in 0 blocks
+==1949126==      possibly lost: 0 bytes in 0 blocks
+==1949126==    still reachable: 0 bytes in 0 blocks
+==1949126==         suppressed: 208,181 bytes in 222 blocks
+==1949126== 
+==1949126== For lists of detected and suppressed errors, rerun with: -s
+==1949126== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+minishell> /
+minishell: /: Is a directory
+==1949142== 
+==1949142== HEAP SUMMARY:
+==1949142==     in use at exit: 240,997 bytes in 223 blocks
+==1949142==   total heap usage: 1,043 allocs, 820 frees, 435,452 bytes allocated
+==1949142== 
+==1949142== 32,816 bytes in 1 blocks are definitely lost in loss record 64 of 64
+==1949142==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1949142==    by 0x49AB30A: __alloc_dir (opendir.c:115)
+==1949142==    by 0x49AB30A: opendir_tail (opendir.c:63)
+==1949142==    by 0x49AB30A: opendir (opendir.c:86)
+==1949142==    by 0x403608: handle_invalid_path (exec_child.c:31)
+==1949142==    by 0x40372C: child_exec_logic (exec_child.c:67)
+==1949142==    by 0x402CBE: exec_child (external_commands.c:23)
+==1949142==    by 0x402E91: handle_exec_logic (external_commands.c:53)
+==1949142==    by 0x402D74: exec_simple_cmd (external_commands.c:68)
+==1949142==    by 0x402B4F: exec_node (exec_pipe.c:96)
+==1949142==    by 0x404FE3: execution (main.c:39)
+==1949142==    by 0x4050DB: main (main.c:65)
+==1949142== 
+==1949142== LEAK SUMMARY:
+==1949142==    definitely lost: 32,816 bytes in 1 blocks
+==1949142==    indirectly lost: 0 bytes in 0 blocks
+==1949142==      possibly lost: 0 bytes in 0 blocks
+==1949142==    still reachable: 0 bytes in 0 blocks
+==1949142==         suppressed: 208,181 bytes in 222 blocks
+==1949142== 
+==1949142== For lists of detected and suppressed errors, rerun with: -s
+==1949142== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+minishell> 
+----------------------------------------------------------------------------------------
+minishell> ls << l < a < 
+> 
+==1949663== 
+==1949663== HEAP SUMMARY:
+==1949663==     in use at exit: 208,671 bytes in 230 blocks
+==1949663==   total heap usage: 1,150 allocs, 920 frees, 404,961 bytes allocated
+==1949663== 
+==1949663== 2 bytes in 1 blocks are indirectly lost in loss record 1 of 71
+==1949663==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1949663==    by 0x403BA1: ft_strdup (ft_strdup.c:23)
+==1949663==    by 0x406602: new_io_node (parsing_nodes.c:54)
+==1949663==    by 0x4061C9: get_io_list (parsing_help.c:45)
+==1949663==    by 0x40645D: parse_single_cmd (parsing_help.c:95)
+==1949663==    by 0x405EB1: terms (parsing.c:38)
+==1949663==    by 0x405EF9: parsing_ast (parsing.c:65)
+==1949663==    by 0x406AEE: start_parsing (parsing_utils2.c:34)
+==1949663==    by 0x4050B6: main (main.c:59)
+==1949663== 
+==1949663== 50 (48 direct, 2 indirect) bytes in 1 blocks are definitely lost in loss record 20 of 71
+==1949663==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1949663==    by 0x40392C: ft_calloc (ft_calloc.c:21)
+==1949663==    by 0x4065CD: new_io_node (parsing_nodes.c:50)
+==1949663==    by 0x4061C9: get_io_list (parsing_help.c:45)
+==1949663==    by 0x40645D: parse_single_cmd (parsing_help.c:95)
+==1949663==    by 0x405EB1: terms (parsing.c:38)
+==1949663==    by 0x405EF9: parsing_ast (parsing.c:65)
+==1949663==    by 0x406AEE: start_parsing (parsing_utils2.c:34)
+==1949663==    by 0x4050B6: main (main.c:59)
+==1949663== 
+==1949663== LEAK SUMMARY:
+==1949663==    definitely lost: 48 bytes in 1 blocks
+==1949663==    indirectly lost: 2 bytes in 1 blocks
+==1949663==      possibly lost: 0 bytes in 0 blocks
+==1949663==    still reachable: 0 bytes in 0 blocks
+==1949663==         suppressed: 208,621 bytes in 228 blocks
+==1949663== 
+==1949663== For lists of detected and suppressed errors, rerun with: -s
+==1949663== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+minishell> 
+-----------------------------------------------------------------------------------------
+minishell> ls << o
+> $HOME                        $HOME
+==1950366== Invalid read of size 1
+==1950366==    at 0x4030B7: heredoc_expander (heredoc_expande.c:52)
+==1950366==    by 0x40351B: write_line_to_pipe (heredoc_utils.c:33)
+==1950366==    by 0x403479: heredoc_loop (heredoc_utils.c:62)
+==1950366==    by 0x40339B: heredoc (heredoc_utils.c:75)
+==1950366==    by 0x402F0E: init_leaf (init_tree.c:42)
+==1950366==    by 0x403088: init_tree (init_tree.c:64)
+==1950366==    by 0x404F84: execution (main.c:30)
+==1950366==    by 0x4050DB: main (main.c:65)
+==1950366==  Address 0x4bfdb6f is 15 bytes after a block of size 48 in arena "client"
+==1950366== 
+----------------------------------------------------------------------------------------------
+minishell> echo" " "awd"awd aaaa>o >;
+minishell: echo : command not found
+==1950886== 
+==1950886== HEAP SUMMARY:
+==1950886==     in use at exit: 208,780 bytes in 235 blocks
+==1950886==   total heap usage: 3,717 allocs, 3,482 frees, 4,241,937 bytes allocated
+==1950886== 
+==1950886== 2 bytes in 1 blocks are indirectly lost in loss record 2 of 76
+==1950886==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1950886==    by 0x403BA1: ft_strdup (ft_strdup.c:23)
+==1950886==    by 0x406602: new_io_node (parsing_nodes.c:54)
+==1950886==    by 0x4061C9: get_io_list (parsing_help.c:45)
+==1950886==    by 0x40645D: parse_single_cmd (parsing_help.c:95)
+==1950886==    by 0x405EB1: terms (parsing.c:38)
+==1950886==    by 0x405EF9: parsing_ast (parsing.c:65)
+==1950886==    by 0x406AEE: start_parsing (parsing_utils2.c:34)
+==1950886==    by 0x4050B6: main (main.c:59)
+==1950886== 
+==1950886== 50 (48 direct, 2 indirect) bytes in 1 blocks are definitely lost in loss record 24 of 76
+==1950886==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1950886==    by 0x40392C: ft_calloc (ft_calloc.c:21)
+==1950886==    by 0x4065CD: new_io_node (parsing_nodes.c:50)
+==1950886==    by 0x4061C9: get_io_list (parsing_help.c:45)
+==1950886==    by 0x40645D: parse_single_cmd (parsing_help.c:95)
+==1950886==    by 0x405EB1: terms (parsing.c:38)
+==1950886==    by 0x405EF9: parsing_ast (parsing.c:65)
+==1950886==    by 0x406AEE: start_parsing (parsing_utils2.c:34)
+==1950886==    by 0x4050B6: main (main.c:59)
+==1950886== 
+==1950886== LEAK SUMMARY:
+==1950886==    definitely lost: 48 bytes in 1 blocks
+==1950886==    indirectly lost: 2 bytes in 1 blocks
+==1950886==      possibly lost: 0 bytes in 0 blocks
+==1950886==    still reachable: 0 bytes in 0 blocks
+==1950886==         suppressed: 208,730 bytes in 233 blocks
+==1950886== 
+==1950886== For lists of detected and suppressed errors, rerun with: -s
+==1950886== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 1 from 1)
+minishell> 
+------------------------------------------------------------------------------------------
+minishell> $?
+minishell: 0: command not found
+==1951758== Invalid free() / delete / delete[] / realloc()
+==1951758==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1951758==    by 0x401AA4: ft_del (exec_utils.c:17)
+==1951758==    by 0x403E77: ft_lstdelone (ft_lstdelone.c:19)
+==1951758==    by 0x403A45: ft_lstclear (ft_lstclear.c:24)
+==1951758==    by 0x401A05: garbage_collector (exec_utils.c:30)
+==1951758==    by 0x406B41: clean_all (clean.c:34)
+==1951758==    by 0x40371B: child_exec_logic (exec_child.c:64)
+==1951758==    by 0x402CBE: exec_child (external_commands.c:23)
+==1951758==    by 0x402E91: handle_exec_logic (external_commands.c:53)
+==1951758==    by 0x402D74: exec_simple_cmd (external_commands.c:68)
+==1951758==    by 0x402B4F: exec_node (exec_pipe.c:96)
+==1951758==    by 0x404FE3: execution (main.c:39)
+==1951758==  Address 0x54ec020 is 0 bytes inside a block of size 4 free'd
+==1951758==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1951758==    by 0x401AA4: ft_del (exec_utils.c:17)
+==1951758==    by 0x403E77: ft_lstdelone (ft_lstdelone.c:19)
+==1951758==    by 0x403A45: ft_lstclear (ft_lstclear.c:24)
+==1951758==    by 0x401A05: garbage_collector (exec_utils.c:30)
+==1951758==    by 0x406B41: clean_all (clean.c:34)
+==1951758==    by 0x40371B: child_exec_logic (exec_child.c:64)
+==1951758==    by 0x402CBE: exec_child (external_commands.c:23)
+==1951758==    by 0x402E91: handle_exec_logic (external_commands.c:53)
+==1951758==    by 0x402D74: exec_simple_cmd (external_commands.c:68)
+==1951758==    by 0x402B4F: exec_node (exec_pipe.c:96)
+==1951758==    by 0x404FE3: execution (main.c:39)
+==1951758==  Block was alloc'd at
+==1951758==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1951758==    by 0x403BA1: ft_strdup (ft_strdup.c:23)
+==1951758==    by 0x4013A3: extract_key (env.c:32)
+==1951758==    by 0x407A4A: ft_unset (unset.c:78)
+==1951758==    by 0x401CAF: exec_builtins (exec_builtin.c:26)
+==1951758==    by 0x402E6D: handle_exec_logic (external_commands.c:49)
+==1951758==    by 0x402D74: exec_simple_cmd (external_commands.c:68)
+==1951758==    by 0x402B4F: exec_node (exec_pipe.c:96)
+==1951758==    by 0x404FE3: execution (main.c:39)
+==1951758==    by 0x4050DB: main (main.c:65)
+==1951758== 
+==1951758== 
+==1951758== HEAP SUMMARY:
+==1951758==     in use at exit: 208,780 bytes in 235 blocks
+==1951758==   total heap usage: 4,356 allocs, 4,122 frees, 4,775,208 bytes allocated
+==1951758== 
+==1951758== 2 bytes in 1 blocks are indirectly lost in loss record 2 of 76
+==1951758==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1951758==    by 0x403BA1: ft_strdup (ft_strdup.c:23)
+==1951758==    by 0x406602: new_io_node (parsing_nodes.c:54)
+==1951758==    by 0x4061C9: get_io_list (parsing_help.c:45)
+==1951758==    by 0x40645D: parse_single_cmd (parsing_help.c:95)
+==1951758==    by 0x405EB1: terms (parsing.c:38)
+==1951758==    by 0x405EF9: parsing_ast (parsing.c:65)
+==1951758==    by 0x406AEE: start_parsing (parsing_utils2.c:34)
+==1951758==    by 0x4050B6: main (main.c:59)
+==1951758== 
+==1951758== 50 (48 direct, 2 indirect) bytes in 1 blocks are definitely lost in loss record 24 of 76
+==1951758==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1951758==    by 0x40392C: ft_calloc (ft_calloc.c:21)
+==1951758==    by 0x4065CD: new_io_node (parsing_nodes.c:50)
+==1951758==    by 0x4061C9: get_io_list (parsing_help.c:45)
+==1951758==    by 0x40645D: parse_single_cmd (parsing_help.c:95)
+==1951758==    by 0x405EB1: terms (parsing.c:38)
+==1951758==    by 0x405EF9: parsing_ast (parsing.c:65)
+==1951758==    by 0x406AEE: start_parsing (parsing_utils2.c:34)
+==1951758==    by 0x4050B6: main (main.c:59)
+==1951758== 
+==1951758== LEAK SUMMARY:
+==1951758==    definitely lost: 48 bytes in 1 blocks
+==1951758==    indirectly lost: 2 bytes in 1 blocks
+==1951758==      possibly lost: 0 bytes in 0 blocks
+==1951758==    still reachable: 0 bytes in 0 blocks
+==1951758==         suppressed: 208,730 bytes in 233 blocks
+==1951758== 
+==1951758== For lists of detected and suppressed errors, rerun with: -s
+==1951758== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 1 from 1)
+minishell> 

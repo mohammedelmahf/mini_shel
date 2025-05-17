@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:13 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/11 21:01:26 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/17 12:51:15 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	env_err_msg(char *msg)
 int	ft_env(char **args)
 {
 	t_env	*list;
-
+	
 	list = g_data.envlst;
 	if (args && args[1])
 		return (env_err_msg(args[1]));

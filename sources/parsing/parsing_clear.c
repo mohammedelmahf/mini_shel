@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:29:37 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 21:07:39 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/16 17:21:04 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,13 @@ void	clear_io_list(t_io_node **lst)
 		return ;
 	while (curr_node)
 	{
-		free(curr_node->value);
-		free_char2(curr_node->expanded_value);
 		next = curr_node->next;
 		free(curr_node);
 		curr_node = next;
 	}
 	*lst = NULL;
 }
+
 
 void	clear_cmd_node(t_node *node)
 {
