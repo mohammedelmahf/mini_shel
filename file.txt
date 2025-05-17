@@ -295,6 +295,48 @@ cd / | echo $?
 ==2092140==    by 0x402AA0: exec_node (exec_pipe.c:80)
 ==2092140==    by 0x404FE3: execution (main.c:39)
 
+----------------------------------------------------------------------
+
+minishell> > pwd
+Command not found
+minishell> ls
+bonjour  file.txt  includes  minishell	       prout  readline.supp  sources
+env	 hello	   Makefile  minishell_tester  pwd    README
+minishell> 
+
+
+minishell> >>hola
+Command not found /////////////mkhashach tla3 
+minishell> ls
+env	  hola	    Makefile   minishell_tester  README
+file.txt  includes  minishell  readline.supp	 sources
+minishell> cat hola 
+minishell> 
+
+----------------------------------------------------------
+
+minishell>  >bonjour >hello < prout
+Command not found <-- had bant t9ahba 9lab aliha 
+minishell: prout: No such file or directory
+minishell> 
+
+
+
+ export HOLA="bonjour hello"
+iel-asef@c3r8p5:~$ >"$HOLA"
+iel-asef@c3r8p5:~$ ls
+
+minishell>  < a
+Command not found
+minishell: a: No such file or directory
+minishell> 
+
+
+
+
+minishell>  > bonjour | echo hola
+Command not found
+hola
 
 
 
@@ -302,11 +344,7 @@ cd / | echo $?
 
 
 
-
-
-
-
-
+-------------730------------
 
 
 
