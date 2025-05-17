@@ -7,7 +7,7 @@ minishell: ABC=hola: command not found
 minishell> echo \$HOME
 \/home/iel-asef
 
-echo $UID
+echo $UID   ///////////// ila bgiti ??
 
 minishell> echo "$DONTEXIST" "Makefile"
 Makefile
@@ -156,53 +156,6 @@ cd / | echo $?
 ==2092140==    by 0x402AA0: exec_node (exec_pipe.c:80)
 ==2092140==    by 0x404FE3: execution (main.c:39)
 
-----------------------------------------------------------------------
-
-minishell> > pwd
-Command not found
-minishell> ls
-bonjour  file.txt  includes  minishell	       prout  readline.supp  sources
-env	 hello	   Makefile  minishell_tester  pwd    README
-minishell> 
-
-
-minishell> >>hola
-Command not found /////////////mkhashach tla3 
-minishell> ls
-env	  hola	    Makefile   minishell_tester  README
-file.txt  includes  minishell  readline.supp	 sources
-minishell> cat hola 
-minishell> 
-
-----------------------------------------------------------
-
-minishell>  >bonjour >hello < prout
-Command not found <-- had bant t9ahba 9lab aliha 
-minishell: prout: No such file or directory
-minishell> 
-
-
-
- export HOLA="bonjour hello"
-iel-asef@c3r8p5:~$ >"$HOLA"
-iel-asef@c3r8p5:~$ ls
-
-minishell>  < a
-Command not found
-minishell: a: No such file or directory
-minishell> 
-
-
-
-
-minishell>  > bonjour | echo hola
-Command not found
-hola
-
-
-
-
-
 
 
 -------------730------------
@@ -219,16 +172,6 @@ hola
 
 valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all ./minishell
 
-
-
-minishell> > o
-Command not found
-minishell> cat o
-
-
-sh-5.2$ bash
-bash-5.2$ > o
-bash-5.2$ 
 ---------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
 minishell> ls << l < a < 
@@ -443,18 +386,56 @@ exit
 ==210804== 
 
 
-
-
-
-
-
-
-
-minishell> >$HOLA>hey
-Command not found
-minishell: $HOLA: ambiguous redirect
-minishell> 
-
+minishell> > bonjour | echo hola
+hola
+==31526== 
+==31526== HEAP SUMMARY:
+==31526==     in use at exit: 208,259 bytes in 230 blocks
+==31526==   total heap usage: 1,125 allocs, 895 frees, 440,169 bytes allocated
+==31526== 
+==31526== 6 bytes in 3 blocks are indirectly lost in loss record 1 of 67
+==31526==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==31526==    by 0x4038FC: ft_calloc (ft_calloc.c:21)
+==31526==    by 0x409385: strip_quotes (strip_quotes.c:59)
+==31526==    by 0x408574: expand_args (expanded.c:107)
+==31526==    by 0x402F19: init_leaf (init_tree.c:48)
+==31526==    by 0x403058: init_tree (init_tree.c:64)
+==31526==    by 0x404F54: execution (main.c:30)
+==31526==    by 0x4050AB: main (main.c:65)
+==31526== 
+==31526== 8 bytes in 1 blocks are indirectly lost in loss record 4 of 67
+==31526==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==31526==    by 0x4038FC: ft_calloc (ft_calloc.c:21)
+==31526==    by 0x409385: strip_quotes (strip_quotes.c:59)
+==31526==    by 0x408574: expand_args (expanded.c:107)
+==31526==    by 0x402F19: init_leaf (init_tree.c:48)
+==31526==    by 0x403058: init_tree (init_tree.c:64)
+==31526==    by 0x40302F: init_tree (init_tree.c:59)
+==31526==    by 0x404F54: execution (main.c:30)
+==31526==    by 0x4050AB: main (main.c:65)
+==31526== 
+==31526== 24 (16 direct, 8 indirect) bytes in 1 blocks are definitely lost in loss record 14 of 67
+==31526==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==31526==    by 0x4038FC: ft_calloc (ft_calloc.c:21)
+==31526==    by 0x408C4A: join_str_arr (globber_utils.c:33)
+==31526==    by 0x40911C: globber (globber.c:71)
+==31526==    by 0x40852C: expand_args (expanded.c:101)
+==31526==    by 0x402F19: init_leaf (init_tree.c:48)
+==31526==    by 0x403058: init_tree (init_tree.c:64)
+==31526==    by 0x40302F: init_tree (init_tree.c:59)
+==31526==    by 0x404F54: execution (main.c:30)
+==31526==    by 0x4050AB: main (main.c:65)
+==31526== 
+==31526== 54 (48 direct, 6 indirect) bytes in 3 blocks are definitely lost in loss record 19 of 67
+==31526==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==31526==    by 0x4038FC: ft_calloc (ft_calloc.c:21)
+==31526==    by 0x408C4A: join_str_arr (globber_utils.c:33)
+==31526==    by 0x40911C: globber (globber.c:71)
+==31526==    by 0x40852C: expand_args (expanded.c:101)
+==31526==    by 0x402F19: init_leaf (init_tree.c:48)
+==31526==    by 0x403058: init_tree (init_tree.c:64)
+==31526==    by 0x404F54: execution (main.c:30)
+==31526==    by 0x4050AB: main (main.c:65)
 
 
 minishell>  <a cat <b <c

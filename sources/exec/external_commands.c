@@ -33,7 +33,7 @@ static int	handle_exec_logic(t_node *node, bool pipe)
 	if (!node->expanded_args || !node->expanded_args[0]
 		|| node->expanded_args[0][0] == '\0')
 	{
-		ft_putstr_fd("minishell: command not found\n", 2);
+		//ft_putstr_fd("minishell: command not found\n", 2);
 		status = check_redirections(node);
 		reset_std(pipe);
 		return (ENO_COMMAND_NOT_FOUND);
@@ -60,7 +60,7 @@ int	exec_simple_cmd(t_node *node, bool pipe)
 	node->expanded_args = expand_args(node->args);
 	if (!node->expanded_args)
 	{
-		ft_putstr_fd("Command not found\n", 2);
+		//ft_putstr_fd("Command not found\n", 2);
 		status = check_redirections(node);
 		reset_std(pipe);
 		return (ENO_GENERAL);
