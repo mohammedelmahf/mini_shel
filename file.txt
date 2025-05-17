@@ -46,43 +46,11 @@ minishell>
 
 ---------------------------------------------------------------------------------------
 
-minishell> ///////
-minishell: ///////: Is a directory
-==2087436== 
-==2087436== HEAP SUMMARY:
-==2087436==     in use at exit: 240,997 bytes in 223 blocks
-==2087436==   total heap usage: 1,115 allocs, 892 frees, 439,787 bytes allocated
-==2087436== 
-==2087436== 32,816 bytes in 1 blocks are definitely lost in loss record 64 of 64
-==2087436==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
 
 
 minishell> echo $USER$var\$USER$USER\$USERtest$USER
 iel-asef\iel-asefiel-asef\iel-asef
 minishell> 
-
-
- EechoE
-minishell: EechoE: command not found
-==2088235== 
-==2088235== HEAP SUMMARY:
-==2088235==     in use at exit: 208,491 bytes in 227 blocks
-==2088235==   total heap usage: 3,049 allocs, 2,822 frees, 3,291,661 bytes allocated
-==2088235== 
-==2088235== 5 bytes in 1 blocks are indirectly lost in loss record 1 of 68
-==2088235==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-
-.echo.
-minishell: .echo.: command not found
-==2088289== 
-==2088289== HEAP SUMMARY:
-==2088289==     in use at exit: 208,491 bytes in 227 blocks
-==2088289==   total heap usage: 3,079 allocs, 2,852 frees, 3,324,873 bytes allocated
-==2088289== 
-==2088289== 5 bytes in 1 blocks are indirectly lost in loss record 1 of 68
-==2088289==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==2088289==    by 0x40392C: ft_calloc (ft_calloc.c:21)
-==2088289==    by 0x404108: ft_strjoin (ft_strjoin.c:2
 
 
 
@@ -92,77 +60,6 @@ minishell> echo "'$HO''ME'"
 
 
 
- echo "hola " | cat -e
-hola $
-==2088614== 
-==2088614== HEAP SUMMARY:
-==2088614==     in use at exit: 208,491 bytes in 227 blocks
-==2088614==   total heap usage: 4,393 allocs, 4,166 frees, 5,475,414 bytes allocated
-==2088614== 
-==2088614== 5 bytes in 1 blocks are indirectly lost in loss record 1 of 68
-==2088614==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==2088614==    by 0x40392C: ft_calloc (ft_calloc.c:21)
-==2088614==    by 0x404108: ft_strjoin (ft_strjoin.c:25)
-==2088614==    by 0x404244: ft_strjoin_args (ft_strjoin_args.c:25)
-==2088614==    by 0x4062E2: join_args (parsing_help.c:67)
-==2088614==    by 0x406407: parse_single_cmd (parsing_help.c:90)
-==2088614==    by 0x405EB1: terms (parsing.c:38)
-==2088614==    by 0x405EF9: parsing_ast (parsing.c:65)
-==2088614==    by 0x406AEE: start_parsing (parsing_utils2.c:34)
-==2088614==    by 0x4050B6: main (main.c:59)
-==2088614== 
-==2088614== 53 (48 direct, 5 indirect) bytes in 1 blocks are definitely lost in loss record 18 of 68
-==2088614==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-
-
-
- ""e"'c'ho 'b'"o"nj"o"'u'r"
-minishell: e'c'ho 'b'onjo'u'r: command not found
-==2088687== 
-==2088687== HEAP SUMMARY:
-==2088687==     in use at exit: 208,491 bytes in 227 blocks
-==2088687==   total heap usage: 4,633 allocs, 4,406 frees, 5,643,320 bytes allocated
-==2088687== 
-==2088687== 5 bytes in 1 blocks are indirectly lost in loss record 1 of 68
-==2088687==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==2088687==    by 0x40392C: ft_calloc (ft_calloc.c:21)
-==2088687==    by 0x404108: ft_strjoin (ft_strjoin.c:25)
-==2088687==    by 0x404244: ft_strjoin_args (ft_strjoin_args.c:25)
-==2088687==    by 0x4062E2: join_args (parsing_help.c:67)
-==2088687==    by 0x406407: parse_single_cmd (parsing_help.c:90)
-==2088687==    by 0x405EB1: terms (parsing.c:38)
-==2088687==    by 0x405EF9: parsing_ast (parsing.c:65)
-
-
- $?$?
-minishell: 00: command not found
-==2088745== 
-==2088745== HEAP SUMMARY:
-==2088745==     in use at exit: 208,491 bytes in 227 blocks
-==2088745==   total heap usage: 4,852 allocs, 4,625 frees, 5,908,310 bytes allocated
-==2088745== 
-==2088745== 5 bytes in 1 blocks are indirectly lost in loss record 1 of 68
-==2088745==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==2088745==    by 0x40392C: ft_calloc (ft_calloc.c:21)
-==2088745==    by 0x404108: ft_strjoin (ft_strjoin.c:25)
-==2088745==    by 0x404244: ft_strjoin_args (ft_strjoin_args.c:25)
-==2088745==    by 0x4062E2: join_args (parsing_help.c:67)
-==2088745==    by 0x406407: parse_single_cmd (parsing_help.c:90)
-==2088745==    by 0x405EB1: terms (parsing.c:38)
-==2088745==    by 0x405EF9: parsing_ast (parsing.c:65)
-==2088745==    by 0x406AEE: start_parsing (parsing_utils2.c:34)
-==2088745==    by 0x4050B6: main (main.c:59)
-==2088745== 
-==2088745== 53 (48 direct, 5 indirect) bytes in 1 blocks are definitely lost in loss record 18 of 68
-==2088745==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==2088745==    by 0x40392C: ft_calloc (ft_calloc.c:21)
-==2088745==    by 0x406509: lstnew (parsing_nodes.c:28)
-==2088745==    by 0x40636C: parse_single_cmd (parsing_help.c:82)
-==2088745==    by 0x405EB1: terms (parsing.c:38)
-==2088745==    by 0x405EF9: parsing_ast (parsing.c:65)
-==2088745==    by 0x406AEE: start_parsing (parsing_utils2.c:34)
-==2088745==    by 0x4050B6: main (main.c:59)
-==2088745== 
 
 minishell> $LESS$VAR
 minishell: -R: command not found
@@ -201,21 +98,6 @@ iel-asef@c3r8p5:~/Desktop$ export ""
 bash: export: `': not a valid identifier
 iel-asef@c3r8p5:~/Desktop$ 
 
-
-
-minishell: exportHOLA=bonjour: command not found
-==2089341== 
-==2089341== HEAP SUMMARY:
-==2089341==     in use at exit: 208,692 bytes in 230 blocks
-==2089341==   total heap usage: 6,358 allocs, 6,128 frees, 7,736,860 bytes allocated
-==2089341== 
-==2089341== 5 bytes in 1 blocks are indirectly lost in loss record 1 of 71
-==2089341==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==2089341==    by 0x40392C: ft_calloc (ft_calloc.c:21)
-==2089341==    by 0x404108: ft_strjoin (ft_strjoin.c:25)
-==2089341==    by 0x404244: ft_strjoin_args (ft_strjoin_args.c:25)
-==2089341==    by 0x4062E2: join_args (parsing_help.c:67)
-==2089341==    by 0x406407: parse_single_cmd (parsing_help.c:90)
 ==2089341==    by 0x405EB1: terms (parsing.c:38)
 
 minishell> export HOLA=bon\\jour
@@ -253,27 +135,6 @@ minishell> pwd -p
 /home/iel-asef/Desktop/mini_shel
 minishell>  pwd --p
 /home/iel-asef/Desktop/mini_shel
-
-minishell>  cd / | echo $?
-==2091948== Invalid free() / delete / delete[] / realloc()
-==2091948==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-0
-==2091949== Invalid free() / delete / delete[] / realloc()
-==2091949==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==2091948==    by 0x401AA4: ft_del (exec_utils.c:17)
-==2091948==    by 0x403E77: ft_lstdelone (ft_lstdelone.c:19)
-==2091948==    by 0x403A45: ft_lstclear (ft_lstclear.c:24)
-==2091948==    by 0x401A05: garbage_collector (exec_utils.c:30)
-==2091948==    by 0x406B41: clean_all (clean.c:34)
-==2091948==    by 0x402A49: exec_pipe_child (exec_pipe.c:33)
-==2091948==    by 0x402BF1: exec_pipe (exec_pipe.c:66)
-==2091948==    by 0x402AA0: exec_node (exec_pipe.c:80)
-==2091948==    by 0x404FE3: execution (main.c:39)
-==2091948==    by 0x4050DB: main (main.c:65)
-==2091948==  Address 0x4c540d0 is 0 bytes inside a block of size 5 free'd
-==2091948==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==2091948==    by 0x401AA4: ft_del (exec_utils.c:17)
-==2091948==    by 0x403E77: ft_lstdelone (ft_lstdelone.c:19)
 
 
 
@@ -368,54 +229,7 @@ minishell> cat o
 sh-5.2$ bash
 bash-5.2$ > o
 bash-5.2$ 
-----------------------------------------------------------------------------------------------
-minishell> ?
-minishell: ?: command not found
-==1949126== 
-==1949126== HEAP SUMMARY:
-==1949126==     in use at exit: 208,181 bytes in 222 blocks
-==1949126==   total heap usage: 1,076 allocs, 854 frees, 370,466 bytes allocated
-==1949126== 
-==1949126== LEAK SUMMARY:
-==1949126==    definitely lost: 0 bytes in 0 blocks
-==1949126==    indirectly lost: 0 bytes in 0 blocks
-==1949126==      possibly lost: 0 bytes in 0 blocks
-==1949126==    still reachable: 0 bytes in 0 blocks
-==1949126==         suppressed: 208,181 bytes in 222 blocks
-==1949126== 
-==1949126== For lists of detected and suppressed errors, rerun with: -s
-==1949126== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-minishell> /
-minishell: /: Is a directory
-==1949142== 
-==1949142== HEAP SUMMARY:
-==1949142==     in use at exit: 240,997 bytes in 223 blocks
-==1949142==   total heap usage: 1,043 allocs, 820 frees, 435,452 bytes allocated
-==1949142== 
-==1949142== 32,816 bytes in 1 blocks are definitely lost in loss record 64 of 64
-==1949142==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1949142==    by 0x49AB30A: __alloc_dir (opendir.c:115)
-==1949142==    by 0x49AB30A: opendir_tail (opendir.c:63)
-==1949142==    by 0x49AB30A: opendir (opendir.c:86)
-==1949142==    by 0x403608: handle_invalid_path (exec_child.c:31)
-==1949142==    by 0x40372C: child_exec_logic (exec_child.c:67)
-==1949142==    by 0x402CBE: exec_child (external_commands.c:23)
-==1949142==    by 0x402E91: handle_exec_logic (external_commands.c:53)
-==1949142==    by 0x402D74: exec_simple_cmd (external_commands.c:68)
-==1949142==    by 0x402B4F: exec_node (exec_pipe.c:96)
-==1949142==    by 0x404FE3: execution (main.c:39)
-==1949142==    by 0x4050DB: main (main.c:65)
-==1949142== 
-==1949142== LEAK SUMMARY:
-==1949142==    definitely lost: 32,816 bytes in 1 blocks
-==1949142==    indirectly lost: 0 bytes in 0 blocks
-==1949142==      possibly lost: 0 bytes in 0 blocks
-==1949142==    still reachable: 0 bytes in 0 blocks
-==1949142==         suppressed: 208,181 bytes in 222 blocks
-==1949142== 
-==1949142== For lists of detected and suppressed errors, rerun with: -s
-==1949142== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-minishell> 
+---------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
 minishell> ls << l < a < 
 > 
