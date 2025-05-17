@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:28:33 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/15 16:57:07 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/16 14:39:05 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ char	*extract_value(char *str)
 
 char	*gc_strdup(const char *s)
 {
-	char	*dup = ft_strdup(s);
+	char	*dup;
+
+	dup = ft_strdup(s);
 	if (!dup)
 		return (NULL);
 	return (garbage_collector(dup, false));

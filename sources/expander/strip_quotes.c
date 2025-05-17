@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strip_quotes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 10:28:18 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 21:10:35 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/16 17:35:38 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ char	*strip_quotes(char *str)
 		else
 			ret[j++] = str[i++];
 	}
-	return (free(str), ret);
+	return (ret);
 }
