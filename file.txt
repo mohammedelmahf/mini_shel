@@ -167,45 +167,7 @@ bash-5.2$ > o
 bash-5.2$ 
 ---------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
-minishell> ls << l < a < 
-> 
-==1949663== 
-==1949663== HEAP SUMMARY:
-==1949663==     in use at exit: 208,671 bytes in 230 blocks
-==1949663==   total heap usage: 1,150 allocs, 920 frees, 404,961 bytes allocated
-==1949663== 
-==1949663== 2 bytes in 1 blocks are indirectly lost in loss record 1 of 71
-==1949663==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1949663==    by 0x403BA1: ft_strdup (ft_strdup.c:23)
-==1949663==    by 0x406602: new_io_node (parsing_nodes.c:54)
-==1949663==    by 0x4061C9: get_io_list (parsing_help.c:45)
-==1949663==    by 0x40645D: parse_single_cmd (parsing_help.c:95)
-==1949663==    by 0x405EB1: terms (parsing.c:38)
-==1949663==    by 0x405EF9: parsing_ast (parsing.c:65)
-==1949663==    by 0x406AEE: start_parsing (parsing_utils2.c:34)
-==1949663==    by 0x4050B6: main (main.c:59)
-==1949663== 
-==1949663== 50 (48 direct, 2 indirect) bytes in 1 blocks are definitely lost in loss record 20 of 71
-==1949663==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1949663==    by 0x40392C: ft_calloc (ft_calloc.c:21)
-==1949663==    by 0x4065CD: new_io_node (parsing_nodes.c:50)
-==1949663==    by 0x4061C9: get_io_list (parsing_help.c:45)
-==1949663==    by 0x40645D: parse_single_cmd (parsing_help.c:95)
-==1949663==    by 0x405EB1: terms (parsing.c:38)
-==1949663==    by 0x405EF9: parsing_ast (parsing.c:65)
-==1949663==    by 0x406AEE: start_parsing (parsing_utils2.c:34)
-==1949663==    by 0x4050B6: main (main.c:59)
-==1949663== 
-==1949663== LEAK SUMMARY:
-==1949663==    definitely lost: 48 bytes in 1 blocks
-==1949663==    indirectly lost: 2 bytes in 1 blocks
-==1949663==      possibly lost: 0 bytes in 0 blocks
-==1949663==    still reachable: 0 bytes in 0 blocks
-==1949663==         suppressed: 208,621 bytes in 228 blocks
-==1949663== 
-==1949663== For lists of detected and suppressed errors, rerun with: -s
-==1949663== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-minishell> 
+
 -----------------------------------------------------------------------------------------
 minishell> ls << o
 > $HOME                        $HOME

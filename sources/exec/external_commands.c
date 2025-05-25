@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/15 09:16:17 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/25 15:02:40 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,26 @@ static int	handle_exec_logic(t_node *node, bool pipe)
 {
 	int	status;
 
-	if (!node->expanded_args || !node->expanded_args[0]
+	// Handle redirections-only commands (like "> file")
+	if (!node->expanded_args || !node->expanded_args[0] 
 		|| node->expanded_args[0][0] == '\0')
 	{
+		// If there are redirections but no command, just handle redirections
+		if (node->io_list)
+		{
+			printf("here\n");
+			status = check_redirections(node);
+			reset_std(pipe);
+			return (status);
+		}
+		// If no command and no redirections, it's an error
 		ft_putstr_fd("minishell: command not found\n", 2);
 		status = check_redirections(node);
 		reset_std(pipe);
 		return (ENO_COMMAND_NOT_FOUND);
 	}
+	
+	// Handle builtin commands
 	if (is_builtin(node->expanded_args[0]))
 	{
 		status = check_redirections(node);
@@ -50,6 +62,8 @@ static int	handle_exec_logic(t_node *node, bool pipe)
 		reset_std(pipe);
 		return (status);
 	}
+	
+	// Handle external commands
 	return (exec_child(node));
 }
 

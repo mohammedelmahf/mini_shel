@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/15 16:57:25 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/25 15:18:09 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,7 @@ void			execute_cmd(char **args, char **envp);
 void			free_tokens(t_token *tokens);
 void			free_ast(t_node *ast);
 void			clean_cmd_data(void);
+void			*gc_calloc(size_t count, size_t size);
 
 /* misc */
 char			*expand_delimiter(char *raw);

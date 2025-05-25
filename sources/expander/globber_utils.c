@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:34:32 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/17 08:42:40 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/25 15:25:03 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	**join_str_arr(char ***str)
 	char	**joined;
 
 	str_count = multi_str_count(str);
-	joined = (char **)ft_calloc(str_count + 1, sizeof(char *));
+	joined = (char **)gc_calloc(str_count + 1, sizeof(char *));
 	i = 0;
 	str_count = 0;
 	while (str[i])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maelmahf <maelmahf@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 18:39:14 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/10 12:38:35 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/25 15:37:03 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	total_length = ft_strlen(s1) + ft_strlen(s2) + 1;
-	joined = ft_calloc(total_length, sizeof(char));
+	joined = gc_calloc(total_length, sizeof(char));
 	if (!joined)
 		return (NULL);
 	i = 0;

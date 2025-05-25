@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 10:28:18 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/16 17:35:38 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/25 15:18:33 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*strip_quotes(char *str)
 
 	i = 0;
 	j = 0;
-	ret = ft_calloc(1 + unquoted_strlen(str), sizeof(char));
+	ret = gc_calloc(1 + unquoted_strlen(str), sizeof(char));
 	if (!ret)
 		return (NULL);
 	while (str[i])
