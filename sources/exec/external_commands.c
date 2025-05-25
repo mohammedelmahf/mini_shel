@@ -30,8 +30,7 @@ static int	handle_exec_logic(t_node *node, bool pipe)
 {
 	int	status;
 
-	// Handle redirections-only commands (like "> file")
-	if (!node->expanded_args || !node->expanded_args[0] 
+	if (!node->expanded_args || !node->expanded_args[0]
 		|| node->expanded_args[0][0] == '\0')
 	{
 		ft_putstr_fd("minishell: command not found\n", 2);
@@ -39,8 +38,6 @@ static int	handle_exec_logic(t_node *node, bool pipe)
 		reset_std(pipe);
 		return (ENO_COMMAND_NOT_FOUND);
 	}
-	
-	// Handle builtin commands
 	if (is_builtin(node->expanded_args[0]))
 	{
 		status = check_redirections(node);
@@ -53,8 +50,6 @@ static int	handle_exec_logic(t_node *node, bool pipe)
 		reset_std(pipe);
 		return (status);
 	}
-	
-	// Handle external commands
 	return (exec_child(node));
 }
 
@@ -65,7 +60,6 @@ int	exec_simple_cmd(t_node *node, bool pipe)
 	node->expanded_args = expand_args(node->args);
 	if (!node->expanded_args)
 	{
-		//ft_putstr_fd("Command not found\n", 2);
 		status = check_redirections(node);
 		reset_std(pipe);
 		return (ENO_GENERAL);

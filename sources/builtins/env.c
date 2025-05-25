@@ -24,7 +24,7 @@ int	env_err_msg(char *msg)
 int	ft_env(char **args)
 {
 	t_env	*list;
-	
+
 	list = g_data.envlst;
 	if (args && args[1])
 		return (env_err_msg(args[1]));

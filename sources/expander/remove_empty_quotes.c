@@ -14,8 +14,8 @@
 
 static bool	is_empty_quote_pair(const char *s)
 {
-	return ((s[0] == '\'' && s[1] == '\'' && !s[2])
-		|| (s[0] == '"' && s[1] == '"' && !s[2]));
+	return ((s[0] == '\'' && s[1] == '\'' && !s[2]) || (s[0] == '"'
+			&& s[1] == '"' && !s[2]));
 }
 
 static void	copy_without_empty_quotes(char *dst, const char *src)
@@ -27,8 +27,8 @@ static void	copy_without_empty_quotes(char *dst, const char *src)
 	j = 0;
 	while (src[i])
 	{
-		if ((src[i] == '\'' && src[i + 1] == '\'')
-			|| (src[i] == '"' && src[i + 1] == '"'))
+		if ((src[i] == '\'' && src[i + 1] == '\'') || (src[i] == '"' && src[i
+				+ 1] == '"'))
 			i += 2;
 		else
 			dst[j++] = src[i++];

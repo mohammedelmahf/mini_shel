@@ -40,7 +40,7 @@ void	handler_sigquit(int num)
 
 void	init_signal(void)
 {
-	struct termios		term;
+	struct termios	term;
 
 	term = g_data.original_term;
 	term.c_lflag |= ECHOCTL;

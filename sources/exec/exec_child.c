@@ -26,8 +26,8 @@ void	handle_special_commands(char *cmd)
 
 void	handle_invalid_path(char *path)
 {
-	DIR *dir;
-	
+	DIR	*dir;
+
 	if (access(path, F_OK) == 0)
 	{
 		dir = opendir(path);

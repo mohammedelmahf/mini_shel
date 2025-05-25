@@ -12,23 +12,25 @@
 
 #include "../../includes/minishell.h"
 
-static	bool	is_valid_long_long(const char *str)
+static bool	is_valid_long_long(const char *str)
 {
-	int			i = 0;
-	int			sign = 1;
-	unsigned long long	num = 0;
-	unsigned long long	max = (unsigned long long)LLONG_MAX + 1;
+	int					i;
+	int					sign;
+	unsigned long long	num;
+	unsigned long long	max;
 
+	i = 0;
+	sign = 1;
+	num = 0;
+	max = (unsigned long long)LLONG_MAX + 1;
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
 			sign = -1;
 		i++;
 	}
-
 	if (!str[i])
 		return (false);
-
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')

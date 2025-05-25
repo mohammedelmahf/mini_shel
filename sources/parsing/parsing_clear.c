@@ -34,8 +34,6 @@ void	clear_cmd_node(t_node *node)
 	if (!node)
 		return ;
 	clear_io_list(&(node->io_list));
-	// free(node->args);
-	// free_char2(node->expanded_args);
 }
 
 void	recursive_ast_clear(t_node *node)

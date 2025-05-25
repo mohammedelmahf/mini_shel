@@ -39,11 +39,6 @@ minishell> pwd
 minishell> 
 
 
-minishell> pwd -p
-/home/iel-asef/Desktop/mini_shel
-minishell> 
-
-
 ---------------------------------------------------------------------------------------
 
 
