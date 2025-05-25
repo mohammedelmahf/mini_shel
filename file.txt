@@ -422,13 +422,6 @@ minishell: a: No such file or directory
 
 
 
-
-
-
-
-
-
-
 minishell> >d cat <a >>e
 minishell: a: No such file or directory
 ==211611== 
