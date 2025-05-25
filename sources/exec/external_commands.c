@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/25 15:02:40 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/25 15:39:51 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,6 @@ static int	handle_exec_logic(t_node *node, bool pipe)
 	if (!node->expanded_args || !node->expanded_args[0] 
 		|| node->expanded_args[0][0] == '\0')
 	{
-		// If there are redirections but no command, just handle redirections
-		if (node->io_list)
-		{
-			printf("here\n");
-			status = check_redirections(node);
-			reset_std(pipe);
-			return (status);
-		}
-		// If no command and no redirections, it's an error
 		ft_putstr_fd("minishell: command not found\n", 2);
 		status = check_redirections(node);
 		reset_std(pipe);
@@ -74,7 +65,7 @@ int	exec_simple_cmd(t_node *node, bool pipe)
 	node->expanded_args = expand_args(node->args);
 	if (!node->expanded_args)
 	{
-		ft_putstr_fd("Command not found\n", 2);
+		//ft_putstr_fd("Command not found\n", 2);
 		status = check_redirections(node);
 		reset_std(pipe);
 		return (ENO_GENERAL);
