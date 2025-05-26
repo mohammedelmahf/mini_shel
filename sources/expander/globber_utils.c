@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:34:32 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/25 15:25:03 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:34:59 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**join_str_arr(char ***str)
 		j = 0;
 		while (str[i][j])
 		{
-			joined[str_count + j] =  gc_strdup(str[i][j]);
+			joined[str_count + j] = gc_strdup(str[i][j]);
 			j++;
 		}
 		str_count += j;

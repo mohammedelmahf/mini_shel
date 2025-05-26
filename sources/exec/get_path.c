@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:32 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/15 16:56:51 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:46:16 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*build_cmd_path(char *dir, char *cmd)
 
 	tmp1 = ft_strdup(dir);
 	tmp2 = ft_strdup(cmd);
-	joined = ft_strjoin_args(tmp1, tmp2, '/');
+	joined = ft_strjoin_args_build_cmd_path(tmp1, tmp2, '/');
 	free(tmp1);
 	free(tmp2);
 	return (garbage_collector(joined, false));

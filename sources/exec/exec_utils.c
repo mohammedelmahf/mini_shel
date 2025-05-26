@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:04:41 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/25 15:29:09 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:15:56 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static void	ft_del(void *str)
 {
-	free(str);
+	if (str)
+	{
+		free(str);
+	}
 }
 
 void	*garbage_collector(char *str, bool clean)

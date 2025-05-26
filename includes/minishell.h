@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 09:04:20 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/25 15:18:09 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:16:52 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,8 @@ bool			pattern_match_exists(char **pattern, char **last_wildcard,
 char			**join_str_arr(char ***str);
 void			heredoc(t_io_node *io, int p[2]);
 void			heredoc_expander(char *str, int fd);
+char			*ft_strjoin_args_build_cmd_path(char const *s1,
+					char const *s2, char c);
 
 /* exist_check */
 t_err			check_exec(char *file, bool cmd);

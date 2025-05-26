@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:29:37 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/25 15:32:08 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:57:04 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,12 @@ void	clear_cmd_node(t_node *node)
 	if (!node)
 		return ;
 	clear_io_list(&(node->io_list));
-	// free(node->args);
-	// free_char2(node->expanded_args);
 }
 
 void	recursive_ast_clear(t_node *node)
 {
 	if (!node)
 		return ;
-	if (node->type == N_CMD)
-		clear_cmd_node(node);
 	else
 	{
 		if (node->left)

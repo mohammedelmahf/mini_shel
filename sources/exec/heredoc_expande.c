@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 09:24:45 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/15 08:53:21 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:16:21 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	heredoc_expand_writer(char *str, size_t i, int fd)
 		if (tmp)
 			ft_putstr_fd(tmp, fd);
 	}
-	return (i);
+	return (i - (start - 1));
 }
 
 static void	write_prefix(char *str, size_t start, size_t end, int fd)

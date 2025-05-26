@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_help.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:54:47 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 21:08:23 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:34:15 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ bool	join_args(char **args)
 	if (g_data.parse_error.type)
 		return (false);
 	if (!*args)
-		*args = ft_strdup("");
+		*args = gc_strdup("");
 	if (!*args)
 		return (false);
 	while (g_data.curr_token && g_data.curr_token->type == T_IDENTIFIER)
@@ -66,8 +66,7 @@ bool	join_args(char **args)
 		to_free = *args;
 		*args = ft_strjoin_args(*args, g_data.curr_token->value, ' ');
 		if (!*args)
-			return (free(to_free), false);
-		free(to_free);
+			return (false);
 		next_token();
 	}
 	return (true);

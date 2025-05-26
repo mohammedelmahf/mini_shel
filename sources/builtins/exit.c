@@ -6,35 +6,45 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:15 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/16 09:11:50 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:28:59 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static	bool	is_valid_long_long(const char *str)
+static bool	check_sign(const char *str, int *sign, int *index)
 {
-	int			i = 0;
-	int			sign = 1;
-	unsigned long long	num = 0;
-	unsigned long long	max = (unsigned long long)LLONG_MAX + 1;
-
-	if (str[i] == '+' || str[i] == '-')
+	*sign = 1;
+	*index = 0;
+	if (str[*index] == '+' || str[*index] == '-')
 	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
+		if (str[*index] == '-')
+			*sign = -1;
+		(*index)++;
 	}
-
-	if (!str[i])
+	if (!str[*index])
 		return (false);
+	return (true);
+}
 
+static bool	is_valid_long_long(const char *str)
+{
+	int					i;
+	int					sign;
+	unsigned long long	num;
+	unsigned long long	max;
+
+	if (!check_sign(str, &sign, &i))
+		return (false);
+	num = 0;
+	max = (unsigned long long)LLONG_MAX + 1;
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
 			return (false);
 		num = num * 10 + (str[i] - '0');
-		if ((sign == 1 && num > LLONG_MAX) || (sign == -1 && num > max))
+		if ((sign == 1 && num > (unsigned long long)LLONG_MAX)
+			|| (sign == -1 && num > max))
 			return (false);
 		i++;
 	}

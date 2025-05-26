@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 08:48:44 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/17 13:00:49 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:19:45 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	handle_special_commands(char *cmd)
 
 void	handle_invalid_path(char *path)
 {
-	DIR *dir;
-	
+	DIR	*dir;
+
 	if (access(path, F_OK) == 0)
 	{
 		dir = opendir(path);

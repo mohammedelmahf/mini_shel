@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:28:33 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/16 14:39:05 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:22:28 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,30 +63,32 @@ char	*gc_strdup(const char *s)
 	return (garbage_collector(dup, false));
 }
 
-
-static void	set_default_env(void)
+void	set_default_env(void)
 {
 	char	cwd[PATH_MAX];
 
 	if (!get_env("OLDPWD"))
 		update_envlst(gc_strdup("OLDPWD"), NULL, true);
-
 	if (!get_env("PWD"))
 	{
 		if (getcwd(cwd, sizeof(cwd)))
+		{
 			update_envlst(gc_strdup("PWD"), gc_strdup(cwd), true);
+		}
 		else
+		{
 			update_envlst(gc_strdup("PWD"), gc_strdup("/"), true);
+		}
 	}
-
 	if (!get_env("SHLVL"))
 		update_envlst(gc_strdup("SHLVL"), gc_strdup("1"), true);
-
 	if (!get_env("PATH"))
-		update_envlst(gc_strdup("PATH"),
-			gc_strdup("/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"),
+		update_envlst(
+			gc_strdup("PATH"),
+			gc_strdup(
+				"/usr/local/sbin:/usr/local/bin:/usr/sbin:"
+				"/usr/bin:/sbin:/bin"),
 			true);
-
 	update_envlst(gc_strdup("_"), gc_strdup("./minishell"), true);
 }
 
