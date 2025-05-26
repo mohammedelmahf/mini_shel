@@ -6,38 +6,22 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:31:15 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/26 09:28:59 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/26 13:24:44 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-<<<<<<< HEAD
 static bool	check_sign(const char *str, int *sign, int *index)
 {
 	*sign = 1;
 	*index = 0;
 	if (str[*index] == '+' || str[*index] == '-')
-=======
-static bool	is_valid_long_long(const char *str)
-{
-	int					i;
-	int					sign;
-	unsigned long long	num;
-	unsigned long long	max;
-
-	i = 0;
-	sign = 1;
-	num = 0;
-	max = (unsigned long long)LLONG_MAX + 1;
-	if (str[i] == '+' || str[i] == '-')
->>>>>>> 021b160b663c9eab84343ea768a090e4aa8ef775
 	{
 		if (str[*index] == '-')
 			*sign = -1;
 		(*index)++;
 	}
-<<<<<<< HEAD
 	if (!str[*index])
 		return (false);
 	return (true);
@@ -54,10 +38,6 @@ static bool	is_valid_long_long(const char *str)
 		return (false);
 	num = 0;
 	max = (unsigned long long)LLONG_MAX + 1;
-=======
-	if (!str[i])
-		return (false);
->>>>>>> 021b160b663c9eab84343ea768a090e4aa8ef775
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')

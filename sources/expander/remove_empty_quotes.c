@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 09:34:47 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/13 18:54:12 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/26 13:25:03 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	copy_without_empty_quotes(char *dst, const char *src)
 	while (src[i])
 	{
 		if ((src[i] == '\'' && src[i + 1] == '\'') || (src[i] == '"' && src[i
-				+ 1] == '"'))
+					+ 1] == '"'))
 			i += 2;
 		else
 			dst[j++] = src[i++];

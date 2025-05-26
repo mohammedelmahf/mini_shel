@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:28:33 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/26 11:17:55 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/26 13:25:14 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ char	*gc_strdup(const char *s)
 		return (NULL);
 	return (garbage_collector(dup, false));
 }
-
 
 static void	set_default_env(void)
 {
