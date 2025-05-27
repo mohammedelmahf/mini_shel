@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 09:41:04 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 21:12:38 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/27 09:32:22 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,45 @@ void	skip_word(char *str, size_t *i)
 			quotes = str[(*i)++];
 			while (str[*i] && str[*i] != quotes)
 				(*i)++;
-			(*i)++;
+			if (str[*i] == quotes)  // Found closing quote
+				(*i)++;
 		}
 	}
+}
+
+// Helper function to calculate the actual length needed for a word
+size_t	calculate_word_length(char *str, size_t start)
+{
+	size_t	i;
+	size_t	len;
+	char	quotes;
+
+	i = start;
+	len = 0;
+	while (str[i] && str[i] != ' ')
+	{
+		if (str[i] != '\'' && str[i] != '"')
+		{
+			len++;
+			i++;
+		}
+		else
+		{
+			quotes = str[i++];
+			len++;  // Count opening quote
+			while (str[i] && str[i] != quotes)
+			{
+				len++;
+				i++;
+			}
+			if (str[i] == quotes)
+			{
+				len++;  // Count closing quote
+				i++;
+			}
+		}
+	}
+	return (len);
 }
 
 char	**allocater(char *str, char **strs)
@@ -35,6 +71,7 @@ char	**allocater(char *str, char **strs)
 	size_t	start;
 	size_t	i;
 	size_t	j;
+	size_t	word_len;
 
 	i = 0;
 	j = 0;
@@ -43,10 +80,11 @@ char	**allocater(char *str, char **strs)
 		if (str[i] != ' ')
 		{
 			start = i;
-			skip_word(str, &i);
-			strs[j] = ft_calloc(i - start + 1, sizeof(char));
+			word_len = calculate_word_length(str, start);
+			strs[j] = ft_calloc(word_len + 1, sizeof(char));
 			if (!strs[j])
 				return (NULL);
+			skip_word(str, &i);  // Move i to end of word
 			j++;
 		}
 		while (str[i] && str[i] == ' ')
@@ -69,11 +107,13 @@ void	word_filler(const char *str, char **strs, size_t *i, size_t j)
 		{
 			quotes = str[(*i)++];
 			strs[j][k++] = quotes;
-			while (str[(*i)] != quotes)
+			while (str[(*i)] && str[(*i)] != quotes)
 				strs[j][k++] = str[(*i)++];
-			strs[j][k++] = str[(*i)++];
+			if (str[(*i)] == quotes)
+				strs[j][k++] = str[(*i)++];
 		}
 	}
+	strs[j][k] = '\0';  // Ensure null termination
 }
 
 char	**filler(char *str, char **strs)
