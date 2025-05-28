@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   globber.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-asef <iel-asef@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:32:33 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/11 21:10:18 by iel-asef         ###   ########.fr       */
+/*   Updated: 2025/05/28 09:54:42 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,30 @@ char	**globber(char **expanded)
 		i++;
 	}
 	return (free_char2(expanded), join_str_arr(globbed));
+}
+
+char	**expander_split(char *str)
+{
+	size_t	count;
+	char	**tofree;
+	char	**strs;
+	size_t	i;
+
+	if (!str)
+		return (NULL);
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ' && ++count)
+			skip_word(str, &i);
+		while (str[i] && str[i] == ' ')
+			i++;
+	}
+	strs = ft_calloc(count + 1, sizeof(char *));
+	tofree = strs;
+	strs = allocater(str, strs);
+	if (!strs || !count)
+		return (free_char2(tofree), NULL);
+	return (filler(str, strs));
 }

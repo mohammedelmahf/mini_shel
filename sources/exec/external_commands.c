@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:30:27 by iel-asef          #+#    #+#             */
-/*   Updated: 2025/05/27 10:54:44 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/28 09:53:09 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	handle_exec_logic(t_node *node, bool pipe)
 int	exec_simple_cmd(t_node *node, bool pipe)
 {
 	int	status;
-	
+
 	node->expanded_args = expand_args(node->args);
 	if (!node->expanded_args)
 	{

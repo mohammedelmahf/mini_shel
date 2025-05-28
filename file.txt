@@ -77,3 +77,20 @@ minishell>
 
 
 valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all ./minishell
+
+minishell> export $a=$b
+minishell: export: `gg          ss=dd           zz': not a valid identifier
+
+
+----------------------------------------------------------------------------------------
+
+unset LANGUAGE XDG_SESSION_TYPE SHLVL DESKTOP_SESSION GTK_MODULES XDG_SEAT_PATH MANAGERPID SYSTEMD_EXEC_PID DBUS_SESSION_BUS_ADDRESS LIBVIRT_DEFAULT_URI GTK_IM_MODULE JOURNAL_STREAM XDG_SESSION_CLASS FT_HOOK_PATHNAME GNOME_DESKTOP_SESSION_ID SESSION_MANAGER INVOCATION_ID XDG_MENU_PREFIX XDG_SESSION_PATH DISPLAY XDG_CURRENT_DESKTOP XAUTHORITY XDG_SESSION_DESKTOP XMODIFIERS SSH_AGENT_LAUNCHER SSH_AUTH_SOCK XDG_GREETER_DATA_DIR GDMSESSION GDM_LANG KRB5CCNAME QT_ACCESSIBILITY FT_HOOK_NAME GPG_AGENT_INFO QT_IM_MODULE XDG_DATA_DIRS XDG_CONFIG_DIRS OLDPWD
+
+----------------------------------------------------------------------------------------
+
+minishell> echo  $""USER
+$USER
+
+
+minishell> echo "" "" "" test
+test
