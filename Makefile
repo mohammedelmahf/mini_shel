@@ -1,6 +1,6 @@
 NAME        := minishell
 CC          := cc
-CFLAGS      := -Wall -Werror -Wextra -g
+CFLAGS      := -Wall -Werror -Wextra 
 LDFLAGS     := -lreadline  # Link against the readline library
 
 env         :=  sources/env/env.c sources/env/env_utils.c
