@@ -1,63 +1,63 @@
 
-
-minishell> env env
-env: env: No such file or directory
-minishell> env env env env env
-env: env: No such file or directory
-minishell> 
-
-minishell> export HOLA$USER=bonjour
-minishell: export: `HOLAiel-asef=bonjour': not a valid identifier
-minishell> 
-
-minishell> unset PWD
-minishell> env | grep PWD
-minishell: grep: command not found
-minishell> pwd
-/home/iel-asef/Desktop/mini_shel
-minishell> 
-
-
 ---------------------------------------------------------------------------------------
 
+valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all ./minishell
+
+minishell> export $a=$b
+minishell: export: `gg          ss=dd           zz': not a valid identifier
 
 
-minishell> echo $USER$var\$USER$USER\$USERtest$USER
-iel-asef\iel-asefiel-asef\iel-asef
+----------------------------------------------------------------------------------------
+
+unset LANGUAGE XDG_SESSION_TYPE SHLVL DESKTOP_SESSION GTK_MODULES XDG_SEAT_PATH MANAGERPID SYSTEMD_EXEC_PID DBUS_SESSION_BUS_ADDRESS LIBVIRT_DEFAULT_URI GTK_IM_MODULE JOURNAL_STREAM XDG_SESSION_CLASS FT_HOOK_PATHNAME GNOME_DESKTOP_SESSION_ID SESSION_MANAGER INVOCATION_ID XDG_MENU_PREFIX XDG_SESSION_PATH DISPLAY XDG_CURRENT_DESKTOP XAUTHORITY XDG_SESSION_DESKTOP XMODIFIERS SSH_AGENT_LAUNCHER SSH_AUTH_SOCK XDG_GREETER_DATA_DIR GDMSESSION GDM_LANG KRB5CCNAME QT_ACCESSIBILITY FT_HOOK_NAME GPG_AGENT_INFO QT_IM_MODULE XDG_DATA_DIRS XDG_CONFIG_DIRS OLDPWD
+
+----------------------------------------------------------------------------------------
+ 
+
+======================================================================================
+
+
+minishell> echo ""
+
+minishell> echo "" ll
+ll
+minishell> echo "" "" ll
+ll
+minishell> bash
+iel-asef@e2r9p12:~/Desktop/mini_shel$ echo "" "" ll
+  ll
+
+
+iel-asef@e2r9p12:~/Desktop/mini_shel$ echo \>
+>
+iel-asef@e2r9p12:~/Desktop/mini_shel$ 
+exit
+minishell> echo \>
+minishell: syntax error near unexpected token `newline'
 minishell> 
 
 
 
 
-minishell> echo "'$HO''ME'"
-'ME'
-
-
-
-
-iel-asef@c3r8p5:~/Desktop$ export ""
-bash: export: `': not a valid identifier
-iel-asef@c3r8p5:~/Desktop$ 
-
-==2089341==    by 0x405EB1: terms (parsing.c:38)
-
-minishell> export HOLA=bon\\jour
-minishell> env
-_=./minishell
-HOLA=bon\\jour
+iel-asef@e2r9p12:~/Desktop/mini_shel$ echo "\s" ; echo "\\s"
+\s
+\s
+minishell> echo "\s" ; echo "\\s"
+\s ; echo \\s
 minishell> 
 
 
 
 
-minishell> export HOLA=bon(jour
-minishell> 
 
-minishell> export HOLA=bon;jour
-minishell> env
-SYSTEMD_EXEC_PID=2082232
-SSH_AUTH_SOCK=/run/user/102420/keyring/ssh
-SESSION_MANAGER=local/c3r8p5.1337.ma:@/tmp/.ICE-unix/2082209,unix/c3r8p5.1337.ma:/tmp/.ICE-unix/2082209
+
+minishell> echo  $""USER
+$USER
+minishell> bash
+iel-asef@e2r9p12:~/Desktop/mini_shel$ echo  $""USER
+USER
+iel-asef@e2r9p12:~/Desktop/mini_shel$ 
+
 
 
 
@@ -71,26 +71,71 @@ minishell: export:HOL?A: not a valid identifier
 minishell> 
 
 
+iel-asef@e2r9p12:~/Desktop/mini_shel$ export HOLA=bon;jour
+jour: command not found
+iel-asef@e2r9p12:~/Desktop/mini_shel$ 
+
+
+
+iel-asef@e2r9p12:~/Desktop/mini_shel$ export HOLA=bon(jour
+bash: syntax error near unexpected token `('
+iel-asef@e2r9p12:~/Desktop/mini_shel$ 
 
 
 
 
-
-valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all ./minishell
-
-minishell> export $a=$b
-minishell: export: `gg          ss=dd           zz': not a valid identifier
-
-
-----------------------------------------------------------------------------------------
-
-unset LANGUAGE XDG_SESSION_TYPE SHLVL DESKTOP_SESSION GTK_MODULES XDG_SEAT_PATH MANAGERPID SYSTEMD_EXEC_PID DBUS_SESSION_BUS_ADDRESS LIBVIRT_DEFAULT_URI GTK_IM_MODULE JOURNAL_STREAM XDG_SESSION_CLASS FT_HOOK_PATHNAME GNOME_DESKTOP_SESSION_ID SESSION_MANAGER INVOCATION_ID XDG_MENU_PREFIX XDG_SESSION_PATH DISPLAY XDG_CURRENT_DESKTOP XAUTHORITY XDG_SESSION_DESKTOP XMODIFIERS SSH_AGENT_LAUNCHER SSH_AUTH_SOCK XDG_GREETER_DATA_DIR GDMSESSION GDM_LANG KRB5CCNAME QT_ACCESSIBILITY FT_HOOK_NAME GPG_AGENT_INFO QT_IM_MODULE XDG_DATA_DIRS XDG_CONFIG_DIRS OLDPWD
-
-----------------------------------------------------------------------------------------
-
-minishell> echo  $""USER
-$USER
+minishell> export HOLA=bon\\jour
+minishell> env
+_=./minishell
+HOLA=bon\\jour
+minishell> 
 
 
-minishell> echo "" "" "" test
-test
+minishell> unset PWD
+minishell> pwd
+/home/iel-asef/Desktop/mini_shel
+minishell> 
+
+
+iel-asef@e2r9p12:~/Desktop/mini_shel$ export ""
+bash: export: `': not a valid identifier
+iel-asef@e2r9p12:~/Desktop/mini_shel$ 
+
+
+
+minishell> echo $USER$var\$USER$USER\$USERtest$USER
+iel-asef\iel-asefiel-asef\iel-asef
+minishell> 
+exit
+iel-asef@e2r9p12:~/Desktop/mini_shel$ echo $USER$var\$USER$USER\$USERtest$USER
+iel-asef$USERiel-asef$USERtestiel-asef
+iel-asef@e2r9p12:~/Desktop/mini_shel$ 
+
+➜  mini_shel git:(maelmahf) ✗ ./minishell 
+minishell> echo "bip | bip ; coyotte > < \" "
+minishell: unexpected EOF while looking for matching `"'
+minishell> 
+
+
+minishell> export ""  et unset ""
+minishell> export ""  et unset ""
+minishell> 
+exit
+➜  mini_shel git:(maelmahf) ✗ bash
+groups: cannot find name for group ID 4221
+iel-asef@e2r9p12:~/Desktop/mini_shel$ export ""  et unset ""
+bash: export: `': not a valid identifier
+bash: export: `': not a valid identifier
+iel-asef@e2r9p12:~/Desktop/mini_shel$ 
+
+
+iel-asef@e2r9p12:~/Desktop/mini_shel$ export "test=ici"=coucou ; echo $test
+ici=coucou
+iel-asef@e2r9p12:~/Desktop/mini_shel$ 
+exit
+➜  mini_shel git:(maelmahf) ✗ ./minishell 
+minishell> export "test=ici"=coucou ; echo $test
+minishell: export: `;': not a valid identifier
+minishell> 
+
+

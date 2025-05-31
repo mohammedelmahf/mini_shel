@@ -1,0 +1,13 @@
+a
+b
+c
+d
+file.txt
+includes
+Makefile
+minishell
+minishell_tester
+readline.supp
+README
+sources
+tests_minishell.md
