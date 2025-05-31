@@ -6,7 +6,7 @@
 /*   By: maelmahf <maelmahf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:40:08 by maelmahf          #+#    #+#             */
-/*   Updated: 2025/05/28 19:07:24 by maelmahf         ###   ########.fr       */
+/*   Updated: 2025/05/31 14:01:10 by maelmahf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	handler_sigint(int num)
 void	handler_sigquit(int num)
 {
 	(void)num;
-	
 }
 
 void	init_signal(void)
