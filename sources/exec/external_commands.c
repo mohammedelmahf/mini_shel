@@ -55,12 +55,10 @@ static int	handle_exec_logic(t_node *node, bool pipe)
 
 int	exec_simple_cmd(t_node *node, bool pipe)
 {
-	int	status;
-
 	node->expanded_args = expand_args(node->args);
 	if (!node->expanded_args)
 	{
-		status = check_redirections(node);
+		check_redirections(node);
 		reset_std(pipe);
 		return (ENO_GENERAL);
 	}

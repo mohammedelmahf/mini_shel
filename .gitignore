@@ -1,0 +1,21 @@
+# Build artifacts
+*.o
+minishell
+
+# Temporary files
+*~
+.DS_Store
+*.swp
+*.swo
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# IDE files
+.vscode/
+*.cbp
+*.depend
+*.layout

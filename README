@@ -1,3 +1,10 @@
+# MINISHELL PROJECT - Repository: mini_shel
+
+This is a minishell implementation (NOT cub3d). 
+Repository URL: https://github.com/mohammedelmahf/mini_shel
+
+## Execution Flow Diagram
+
                         ┌────────────────────────────────────────┐
                         │              execution()               │
                         └────────────────────────────────────────┘

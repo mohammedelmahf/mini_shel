@@ -53,8 +53,6 @@ bool	get_io_list(t_io_node **io_list)
 
 bool	join_args(char **args)
 {
-	char	*to_free;
-
 	if (g_data.parse_error.type)
 		return (false);
 	if (!*args)
@@ -63,7 +61,6 @@ bool	join_args(char **args)
 		return (false);
 	while (g_data.curr_token && g_data.curr_token->type == T_IDENTIFIER)
 	{
-		to_free = *args;
 		*args = ft_strjoin_args(*args, g_data.curr_token->value, ' ');
 		if (!*args)
 			return (false);
